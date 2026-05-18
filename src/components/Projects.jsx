@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { FaHtml5, FaCss3Alt, FaJs, FaWordpress, FaElementor, FaShopify } from "react-icons/fa";
 import { SiCpanel } from "react-icons/si";
+import wdcImg from "../assets/wdc_ss.png";
+import flydheeraImg from "../assets/flydheera_Ss.png";
+import puravaImg from "../assets/purava_ss.png";
+import divyaImg from "../assets/divyajewellers.png";
+import drAnilImg from "../assets/dranilkumarsharma.png";
+import womancartImg from "../assets/womancart.png";
+import sewaexpoImg from "../assets/sewaexpo.png";
+import syandanImg from "../assets/syandan.png";
 
 const projectsData = [
   {
@@ -12,8 +20,8 @@ const projectsData = [
     tags: ["Vanilla Stack"],
     pills: ["Pixel Perfect", "Zero Frameworks", "Hand-coded", "Fluid UI"],
     tech: ["HTML", "CSS", "JS"],
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: wdcImg,
+    link: "https://wdc-design-2.vercel.app/",
   },
   {
     id: "02",
@@ -24,8 +32,8 @@ const projectsData = [
     tags: ["WP Elementor"],
     pills: ["Visual Dev", "Wireframing", "Turnkey Delivery"],
     tech: ["WordPress", "Elementor"],
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: flydheeraImg,
+    link: "https://flydheera.com/",
   },
   {
     id: "03",
@@ -36,8 +44,8 @@ const projectsData = [
     tags: ["WP Elementor"],
     pills: ["Brand Identity", "End-to-End", "Figma to Web"],
     tech: ["WordPress", "Elementor"],
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: puravaImg,
+    link: "https://puravabath.com/",
   },
   {
     id: "04",
@@ -48,8 +56,8 @@ const projectsData = [
     tags: ["WP/Divi/Elementor"],
     pills: ["Luxury UI", "E-com Revamp", "Multi-builder"],
     tech: ["WordPress", "Elementor", "Divi"],
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: divyaImg,
+    link: "https://divyajewellers.co.in/",
   },
   {
     id: "05",
@@ -60,8 +68,8 @@ const projectsData = [
     tags: ["WP Divi"],
     pills: ["Healthcare Tech", "Rapid Build", "SEO Ready"],
     tech: ["WordPress", "Divi"],
-    image: "https://images.unsplash.com/photo-1538108149393-cebb47acdd91?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: drAnilImg,
+    link: "https://dranilkumarsharma.com/",
   },
   {
     id: "06",
@@ -72,8 +80,8 @@ const projectsData = [
     tags: ["Shopify Liquid"],
     pills: ["Conversion UX", "Theme Mod", "Storefront"],
     tech: ["Shopify"],
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: womancartImg,
+    link: "https://womancart.com.au/",
   },
   {
     id: "07",
@@ -84,8 +92,8 @@ const projectsData = [
     tags: ["cPanel DevOps"],
     pills: ["Server Ops", "CI/CD", "Uptime Guarantee"],
     tech: ["cPanel", "WordPress"],
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: sewaexpoImg,
+    link: "https://www.sewaexpo.com/",
   },
   {
     id: "08",
@@ -96,8 +104,8 @@ const projectsData = [
     tags: ["WP Elementor"],
     pills: ["Aero UI", "Corporate Site", "Scalable"],
     tech: ["WordPress", "Elementor"],
-    image: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=600&q=80",
-    link: "#",
+    image: syandanImg,
+    link: "https://flydheera.com/",
   },
 ];
 

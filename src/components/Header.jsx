@@ -11,7 +11,7 @@ const Header = () => {
   const navLinks = ["Home", "About", "Projects", "Experience", "Contact"];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a] border-b border-white/10 text-white">
+    <header className="fixed top-0 w-full z-50  text-white">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <h2 className="text-2xl font-bold tracking-wider hover:text-teal-400 cursor-pointer">
@@ -20,10 +20,15 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:block">
-          <ul className="flex gap-8 bg-white/5 border border-white/10 px-6 py-2 rounded-full">
+          <ul className="flex items-center gap-1 bg-white/5 border border-white/10 p-1.5 rounded-full">
             {navLinks.map((link) => (
-              <li key={link} className="hover:text-teal-400 cursor-pointer text-sm font-medium tracking-wide">
-                {link}
+              <li key={link}>
+                <a
+                  href={`#${link.toLowerCase()}`}
+                  className="hover:text-black hover:bg-teal-400 cursor-pointer transition-all duration-300 text-md font-normal tracking-wide block px-5 py-2 rounded-full"
+                >
+                  {link}
+                </a>
               </li>
             ))}
           </ul>
@@ -31,14 +36,20 @@ const Header = () => {
 
         {/* Social Links (Desktop) */}
         <ul className="hidden md:flex gap-4 items-center text-gray-300">
-          <li className="hover:text-teal-400 cursor-pointer"><MailIcon /></li>
-          <li className="hover:text-teal-400 cursor-pointer"><LinkedInIcon /></li>
-          <li className="hover:text-teal-400 cursor-pointer"><GitHubIcon /></li>
+          <li className="">
+            <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><MailIcon /></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><LinkedInIcon /></a>
+          </li>
+          <li>
+            <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><GitHubIcon /></a>
+          </li>
         </ul>
 
         {/* Mobile Menu Toggle Button */}
         <button
-          className="md:hidden text-gray-300 hover:text-teal-400 transition-colors"
+          className="md:hidden text-gray-300 hover:text-teal-400 transition-colors duration-300"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -48,22 +59,24 @@ const Header = () => {
       {/* Mobile Nav Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#0a0a0a] border-b border-white/10 absolute top-full left-0 w-full shadow-xl">
-          <nav className="flex flex-col items-center py-6 gap-6">
-            <ul className="flex flex-col items-center gap-6 w-full">
+          <nav className="flex flex-col items-center py-6 gap-4">
+            <ul className="flex flex-col items-center gap-2 w-full px-6">
               {navLinks.map((link) => (
-                <li
-                  key={link}
-                  className="hover:text-teal-400 cursor-pointer transition-colors text-lg font-medium w-full text-center"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link}
+                <li key={link} className="w-full">
+                  <a
+                    href={`#${link.toLowerCase()}`}
+                    className="hover:text-teal-400 hover:bg-white/5 cursor-pointer transition-all duration-300 text-lg font-medium w-full text-center block py-3 rounded-xl"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link}
+                  </a>
                 </li>
               ))}
             </ul>
             <div className="flex gap-6 mt-2 border-t border-white/10 pt-6 w-[80%] justify-center text-gray-300">
-              <span className="hover:text-teal-400 cursor-pointer transition-colors"><MailIcon /></span>
-              <span className="hover:text-teal-400 cursor-pointer transition-colors"><LinkedInIcon /></span>
-              <span className="hover:text-teal-400 cursor-pointer transition-colors"><GitHubIcon /></span>
+              <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><MailIcon /></a>
+              <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><LinkedInIcon /></a>
+              <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><GitHubIcon /></a>
             </div>
           </nav>
         </div>

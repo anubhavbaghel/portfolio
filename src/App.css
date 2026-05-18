@@ -3,8 +3,6 @@ li{
 }
 
 ul>li:hover{
- color: black;
- background-color: teal;
  border-radius: 20px;
 }
 ul>li{

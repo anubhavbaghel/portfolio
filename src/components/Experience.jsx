@@ -5,7 +5,7 @@ const experienceData = [
     id: 1,
     company: "DI Infotech",
     role: "Web Developer / Frontend Developer",
-    duration: "March 2026 – Present",
+    duration: "Jan 2026 – Present",
     about:
       "Working on end-to-end website development for client projects, transforming design mockups into responsive, production-ready digital experiences. Involved in frontend development, WordPress implementation, deployment workflows, and modern web technologies including React and Next.js for experimentation and feature development.",
     responsibilities: [
