@@ -11,7 +11,7 @@ const Header = () => {
   const navLinks = ["Home", "About", "Projects", "Experience", "Contact"];
 
   return (
-    <header className="fixed top-0 w-full z-50  text-white">
+    <header className="fixed top-0 w-full z-50  text-white transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <h2 className="text-2xl font-bold tracking-wider hover:text-teal-400 cursor-pointer">
@@ -19,7 +19,7 @@ const Header = () => {
         </h2>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:block">
+        <nav className="hidden md:block backdrop-blur-md">
           <ul className="flex items-center gap-1 bg-white/5 border border-white/10 p-1.5 rounded-full">
             {navLinks.map((link) => (
               <li key={link}>
