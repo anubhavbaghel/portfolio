@@ -4,7 +4,7 @@ import profileImg from "/src/assets/profile.png";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center justify-end h-screen max-w-full gap-5 px-4 text-center">
+    <div className="flex flex-col items-center justify-center md:justify-end h-screen max-w-full gap-5 px-4 text-center">
       <Galaxy />
 
       <h1 className="text-4xl md:text-7xl font-bold z-10">
@@ -18,7 +18,7 @@ const Hero = () => {
           <img
             src={profileImg}
             alt="anubhav"
-            className="border-none rounded-full w-[60px]"
+            className="border-none rounded-full w-[60px] hover:scale-150 transition-transform duration-300"
           />
           <h2 className="text-2xl md:text-3xl font-semibold">A Web Developer</h2>
         </div>
