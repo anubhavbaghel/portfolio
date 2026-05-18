@@ -6,14 +6,14 @@ const Hero = () => {
     <div className="flex flex-col items-center justify-end h-screen max-w-full gap-5 px-4 text-center">
       <Galaxy />
 
-      <h1 className="text-5xl md:text-7xl font-bold z-10">
+      <h1 className="text-4xl md:text-7xl font-bold z-10">
         Turning ideas into <br></br>{" "}
         <span className="italic text-teal-600">web experiences</span>
       </h1>
       <div className="flex flex-col items-center gap-2 z-10">
         <div className="flex flex-col sm:flex-row gap-3 items-center">
-          <h2 className="text-2xl md:text-3xl font-semibold">Hi, I'm</h2>
-          <h2 className="text-2xl md:text-3xl font-semibold">Anubhav</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold">Hi, I'm Anubhav</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold"></h2>
           <img
             src="./src/assets/profile.png"
             alt="anubhav"
