@@ -3,6 +3,9 @@ import "./App.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects"
+import Experience from "./components/Experience";
+import TechStackSection from "./components/TechStackSection";
+import Footer from "./components/Footer";
 // import SplashCursor from './components/ReactBits/SplashCursor'
 
 function App() {
@@ -12,7 +15,10 @@ function App() {
     <>
       <Header />
       <Hero />
-      <Projects/>
+      <Projects/> 
+      <Experience />
+      <TechStackSection />
+      <Footer />
     </>
   );
 }

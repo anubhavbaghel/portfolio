@@ -11,10 +11,10 @@ const Header = () => {
   const navLinks = ["Home", "About", "Projects", "Experience", "Contact"];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
+    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a] border-b border-white/10 text-white">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <h2 className="text-2xl font-bold tracking-wider hover:text-teal-400 cursor-pointer transition-colors">
+        <h2 className="text-2xl font-bold tracking-wider hover:text-teal-400 cursor-pointer">
           Anubhav
         </h2>
 
@@ -22,7 +22,7 @@ const Header = () => {
         <nav className="hidden md:block">
           <ul className="flex gap-8 bg-white/5 border border-white/10 px-6 py-2 rounded-full">
             {navLinks.map((link) => (
-              <li key={link} className="hover:text-teal-400 cursor-pointer transition-colors text-sm font-medium tracking-wide">
+              <li key={link} className="hover:text-teal-400 cursor-pointer text-sm font-medium tracking-wide">
                 {link}
               </li>
             ))}
@@ -31,9 +31,9 @@ const Header = () => {
 
         {/* Social Links (Desktop) */}
         <ul className="hidden md:flex gap-4 items-center text-gray-300">
-          <li className="hover:text-teal-400 cursor-pointer transition-colors"><MailIcon /></li>
-          <li className="hover:text-teal-400 cursor-pointer transition-colors"><LinkedInIcon /></li>
-          <li className="hover:text-teal-400 cursor-pointer transition-colors"><GitHubIcon /></li>
+          <li className="hover:text-teal-400 cursor-pointer"><MailIcon /></li>
+          <li className="hover:text-teal-400 cursor-pointer"><LinkedInIcon /></li>
+          <li className="hover:text-teal-400 cursor-pointer"><GitHubIcon /></li>
         </ul>
 
         {/* Mobile Menu Toggle Button */}
