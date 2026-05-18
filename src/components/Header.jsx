@@ -11,15 +11,30 @@ const Header = () => {
   const navLinks = ["Home", "About", "Projects", "Experience", "Contact"];
 
   return (
-    <header className="fixed top-0 w-full z-50  text-white transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <h2 className="text-2xl font-bold hover:text-teal-400 cursor-pointer tracking-tight">
-          Anubhav B.
-        </h2>
+    <header className="fixed top-4 md:top-0 inset-x-4 md:inset-x-0 z-50 text-white transition-all duration-300">
+      <div
+        className={`max-w-7xl mx-auto bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 flex flex-col md:flex-row justify-between items-center md:px-6 md:py-4 md:rounded-none md:border-x-0 md:border-t-0 ${
+          isMobileMenuOpen ? "rounded-3xl" : "rounded-[2rem]"
+        }`}
+      >
+        {/* Top Bar / Logo & Toggle */}
+        <div className="flex justify-between items-center w-full px-6 py-3.5 md:p-0 md:w-auto">
+          {/* Logo */}
+          <h2 className="text-2xl font-bold hover:text-teal-400 cursor-pointer tracking-tight">
+            Anubhav B.
+          </h2>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            className="md:hidden text-gray-300 hover:text-teal-400 transition-colors duration-300"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:block backdrop-blur-md">
+        <nav className="hidden md:block">
           <ul className="flex items-center gap-1 bg-white/5 border border-white/10 p-1.5 rounded-full">
             {navLinks.map((link) => (
               <li key={link}>
@@ -47,20 +62,14 @@ const Header = () => {
           </li>
         </ul>
 
-        {/* Mobile Menu Toggle Button */}
-        <button
-          className="md:hidden text-gray-300 hover:text-teal-400 transition-colors duration-300"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        {/* Mobile Nav Dropdown */}
+        <div
+          className={`md:hidden w-full overflow-hidden transition-all duration-300 ${
+            isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
         >
-          {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-      </div>
-
-      {/* Mobile Nav Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#0a0a0a] border-b border-white/10 absolute top-full left-0 w-full shadow-xl">
-          <nav className="flex flex-col items-center py-6 gap-4">
-            <ul className="flex flex-col items-center gap-2 w-full px-6">
+          <nav className="flex flex-col items-center py-4 gap-4 border-t border-white/10 mx-6 mt-2">
+            <ul className="flex flex-col items-center gap-2 w-full">
               {navLinks.map((link) => (
                 <li key={link} className="w-full">
                   <a
@@ -73,14 +82,14 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex gap-6 mt-2 border-t border-white/10 pt-6 w-[80%] justify-center text-gray-300">
+            <div className="flex gap-6 mt-2 pt-4 w-[80%] justify-center text-gray-300 border-t border-white/5">
               <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><MailIcon /></a>
               <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><LinkedInIcon /></a>
               <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><GitHubIcon /></a>
             </div>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 };

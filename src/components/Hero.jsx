@@ -1,5 +1,6 @@
 import React from "react";
 import Galaxy from "./ReactBits/Galaxy";
+import profileImg from "/src/assets/profile.png";
 
 const Hero = () => {
   return (
@@ -15,9 +16,9 @@ const Hero = () => {
           <h2 className="text-2xl md:text-3xl font-semibold">Hi, I'm Anubhav</h2>
           <h2 className="text-2xl md:text-3xl font-semibold"></h2>
           <img
-            src="./src/assets/profile.png"
+            src={profileImg}
             alt="anubhav"
-            className="border-none rounded-full w-[60px] transition-transform duration-300 ease-in-out hover:scale-150"
+            className="border-none rounded-full w-[60px]"
           />
           <h2 className="text-2xl md:text-3xl font-semibold">A Web Developer</h2>
         </div>
