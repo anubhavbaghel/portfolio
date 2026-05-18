@@ -14,8 +14,8 @@ const Header = () => {
     <header className="fixed top-0 w-full z-50  text-white transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <h2 className="text-2xl font-bold tracking-wider hover:text-teal-400 cursor-pointer">
-          Anubhav
+        <h2 className="text-2xl font-bold hover:text-teal-400 cursor-pointer tracking-tight">
+          Anubhav B.
         </h2>
 
         {/* Desktop Nav */}
