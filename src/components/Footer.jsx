@@ -22,10 +22,10 @@ const Footer = () => {
           <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="Email">
             <MailIcon fontSize="medium" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
             <LinkedInIcon fontSize="medium" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
+          <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
             <GitHubIcon fontSize="medium" />
           </a>
         </div>
