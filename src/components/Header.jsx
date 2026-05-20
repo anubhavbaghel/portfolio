@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="fixed top-4 md:top-0 inset-x-4 md:inset-x-0 z-50 text-white transition-all duration-300">
       <div
-        className={`max-w-7xl mx-auto bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 flex flex-col md:flex-row justify-between items-center md:px-6 md:py-4 md:rounded-none md:border-x-0 md:border-t-0 ${
+        className={`max-w-7xl mx-auto transition-all duration-300 flex flex-col md:flex-row justify-between items-center md:px-6 md:py-4 md:rounded-none md:border-x-0 md:border-t-0 ${
           isMobileMenuOpen ? "rounded-3xl" : "rounded-[2rem]"
         }`}
       >
@@ -35,12 +35,12 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-1 bg-white/5 border border-white/10 p-1.5 rounded-full">
+          <ul className="flex items-center gap-1 bg-white/10 border-none backdrop-blur-xl p-1.5 rounded-full">
             {navLinks.map((link) => (
               <li key={link}>
                 <a
                   href={`#${link.toLowerCase()}`}
-                  className="hover:text-black hover:bg-teal-400 cursor-pointer transition-all duration-300 text-md font-normal tracking-wide block px-5 py-2 rounded-full"
+                  className="border border-transparent hover:border-white hover:border cursor-pointer text-xl font-semibold tracking-wide block px-5 py-2 rounded-full"
                 >
                   {link}
                 </a>

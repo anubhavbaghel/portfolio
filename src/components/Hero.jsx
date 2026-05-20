@@ -5,7 +5,6 @@ import profileImg from "/src/assets/profile.png";
 const Hero = () => {
   return (
     <div className="flex flex-col items-center justify-center md:justify-end h-screen max-w-full gap-5 px-4 text-center">
-      <Galaxy />
 
       <h1 className="text-4xl md:text-7xl font-bold z-10">
         Turning ideas into <br></br>{" "}
@@ -30,9 +29,10 @@ const Hero = () => {
         </p> */}
       </div>
       <div className="flex flex-col sm:flex-row gap-4 items-center z-10 mb-[10%]">
-        <button className="border border-gray-600 rounded-full px-4 py-2 hover:bg-teal-500 hover:text-black transition-colors">
-          Let's Connect
-        </button>
+        <div className="border border-gray-600 rounded-full px-4 py-2 hover:bg-teal-500 hover:text-black transition-colors cursor-pointer"
+        >
+          <a href="mailto:code.anubhavbaghel@gmail.com">Let's Connect</a>
+        </div>
         <div className="text-sm sm:text-base">
           <a href="mailto:code.anubhavbaghel@gmail.com">
             code.anubhavbaghel@gmail.com
