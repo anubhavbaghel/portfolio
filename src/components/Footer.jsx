@@ -9,8 +9,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Brand / Tagline */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h2 className="text-2xl font-bold tracking-wider text-white mb-2 cursor-pointer hover:text-teal-400 transition-colors">
-            Anubhav<span className="text-teal-500">.</span>
+          <h2 className="text-2xl font-bold tracking-wider text-white mb-2 cursor-pointer hover:text-gray-300 transition-colors">
+            Anubhav<span className="text-gray-400">.</span>
           </h2>
           <p className="text-gray-400 text-sm max-w-sm">
             Turning ideas into modern, responsive, and user-friendly web experiences.
@@ -19,13 +19,13 @@ const Footer = () => {
         
         {/* Social Links */}
         <div className="flex gap-6 text-gray-400">
-          <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="Email">
+          <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-white hover:-translate-y-1 transition-all duration-300" aria-label="Email">
             <MailIcon fontSize="medium" />
           </a>
-          <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
             <LinkedInIcon fontSize="medium" />
           </a>
-          <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
+          <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
             <GitHubIcon fontSize="medium" />
           </a>
         </div>

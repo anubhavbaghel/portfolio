@@ -20,13 +20,13 @@ const Header = () => {
         {/* Top Bar / Logo & Toggle */}
         <div className="flex justify-between items-center w-full px-6 py-3.5 md:p-0 md:w-auto">
           {/* Logo */}
-          <h2 className="text-2xl font-bold hover:text-teal-400 cursor-pointer tracking-tight">
+          <h2 className="text-2xl font-bold hover:text-gray-300 cursor-pointer tracking-tight">
             Anubhav B.
           </h2>
 
           {/* Mobile Menu Toggle Button */}
           <button
-            className="md:hidden text-gray-300 hover:text-teal-400 transition-colors duration-300"
+            className="md:hidden text-gray-300 hover:text-white transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -35,12 +35,12 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-1 bg-white/10 border-none backdrop-blur-xl p-1.5 rounded-full">
+          <ul className="flex items-center gap-1 bg-white/10 border border-white/10 backdrop-blur-xl p-1.5 rounded-full">
             {navLinks.map((link) => (
               <li key={link}>
                 <a
                   href={`#${link.toLowerCase()}`}
-                  className="border border-transparent hover:border-white hover:border cursor-pointer text-xl font-semibold tracking-wide block px-5 py-2 rounded-full"
+                  className="border border-transparent hover:border-white/30 hover:bg-white/10 text-gray-300 hover:text-white cursor-pointer text-base font-medium tracking-wide block px-4 py-2 rounded-full transition-all"
                 >
                   {link}
                 </a>
@@ -50,15 +50,15 @@ const Header = () => {
         </nav>
 
         {/* Social Links (Desktop) */}
-        <ul className="hidden md:flex gap-4 items-center text-gray-300">
-          <li className="">
-            <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><MailIcon /></a>
+        <ul className="hidden md:flex gap-4 items-center text-gray-400">
+          <li>
+            <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-white cursor-pointer transition-colors duration-300 block"><MailIcon /></a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><LinkedInIcon /></a>
+            <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-white cursor-pointer transition-colors duration-300 block"><LinkedInIcon /></a>
           </li>
           <li>
-            <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><GitHubIcon /></a>
+            <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-white cursor-pointer transition-colors duration-300 block"><GitHubIcon /></a>
           </li>
         </ul>
 
@@ -74,7 +74,7 @@ const Header = () => {
                 <li key={link} className="w-full">
                   <a
                     href={`#${link.toLowerCase()}`}
-                    className="hover:text-teal-400 hover:bg-white/5 cursor-pointer transition-all duration-300 text-lg font-medium w-full text-center block py-3 rounded-xl"
+                    className="hover:text-white hover:bg-white/10 cursor-pointer transition-all duration-300 text-lg font-medium w-full text-center block py-3 rounded-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link}
@@ -82,10 +82,10 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex gap-6 mt-2 pt-4 w-[80%] justify-center text-gray-300 border-t border-white/5">
-              <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><MailIcon /></a>
-              <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><LinkedInIcon /></a>
-              <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 cursor-pointer transition-colors duration-300 block"><GitHubIcon /></a>
+            <div className="flex gap-6 mt-2 pt-4 w-[80%] justify-center text-gray-400 border-t border-white/5">
+              <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-white cursor-pointer transition-colors duration-300 block"><MailIcon /></a>
+              <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-white cursor-pointer transition-colors duration-300 block"><LinkedInIcon /></a>
+              <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-white cursor-pointer transition-colors duration-300 block"><GitHubIcon /></a>
             </div>
           </nav>
         </div>
