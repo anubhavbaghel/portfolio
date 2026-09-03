@@ -3,7 +3,11 @@ import profileImg from "../assets/profile.png";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center justify-center md:justify-end min-h-screen max-w-full gap-5 px-4 pt-24 pb-12 text-center relative z-10">
+    <div className="flex flex-col items-center justify-center md:justify-end min-h-screen max-w-full gap-5 px-4 pt-24 pb-12 text-center relative z-10 overflow-hidden">
+      {/* Subtle Ambient Glow Background */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[350px] bg-gradient-to-r from-teal-500/15 via-cyan-500/10 to-emerald-500/15 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '6s' }} />
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 w-[350px] h-[350px] bg-teal-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 right-1/4 translate-x-1/2 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
       <h1 className="text-4xl md:text-7xl font-bold z-10">
         Turning ideas into <br />
