@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import profileImg from "../assets/profile.png";
 import DigitalConnections from "./DigitalConnections";
 
@@ -8,50 +7,6 @@ const Hero = () => {
     <div className="flex flex-col items-center justify-center md:justify-end min-h-screen max-w-full gap-5 px-4 pt-24 pb-12 text-center relative z-10 overflow-hidden">
       {/* Subtle Sci-Fi Digital Connection Network */}
       <DigitalConnections />
-
-      {/* Subtle Dynamic Moving Glow Background */}
-      <motion.div
-        animate={{
-          x: [0, 40, -30, 0],
-          y: [0, -35, 20, 0],
-          scale: [1, 1.1, 0.95, 1],
-          opacity: [0.6, 0.85, 0.6],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[380px] bg-gradient-to-r from-teal-500/20 via-cyan-500/15 to-emerald-500/20 rounded-full blur-[140px] pointer-events-none -z-10"
-      />
-
-      <motion.div
-        animate={{
-          x: [0, -50, 30, 0],
-          y: [0, 30, -25, 0],
-          scale: [1, 1.15, 0.9, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/4 left-1/4 -translate-x-1/2 w-[380px] h-[380px] bg-teal-500/15 rounded-full blur-[110px] pointer-events-none -z-10"
-      />
-
-      <motion.div
-        animate={{
-          x: [0, 45, -35, 0],
-          y: [0, -40, 25, 0],
-          scale: [1, 0.9, 1.12, 1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/2 right-1/4 translate-x-1/2 w-[340px] h-[340px] bg-cyan-500/15 rounded-full blur-[110px] pointer-events-none -z-10"
-      />
 
       <h1 className="text-4xl md:text-7xl font-bold z-10">
         Turning ideas into <br />
