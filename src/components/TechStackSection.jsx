@@ -88,52 +88,41 @@ const techCategories = [
 
 const TechStackSection = () => {
   return (
-    <section id="tech-stack" className="py-24 px-6 max-w-7xl mx-auto z-10 relative">
-      {/* Section Docket Header */}
-      <div className="flex items-center gap-3 mb-12 border-b border-white/10 pb-4">
-        <span className="stamp-tag text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded">
-          SECTION // 04
-        </span>
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
-          Curated Toolbox & Stack Specifications
+    <section id="tech-stack" className="py-20 px-6 max-w-7xl mx-auto z-10 relative">
+      <div className="flex flex-col items-center mb-16">
+        <p className="text-teal-500 font-semibold uppercase tracking-wider mb-2">
+          My Arsenal
+        </p>
+        <h2 className="text-5xl font-bold text-center text-white">
+          Tech <em className="text-teal-600 not-italic">Stack</em>
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
         {techCategories.map((category, index) => (
           <div
             key={index}
-            className={`paper-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:border-white/20 ${
-              category.span ? "md:col-span-2 bg-[#161619]" : ""
+            className={`bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 hover:border-teal-500/30 transition-all duration-300 group flex flex-col ${
+              category.span ? "md:col-span-2 lg:col-span-2 text-center items-center" : ""
             }`}
           >
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="stamp-tag text-xs text-amber-500 font-mono">
-                  DRAWER // 0{index + 1}
-                </span>
-                <span className="text-[10px] font-mono text-zinc-500">
-                  {category.skills.length} SPECIFICATIONS
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-zinc-100 tracking-tight mb-2">
-                {category.title}
-              </h3>
-              {category.description && (
-                <p className="text-zinc-400 text-xs leading-relaxed mb-6">
-                  {category.description}
-                </p>
-              )}
-            </div>
+            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3 group-hover:text-teal-400/80 transition-colors">
+              {category.title}
+            </h3>
+            {category.description && (
+              <p className="text-gray-400 text-xs md:text-sm mb-6 max-w-xl">
+                {category.description}
+              </p>
+            )}
 
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className={`flex flex-wrap gap-2.5 ${category.span ? "justify-center" : ""}`}>
               {category.skills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-2 font-mono text-xs px-3 py-1.5 bg-white/[0.04] text-zinc-200 rounded-lg border border-white/[0.08] hover:border-white/25 hover:bg-white/[0.08] transition-all cursor-default select-none"
+                  className="flex items-center gap-2 text-xs md:text-sm font-medium px-3.5 py-1.5 bg-white/5 hover:bg-teal-500/10 hover:text-teal-300 text-gray-300 rounded-full transition-all duration-300 border border-white/10 hover:border-teal-500/50 hover:shadow-[0_0_15px_rgba(20,184,166,0.15)] hover:-translate-y-0.5 cursor-default select-none"
                 >
-                  {skillIcons[skill] && <span className="text-sm text-zinc-400">{skillIcons[skill]}</span>}
-                  <span>{skill}</span>
+                  {skillIcons[skill] && <span className="text-base opacity-85">{skillIcons[skill]}</span>}
+                  {skill}
                 </span>
               ))}
             </div>

@@ -5,52 +5,35 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0a0c] border-t border-white/10 py-12 mt-20 z-10 relative">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-        {/* Brand / Colophon */}
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-amber-500/80"></span>
-            <span className="stamp-tag text-xs font-mono text-zinc-400 font-semibold">
-              ANUBHAV BAGHEL // STUDIO DOCKET
-            </span>
-          </div>
-          <p className="text-zinc-500 text-xs font-mono max-w-md">
-            Hand-crafted web applications, WordPress systems, and digital tools. Built with precision and modern standards.
+    <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 mt-20 z-10 relative">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        {/* Brand / Tagline */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <h2 className="text-2xl font-bold tracking-wider text-white mb-2 cursor-pointer hover:text-teal-400 transition-colors">
+            Anubhav<span className="text-teal-500">.</span>
+          </h2>
+          <p className="text-gray-400 text-sm max-w-sm">
+            Turning ideas into modern, responsive, and user-friendly web experiences.
           </p>
         </div>
         
-        {/* Social / Direct Channels */}
-        <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
-          <a
-            href="mailto:code.anubhavbaghel@gmail.com"
-            className="hover:text-zinc-100 px-3 py-1.5 bg-[#141417] border border-white/10 rounded-md transition-colors"
-          >
-            EMAIL DISPATCH
+        {/* Social Links */}
+        <div className="flex gap-6 text-gray-400">
+          <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="Email">
+            <MailIcon fontSize="medium" />
           </a>
-          <a
-            href="https://www.linkedin.com/in/anubhav-baghel/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-zinc-100 px-3 py-1.5 bg-[#141417] border border-white/10 rounded-md transition-colors"
-          >
-            LINKEDIN
+          <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
+            <LinkedInIcon fontSize="medium" />
           </a>
-          <a
-            href="https://github.com/anubhavbaghel"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-zinc-100 px-3 py-1.5 bg-[#141417] border border-white/10 rounded-md transition-colors"
-          >
-            GITHUB
+          <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
+            <GitHubIcon fontSize="medium" />
           </a>
         </div>
       </div>
       
-      {/* Imprint line */}
-      <div className="max-w-7xl mx-auto px-6 mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-[11px] font-mono text-zinc-600 gap-2">
-        <p>&copy; {new Date().getFullYear()} Anubhav Baghel. All rights reserved.</p>
-        <p>EDITION: FOLIO-2026 // DELHI, IN</p>
+      {/* Copyright */}
+      <div className="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-white/5 flex flex-col items-center text-sm text-gray-500">
+        <p>&copy; {new Date().getFullYear()} Anubhav. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaWordpress, FaElementor, FaShopify, FaReact, FaGithub } from "react-icons/fa";
-import { SiCpanel, SiNextdotjs, SiTypescript, SiMongodb } from "react-icons/si";
+import { FaHtml5, FaCss3Alt, FaJs, FaWordpress, FaElementor, FaShopify, FaReact, FaGithub, FaAndroid } from "react-icons/fa";
+import { SiCpanel, SiNextdotjs, SiTypescript, SiMongodb, SiTailwindcss, SiExpo } from "react-icons/si";
 import wdcImg from "../assets/wdc_ss.png";
 import flydheeraImg from "../assets/flydheera_Ss.png";
 import puravaImg from "../assets/purava_ss.png";
@@ -10,12 +10,87 @@ import womancartImg from "../assets/womancart.png";
 import sewaexpoImg from "../assets/sewaexpo.png";
 import syandanImg from "../assets/syandan.png";
 
+const colorThemes = {
+  blue: {
+    border: "hover:border-blue-500/30",
+    id: "group-hover:text-blue-500/10",
+    title: "group-hover:text-blue-400",
+    role: "text-blue-500",
+    icon: "group-hover:text-blue-400",
+    btn: "hover:bg-blue-500 hover:border-blue-500"
+  },
+  orange: {
+    border: "hover:border-orange-500/30",
+    id: "group-hover:text-orange-500/10",
+    title: "group-hover:text-orange-400",
+    role: "text-orange-500",
+    icon: "group-hover:text-orange-400",
+    btn: "hover:bg-orange-500 hover:border-orange-500"
+  },
+  cyan: {
+    border: "hover:border-cyan-500/30",
+    id: "group-hover:text-cyan-500/10",
+    title: "group-hover:text-cyan-400",
+    role: "text-cyan-500",
+    icon: "group-hover:text-cyan-400",
+    btn: "hover:bg-cyan-500 hover:border-cyan-500"
+  },
+  amber: {
+    border: "hover:border-amber-500/30",
+    id: "group-hover:text-amber-500/10",
+    title: "group-hover:text-amber-400",
+    role: "text-amber-500",
+    icon: "group-hover:text-amber-400",
+    btn: "hover:bg-amber-500 hover:border-amber-500"
+  },
+  emerald: {
+    border: "hover:border-emerald-500/30",
+    id: "group-hover:text-emerald-500/10",
+    title: "group-hover:text-emerald-400",
+    role: "text-emerald-500",
+    icon: "group-hover:text-emerald-400",
+    btn: "hover:bg-emerald-500 hover:border-emerald-500"
+  },
+  fuchsia: {
+    border: "hover:border-fuchsia-500/30",
+    id: "group-hover:text-fuchsia-500/10",
+    title: "group-hover:text-fuchsia-400",
+    role: "text-fuchsia-500",
+    icon: "group-hover:text-fuchsia-400",
+    btn: "hover:bg-fuchsia-500 hover:border-fuchsia-500"
+  },
+  indigo: {
+    border: "hover:border-indigo-500/30",
+    id: "group-hover:text-indigo-500/10",
+    title: "group-hover:text-indigo-400",
+    role: "text-indigo-500",
+    icon: "group-hover:text-indigo-400",
+    btn: "hover:bg-indigo-500 hover:border-indigo-500"
+  },
+  sky: {
+    border: "hover:border-sky-500/30",
+    id: "group-hover:text-sky-500/10",
+    title: "group-hover:text-sky-400",
+    role: "text-sky-500",
+    icon: "group-hover:text-sky-400",
+    btn: "hover:bg-sky-500 hover:border-sky-500"
+  },
+  teal: {
+    border: "hover:border-teal-500/30",
+    id: "group-hover:text-teal-500/10",
+    title: "group-hover:text-teal-400",
+    role: "text-teal-500",
+    icon: "group-hover:text-teal-400",
+    btn: "hover:bg-teal-500 hover:border-teal-500"
+  }
+};
+
 const projectsData = [
   {
     id: "01",
-    title: "Loco — Social Discovery Platform",
+    title: "Loco",
     role: "Full-Stack Web Application",
-    desc: "Built a responsive full-stack application using Next.js, React and TypeScript for exploring events, locations, food, and music. Integrated MongoDB/Mongoose, API routes and Zustand with Tailwind CSS.",
+    desc: "Built a responsive application using Next.js, React and TypeScript for exploring and sharing events, places, food and music. Integrated MongoDB/Mongoose, API routes and Zustand with Tailwind CSS for data-driven responsive interfaces.",
     categories: ["react", "nextjs", "fullstack"],
     tags: ["Full-Stack App"],
     pills: ["Next.js", "TypeScript", "MongoDB", "Zustand", "Tailwind CSS"],
@@ -23,13 +98,13 @@ const projectsData = [
     image: puravaImg,
     link: "https://loco-wine.vercel.app/",
     github: "https://github.com/anubhavbaghel/loco",
-    badge: "FEATURED",
+    color: "emerald",
   },
   {
     id: "02",
-    title: "SiteShot — AI Web Accessibility Tool",
+    title: "AI Web Accessibility Tool",
     role: "Browser Tool & Extension",
-    desc: "Developed a browser-based accessibility tool that analyses webpage content and visual assets to generate meaningful alternative text, boosting digital inclusivity.",
+    desc: "Developed a browser-based tool that analyses webpage content and images to generate meaningful alternative text, boosting digital accessibility for users.",
     categories: ["ai", "react", "html"],
     tags: ["AI Accessibility"],
     pills: ["AI-Assisted", "Alt Text", "Accessibility", "Browser Tool"],
@@ -37,13 +112,13 @@ const projectsData = [
     image: wdcImg,
     link: "https://github.com/anubhavbaghel/siteshot/releases/tag/v1.9.10",
     github: "https://github.com/anubhavbaghel/siteshot",
-    badge: "AI TOOL",
+    color: "cyan",
   },
   {
     id: "03",
-    title: "Hydra App — Mobile Client",
+    title: "Hydra App",
     role: "React Native Application",
-    desc: "Developed a cross-platform mobile application using React Native and Expo, focusing on responsive mobile layout, smooth gestures, and client application functionality.",
+    desc: "Developed a cross-platform application using React Native and Expo, focusing on responsive mobile UI, smooth gestures, and application functionality.",
     categories: ["react", "mobile"],
     tags: ["React Native"],
     pills: ["React Native", "Expo", "Android", "Mobile UI"],
@@ -51,12 +126,12 @@ const projectsData = [
     image: flydheeraImg,
     link: "https://github.com/anubhavbaghel/hydra/releases/tag/Hydra_v1.2",
     github: "https://github.com/anubhavbaghel/hydra",
-    badge: "MOBILE",
+    color: "indigo",
   },
   {
     id: "04",
     title: "WDC India",
-    role: "Full-Stack Frontend Build",
+    role: "Full-stack frontend build",
     desc: "Took the project from zero — designed UI mockups, then coded the complete website with custom HTML, CSS, and JavaScript. No frameworks, full ownership.",
     categories: ["html"],
     tags: ["Vanilla Stack"],
@@ -64,12 +139,12 @@ const projectsData = [
     tech: ["HTML", "CSS", "JS"],
     image: wdcImg,
     link: "https://wdc-design-2.vercel.app/",
-    badge: "VANILLA",
+    color: "blue",
   },
   {
     id: "05",
     title: "Flydheera",
-    role: "Design to Delivery",
+    role: "Design to delivery",
     desc: "Created wireframes and visual mockups, then built the site in Elementor. Managed the complete flow from initial design concept through final client delivery.",
     categories: ["elementor", "wp"],
     tags: ["WP Elementor"],
@@ -77,12 +152,12 @@ const projectsData = [
     tech: ["WordPress", "Elementor"],
     image: flydheeraImg,
     link: "https://flydheera.com/",
-    badge: "CLIENT SITE",
+    color: "orange",
   },
   {
     id: "06",
     title: "Purava",
-    role: "Design to Delivery",
+    role: "Design to delivery",
     desc: "Led end-to-end development — from mockup design through Elementor implementation and final handoff. Maintained brand consistency across all pages.",
     categories: ["elementor", "wp"],
     tags: ["WP Elementor"],
@@ -90,12 +165,12 @@ const projectsData = [
     tech: ["WordPress", "Elementor"],
     image: puravaImg,
     link: "https://puravabath.com/",
-    badge: "CLIENT SITE",
+    color: "cyan",
   },
   {
     id: "07",
     title: "Divya Jewellers",
-    role: "Multi-Page Redesign",
+    role: "Multi-page redesign",
     desc: "Redesigned multiple pages for this jewellery brand using both Elementor and Divi, bringing a refined, luxury aesthetic to the existing site.",
     categories: ["elementor", "wp"],
     tags: ["WP/Divi/Elementor"],
@@ -103,12 +178,12 @@ const projectsData = [
     tech: ["WordPress", "Elementor", "Divi"],
     image: divyaImg,
     link: "https://divyajewellers.co.in/",
-    badge: "E-COMMERCE",
+    color: "amber",
   },
   {
     id: "08",
     title: "Dr. Anil Kumar Sharma",
-    role: "Complete Website Build",
+    role: "Complete website build",
     desc: "Developed a full professional website for a doctor client using WordPress and Divi — covering design, development, and deployment.",
     categories: ["wp"],
     tags: ["WP Divi"],
@@ -116,12 +191,12 @@ const projectsData = [
     tech: ["WordPress", "Divi"],
     image: drAnilImg,
     link: "https://dranilkumarsharma.com/",
-    badge: "HEALTHCARE",
+    color: "emerald",
   },
   {
     id: "09",
     title: "Womancart",
-    role: "Shopify Page Development",
+    role: "Shopify page development",
     desc: "Built and customised multiple pages on this Shopify store — working within theme constraints while delivering polished, conversion-focused layouts.",
     categories: ["shopify"],
     tags: ["Shopify Liquid"],
@@ -129,12 +204,12 @@ const projectsData = [
     tech: ["Shopify"],
     image: womancartImg,
     link: "https://womancart.com.au/",
-    badge: "SHOPIFY",
+    color: "fuchsia",
   },
   {
     id: "10",
     title: "SewaExpo & Multi-Site",
-    role: "Deployment & Management",
+    role: "Deployment & management",
     desc: "Deployed and actively manages SewaExpo and several other websites on cPanel. Handles version control, backups, domain management, and ongoing maintenance.",
     categories: ["devops", "wp"],
     tags: ["cPanel DevOps"],
@@ -142,12 +217,12 @@ const projectsData = [
     tech: ["cPanel", "WordPress"],
     image: sewaexpoImg,
     link: "https://www.sewaexpo.com/",
-    badge: "SERVER OPS",
+    color: "indigo",
   },
   {
     id: "11",
     title: "Syandan Aviations",
-    role: "Multi-Page Development",
+    role: "Multi-page development",
     desc: "Built multiple pages for this aviation brand's website, focusing on professional presentation and smooth user experience across the entire site.",
     categories: ["wp", "elementor"],
     tags: ["WP Elementor"],
@@ -155,28 +230,28 @@ const projectsData = [
     tech: ["WordPress", "Elementor"],
     image: syandanImg,
     link: "https://flydheera.com/",
-    badge: "CORPORATE",
+    color: "sky",
   },
 ];
 
 const filters = [
-  { id: "all", label: "ALL DOSSIERS", num: "11" },
-  { id: "fullstack", label: "FULL-STACK / REACT", num: "03" },
-  { id: "wp", label: "WORDPRESS", num: "06" },
-  { id: "elementor", label: "ELEMENTOR", num: "04" },
-  { id: "html", label: "VANILLA JS", num: "02" },
-  { id: "shopify", label: "SHOPIFY", num: "01" },
-  { id: "devops", label: "DEVOPS & CPANEL", num: "01" },
+  { id: "all", label: "All Works" },
+  { id: "fullstack", label: "Full-Stack / React" },
+  { id: "wp", label: "WordPress" },
+  { id: "elementor", label: "Elementor" },
+  { id: "html", label: "Vanilla" },
+  { id: "shopify", label: "Shopify" },
+  { id: "devops", label: "DevOps" },
 ];
 
 const logoMap = {
   HTML: <FaHtml5 className="w-full h-full" />,
   CSS: <FaCss3Alt className="w-full h-full" />,
   JS: <FaJs className="w-full h-full" />,
-  React: <FaReact className="w-full h-full" />,
-  "Next.js": <SiNextdotjs className="w-full h-full" />,
-  TypeScript: <SiTypescript className="w-full h-full" />,
-  MongoDB: <SiMongodb className="w-full h-full" />,
+  React: <FaReact className="w-full h-full text-cyan-400" />,
+  "Next.js": <SiNextdotjs className="w-full h-full text-white" />,
+  TypeScript: <SiTypescript className="w-full h-full text-blue-400" />,
+  MongoDB: <SiMongodb className="w-full h-full text-emerald-400" />,
   WordPress: <FaWordpress className="w-full h-full" />,
   Elementor: <FaElementor className="w-full h-full" />,
   Divi: (
@@ -197,88 +272,94 @@ const Projects = () => {
       : projectsData.filter((p) => p.categories.includes(activeFilter));
 
   return (
-    <section id="projects" className="py-24 px-6 max-w-7xl mx-auto z-10 relative">
-      {/* Section Docket Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 border-b border-white/10 pb-4">
-        <div className="flex items-center gap-3">
-          <span className="stamp-tag text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded">
-            SECTION // 02
-          </span>
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
-            Selected Works & Dossiers
-          </h2>
-        </div>
-        <span className="font-mono text-xs text-zinc-500">
-          SHOWING [{filteredProjects.length.toString().padStart(2, "0")} / {projectsData.length.toString().padStart(2, "0")}] RECORDS
-        </span>
+    <div id="projects" className="py-20 px-6 max-w-7xl mx-auto z-10 relative">
+      <div className="flex flex-col items-center mb-12">
+        <h2
+          className="sr-only"
+          style={{
+            position: "absolute",
+            width: "1px",
+            height: "1px",
+            overflow: "hidden",
+            clip: "rect(0,0,0,0)",
+          }}
+        >
+          Projects section
+        </h2>
+        <p className="text-teal-500 font-semibold uppercase tracking-wider mb-2">
+          Selected work
+        </p>
+        <h2 className="text-5xl font-bold text-center">
+          Projects I've <em className="text-teal-600 not-italic">built</em>
+        </h2>
       </div>
 
-      {/* Drawer Filter Tabs */}
-      <div className="flex flex-wrap gap-2 mb-12">
+      <div className="flex flex-wrap justify-center gap-3 mb-12">
         {filters.map((filter) => (
           <button
             key={filter.id}
             onClick={() => setActiveFilter(filter.id)}
-            className={`font-mono text-xs px-3.5 py-2 rounded-lg border transition-all flex items-center gap-2 ${
+            className={`px-5 py-2 rounded-full border transition-all duration-300 ${
               activeFilter === filter.id
-                ? "bg-zinc-100 text-zinc-950 border-zinc-100 font-semibold shadow-md"
-                : "bg-[#141417] text-zinc-400 border-white/10 hover:border-white/20 hover:text-zinc-200"
+                ? "bg-teal-500 text-black border-teal-500 font-medium"
+                : "border-gray-600 text-gray-300 hover:border-teal-500 hover:text-teal-500"
             }`}
           >
-            <span>{filter.label}</span>
-            <span className={`text-[10px] px-1.5 py-0.2 rounded ${activeFilter === filter.id ? "bg-zinc-900 text-zinc-100" : "bg-white/5 text-zinc-500"}`}>
-              {filter.num}
-            </span>
+            {filter.label}
           </button>
         ))}
       </div>
 
-      {/* Dossier Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProjects.map((project) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProjects.map((project) => {
+          const theme = colorThemes[project.color] || colorThemes.teal;
+          return (
           <div
             key={project.id}
-            className="paper-card rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1.5"
+            className={`group relative bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden ${theme.border} transition-all duration-300 flex flex-col`}
           >
-            {/* Top Sheet Header */}
-            <div className="p-4 bg-[#18181c] border-b border-white/10 flex justify-between items-center text-xs font-mono">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                <span className="text-zinc-300 font-bold">DOSSIER // #{project.id}</span>
-              </div>
-              <span className="px-2 py-0.5 bg-white/[0.06] text-zinc-400 border border-white/10 rounded text-[10px]">
-                {project.badge}
-              </span>
-            </div>
-
-            {/* Preview Image */}
-            <div className="relative h-48 w-full overflow-hidden bg-zinc-950 border-b border-white/5">
+            {/* Image Section */}
+            <div className="relative h-56 w-full overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10" />
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
               />
             </div>
 
-            {/* Body Content */}
-            <div className="p-6 flex flex-col flex-grow">
-              <h3 className="text-xl font-bold text-zinc-100 mb-1 group-hover:text-amber-200 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-xs font-mono text-amber-400/90 mb-3 uppercase tracking-wider">
-                {project.role}
-              </p>
-              <p className="text-zinc-400 text-xs leading-relaxed mb-6 flex-grow">
+            {/* Content Section */}
+            <div className="p-6 flex flex-col flex-grow relative z-20 -mt-6">
+              <span className={`text-6xl font-black text-white/[0.03] absolute right-4 top-2 select-none ${theme.id} transition-colors duration-300`}>
+                {project.id}
+              </span>
+              <h3 className={`text-2xl font-bold text-white mb-1 ${theme.title} transition-colors duration-300`}>{project.title}</h3>
+              <p className={`text-sm ${theme.role} mb-4 tracking-wide font-medium`}>{project.role}</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
                 {project.desc}
               </p>
 
-              {/* Technical Specifications */}
-              <div className="mt-auto pt-4 border-t border-white/5">
-                <div className="flex flex-wrap gap-1.5 mb-4">
+              {/* Bottom section of the card */}
+              <div className="mt-auto pt-4">
+                {/* Tech Stack Logos */}
+                <div className="mb-4">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    {project.tech.map((techName) => (
+                      <div key={techName} title={techName}>
+                        <div className={`w-6 h-6 text-gray-500 ${theme.icon} transition-colors duration-300`}>
+                          {logoMap[techName] || <span className="text-xs font-bold text-gray-400">{techName}</span>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pills */}
+                <div className="flex flex-wrap gap-2">
                   {project.pills.map((pill) => (
                     <span
                       key={pill}
-                      className="font-mono text-[11px] px-2.5 py-1 bg-white/[0.04] text-zinc-300 rounded border border-white/[0.08]"
+                      className="text-xs font-medium px-3 py-1 bg-white/5 hover:bg-white/10 text-gray-300 rounded-lg transition-colors border border-white/5"
                     >
                       {pill}
                     </span>
@@ -286,34 +367,40 @@ const Projects = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2">
+                <div className="mt-6 flex gap-3">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 text-center px-4 py-2.5 bg-zinc-100 hover:bg-white text-zinc-950 font-bold text-xs rounded-lg transition-all shadow-sm flex items-center justify-center gap-1.5"
+                    className={`flex-1 text-center px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:text-black ${theme.btn} font-medium transition-colors duration-300 text-sm`}
                   >
-                    <span>{project.github && !project.link.includes("vercel") ? "View Release" : "Live Demo"}</span>
-                    <span>↗</span>
+                    {project.github && !project.link.includes("vercel") ? "View Release" : "Live Demo"}
                   </a>
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3.5 py-2.5 bg-[#18181c] hover:bg-[#222228] text-zinc-300 hover:text-white border border-white/10 rounded-lg transition-all flex items-center justify-center"
-                      title="Source Code"
+                      className="px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:bg-white/10 hover:text-white transition-colors duration-300 flex items-center justify-center"
+                      title="GitHub Repository"
                     >
-                      <FaGithub className="w-4 h-4" />
+                      <FaGithub className="w-5 h-5" />
                     </a>
                   )}
                 </div>
               </div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
-    </section>
+
+      <div className="mt-16 flex flex-col items-center gap-6">
+        <span className="text-gray-400 font-medium">
+          Showing {filteredProjects.length} of {projectsData.length} projects
+        </span>
+      </div>
+    </div>
   );
 };
 

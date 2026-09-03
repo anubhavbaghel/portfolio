@@ -64,60 +64,46 @@ const experienceData = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 px-6 max-w-7xl mx-auto z-10 relative">
-      {/* Section Docket Header */}
-      <div className="flex items-center gap-3 mb-12 border-b border-white/10 pb-4">
-        <span className="stamp-tag text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded">
-          SECTION // 03
-        </span>
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
-          Work Journey & Production Log
+    <section id="experience" className="py-20 px-6 max-w-7xl mx-auto z-10 relative">
+      <div className="flex flex-col items-center mb-16">
+        <p className="text-teal-500 font-semibold uppercase tracking-wider mb-2">
+          My Journey
+        </p>
+        <h2 className="text-5xl font-bold text-center text-white">
+          Work <em className="text-teal-600 not-italic">Experience</em>
         </h2>
       </div>
 
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-12">
         {experienceData.map((exp) => (
-          <div
-            key={exp.id}
-            className="paper-card rounded-2xl p-6 sm:p-8 flex flex-col lg:flex-row gap-8 items-start relative transition-all duration-300 hover:border-white/20"
-          >
-            {/* Left Log Metadata */}
-            <div className="lg:w-1/3 flex flex-col flex-shrink-0">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 rounded-full bg-amber-400"></span>
-                <span className="stamp-tag text-xs font-mono text-zinc-400">LOG // 0{exp.id}</span>
-              </div>
-              <h3 className="text-xl font-bold text-zinc-100 mb-1">{exp.company}</h3>
-              <div className="inline-block font-mono text-xs text-amber-400/90 font-medium mb-4">
-                [{exp.duration}]
-              </div>
-              <p className="text-zinc-400 text-xs leading-relaxed hidden sm:block">
+          <div key={exp.id} className="relative flex flex-col md:grid md:grid-cols-12 gap-8 items-start">
+            {/* Timeline Left Side */}
+            <div className="md:col-span-4 lg:col-span-3 flex flex-col pt-2 md:sticky md:top-24">
+              <h3 className="text-2xl font-bold text-white mb-1">{exp.company}</h3>
+              <span className="text-teal-500 font-medium tracking-wide mb-3">{exp.duration}</span>
+              <p className="text-gray-400 text-sm leading-relaxed hidden md:block">
                 {exp.about}
               </p>
             </div>
 
-            {/* Right Responsibilities & Spec */}
-            <div className="lg:w-2/3 flex flex-col border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8 w-full">
-              <h4 className="text-base sm:text-lg font-bold text-zinc-200 mb-4 flex items-center gap-2">
-                <span className="text-amber-500">▶</span>
-                <span>{exp.role}</span>
+            {/* Content Right Side */}
+            <div className="md:col-span-8 lg:col-span-9 bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 hover:border-teal-500/30 transition-all duration-300 group">
+              <h4 className="text-2xl font-bold text-white mb-6 group-hover:text-teal-400 transition-colors">
+                {exp.role}
               </h4>
-
-              <ul className="space-y-3 mb-6">
+              
+              <ul className="flex flex-col gap-4 mb-8">
                 {exp.responsibilities.map((res, idx) => (
-                  <li key={idx} className="text-zinc-400 text-xs sm:text-sm flex items-start leading-relaxed">
-                    <span className="text-amber-500/80 mr-2.5 mt-0.5 font-mono">→</span>
-                    <span>{res}</span>
+                  <li key={idx} className="text-gray-400 text-sm md:text-base flex items-start leading-relaxed">
+                    <span className="text-teal-500 mr-3 mt-1 text-lg leading-none">▹</span>
+                    {res}
                   </li>
                 ))}
               </ul>
 
-              <div className="pt-4 border-t border-white/5 flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
                 {exp.techStack.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="stamp-tag text-[11px] font-mono px-2.5 py-1 bg-white/[0.04] text-zinc-300 rounded border border-white/[0.08]"
-                  >
+                  <span key={idx} className="text-xs font-medium px-3 py-1 bg-white/5 hover:bg-teal-500/10 hover:text-teal-300 text-gray-300 rounded-lg transition-colors border border-white/5">
                     {tech}
                   </span>
                 ))}
