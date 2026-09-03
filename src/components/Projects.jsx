@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaWordpress, FaElementor, FaShopify } from "react-icons/fa";
-import { SiCpanel } from "react-icons/si";
+import { FaHtml5, FaCss3Alt, FaJs, FaWordpress, FaElementor, FaShopify, FaReact, FaGithub, FaAndroid } from "react-icons/fa";
+import { SiCpanel, SiNextdotjs, SiTypescript, SiMongodb, SiTailwindcss, SiExpo } from "react-icons/si";
 import wdcImg from "../assets/wdc_ss.png";
 import flydheeraImg from "../assets/flydheera_Ss.png";
 import puravaImg from "../assets/purava_ss.png";
@@ -88,6 +88,48 @@ const colorThemes = {
 const projectsData = [
   {
     id: "01",
+    title: "Loco",
+    role: "Full-Stack Web Application",
+    desc: "Built a responsive application using Next.js, React and TypeScript for exploring and sharing events, places, food and music. Integrated MongoDB/Mongoose, API routes and Zustand with Tailwind CSS for data-driven responsive interfaces.",
+    categories: ["react", "nextjs", "fullstack"],
+    tags: ["Full-Stack App"],
+    pills: ["Next.js", "TypeScript", "MongoDB", "Zustand", "Tailwind CSS"],
+    tech: ["Next.js", "React", "TypeScript", "MongoDB"],
+    image: puravaImg,
+    link: "https://loco-wine.vercel.app/",
+    github: "https://github.com/anubhavbaghel/loco",
+    color: "emerald",
+  },
+  {
+    id: "02",
+    title: "AI Web Accessibility Tool",
+    role: "Browser Tool & Extension",
+    desc: "Developed a browser-based tool that analyses webpage content and images to generate meaningful alternative text, boosting digital accessibility for users.",
+    categories: ["ai", "react", "html"],
+    tags: ["AI Accessibility"],
+    pills: ["AI-Assisted", "Alt Text", "Accessibility", "Browser Tool"],
+    tech: ["JS", "HTML", "CSS"],
+    image: wdcImg,
+    link: "https://github.com/anubhavbaghel/siteshot/releases/tag/v1.9.10",
+    github: "https://github.com/anubhavbaghel/siteshot",
+    color: "cyan",
+  },
+  {
+    id: "03",
+    title: "Hydra App",
+    role: "React Native Application",
+    desc: "Developed a cross-platform application using React Native and Expo, focusing on responsive mobile UI, smooth gestures, and application functionality.",
+    categories: ["react", "mobile"],
+    tags: ["React Native"],
+    pills: ["React Native", "Expo", "Android", "Mobile UI"],
+    tech: ["React", "HTML", "JS"],
+    image: flydheeraImg,
+    link: "https://github.com/anubhavbaghel/hydra/releases/tag/Hydra_v1.2",
+    github: "https://github.com/anubhavbaghel/hydra",
+    color: "indigo",
+  },
+  {
+    id: "04",
     title: "WDC India",
     role: "Full-stack frontend build",
     desc: "Took the project from zero — designed UI mockups, then coded the complete website with custom HTML, CSS, and JavaScript. No frameworks, full ownership.",
@@ -100,7 +142,7 @@ const projectsData = [
     color: "blue",
   },
   {
-    id: "02",
+    id: "05",
     title: "Flydheera",
     role: "Design to delivery",
     desc: "Created wireframes and visual mockups, then built the site in Elementor. Managed the complete flow from initial design concept through final client delivery.",
@@ -113,7 +155,7 @@ const projectsData = [
     color: "orange",
   },
   {
-    id: "03",
+    id: "06",
     title: "Purava",
     role: "Design to delivery",
     desc: "Led end-to-end development — from mockup design through Elementor implementation and final handoff. Maintained brand consistency across all pages.",
@@ -126,7 +168,7 @@ const projectsData = [
     color: "cyan",
   },
   {
-    id: "04",
+    id: "07",
     title: "Divya Jewellers",
     role: "Multi-page redesign",
     desc: "Redesigned multiple pages for this jewellery brand using both Elementor and Divi, bringing a refined, luxury aesthetic to the existing site.",
@@ -139,7 +181,7 @@ const projectsData = [
     color: "amber",
   },
   {
-    id: "05",
+    id: "08",
     title: "Dr. Anil Kumar Sharma",
     role: "Complete website build",
     desc: "Developed a full professional website for a doctor client using WordPress and Divi — covering design, development, and deployment.",
@@ -152,7 +194,7 @@ const projectsData = [
     color: "emerald",
   },
   {
-    id: "06",
+    id: "09",
     title: "Womancart",
     role: "Shopify page development",
     desc: "Built and customised multiple pages on this Shopify store — working within theme constraints while delivering polished, conversion-focused layouts.",
@@ -165,7 +207,7 @@ const projectsData = [
     color: "fuchsia",
   },
   {
-    id: "07",
+    id: "10",
     title: "SewaExpo & Multi-Site",
     role: "Deployment & management",
     desc: "Deployed and actively manages SewaExpo and several other websites on cPanel. Handles version control, backups, domain management, and ongoing maintenance.",
@@ -178,7 +220,7 @@ const projectsData = [
     color: "indigo",
   },
   {
-    id: "08",
+    id: "11",
     title: "Syandan Aviations",
     role: "Multi-page development",
     desc: "Built multiple pages for this aviation brand's website, focusing on professional presentation and smooth user experience across the entire site.",
@@ -194,6 +236,7 @@ const projectsData = [
 
 const filters = [
   { id: "all", label: "All Works" },
+  { id: "fullstack", label: "Full-Stack / React" },
   { id: "wp", label: "WordPress" },
   { id: "elementor", label: "Elementor" },
   { id: "html", label: "Vanilla" },
@@ -205,6 +248,10 @@ const logoMap = {
   HTML: <FaHtml5 className="w-full h-full" />,
   CSS: <FaCss3Alt className="w-full h-full" />,
   JS: <FaJs className="w-full h-full" />,
+  React: <FaReact className="w-full h-full text-cyan-400" />,
+  "Next.js": <SiNextdotjs className="w-full h-full text-white" />,
+  TypeScript: <SiTypescript className="w-full h-full text-blue-400" />,
+  MongoDB: <SiMongodb className="w-full h-full text-emerald-400" />,
   WordPress: <FaWordpress className="w-full h-full" />,
   Elementor: <FaElementor className="w-full h-full" />,
   Divi: (
@@ -237,7 +284,7 @@ const Projects = () => {
             clip: "rect(0,0,0,0)",
           }}
         >
-          Projects section — 8 client projects
+          Projects section
         </h2>
         <p className="text-teal-500 font-semibold uppercase tracking-wider mb-2">
           Selected work
@@ -300,7 +347,7 @@ const Projects = () => {
                     {project.tech.map((techName) => (
                       <div key={techName} title={techName}>
                         <div className={`w-6 h-6 text-gray-500 ${theme.icon} transition-colors duration-300`}>
-                          {logoMap[techName]}
+                          {logoMap[techName] || <span className="text-xs font-bold text-gray-400">{techName}</span>}
                         </div>
                       </div>
                     ))}
@@ -319,16 +366,27 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Visit Project Button */}
-                <div className="mt-6">
+                {/* Action Buttons */}
+                <div className="mt-6 flex gap-3">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block w-full text-center px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:text-black ${theme.btn} transition-colors duration-300`}
+                    className={`flex-1 text-center px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:text-black ${theme.btn} font-medium transition-colors duration-300 text-sm`}
                   >
-                    Visit Project
+                    {project.github && !project.link.includes("vercel") ? "View Release" : "Live Demo"}
                   </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:bg-white/10 hover:text-white transition-colors duration-300 flex items-center justify-center"
+                      title="GitHub Repository"
+                    >
+                      <FaGithub className="w-5 h-5" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

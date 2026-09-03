@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navLinks = ["Home", "About", "Projects", "Experience", "Contact"];
+  const navLinks = ["Home", "About", "Projects", "Experience", "Certifications", "Contact"];
 
   return (
     <header className="fixed top-4 md:top-0 inset-x-4 md:inset-x-0 z-50 text-white transition-all duration-300">

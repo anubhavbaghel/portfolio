@@ -3,24 +3,23 @@ import "./App.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Projects from "./components/Projects"
+import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import TechStackSection from "./components/TechStackSection";
+import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-// import SplashCursor from './components/ReactBits/SplashCursor'
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Header />
       <Hero />
       <About />
-      <Projects/> 
+      <Projects /> 
       <Experience />
       <TechStackSection />
+      <Certifications />
       <Contact />
       <Footer />
     </>
