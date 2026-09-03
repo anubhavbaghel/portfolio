@@ -5,79 +5,114 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 px-6 max-w-7xl mx-auto z-10 relative">
-      {/* Section Header */}
-      <div className="flex flex-col items-center mb-16">
-        <p className="text-teal-500 font-semibold uppercase tracking-wider mb-2">
-          What's Next?
-        </p>
-        <h2 className="text-5xl font-bold text-center text-white">
-          Get In <em className="text-teal-600 not-italic">Touch</em>
+    <section id="contact" className="py-24 px-6 max-w-7xl mx-auto z-10 relative">
+      {/* Section Docket Header */}
+      <div className="flex items-center gap-3 mb-12 border-b border-white/10 pb-4">
+        <span className="stamp-tag text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded">
+          SECTION // 06
+        </span>
+        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
+          Studio Inquiries & Direct Dispatch
         </h2>
       </div>
 
       {/* Contact Container */}
-      <div className="flex flex-col lg:flex-row gap-12 bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden group">
-        {/* Background ambient glows */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none" />
-
+      <div className="paper-card rounded-2xl p-8 sm:p-12 relative overflow-hidden flex flex-col lg:flex-row gap-12">
         {/* Left Side: Info */}
-        <div className="flex flex-col justify-center lg:w-5/12 relative z-10">
-          <h3 className="text-3xl font-bold text-white mb-4">Let's build something together!</h3>
-          <p className="text-gray-400 text-base leading-relaxed mb-8">
-            Whether you have a question, a project in mind, or just want to say hi, I try my best to get back to everyone. Drop me a message and let's chat.
-          </p>
-          
-          <div className="flex flex-col gap-4 mb-8">
-            <a 
-              href="mailto:code.anubhavbaghel@gmail.com" 
-              className="flex items-center gap-4 text-gray-300 hover:text-teal-400 transition-colors w-fit"
-            >
-              <span className="p-3 bg-white/5 border border-white/10 rounded-xl"><MailIcon /></span>
-              <span className="font-medium tracking-wide text-sm md:text-base">code.anubhavbaghel@gmail.com</span>
-            </a>
+        <div className="flex flex-col justify-between lg:w-5/12">
+          <div>
+            <div className="inline-block px-2.5 py-1 bg-white/[0.04] border border-white/10 text-[10px] font-mono text-zinc-400 rounded mb-4">
+              DISPATCH DESK
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-4 tracking-tight">
+              Let's build something authentic together.
+            </h3>
+            <p className="text-zinc-400 text-sm leading-relaxed mb-8">
+              Whether you have a full project in mind, need technical assistance, or want to discuss a role, I'm always open to talking craft.
+            </p>
+            
+            <div className="flex flex-col gap-3 mb-8">
+              <a 
+                href="mailto:code.anubhavbaghel@gmail.com" 
+                className="flex items-center gap-3 p-3.5 bg-white/[0.03] border border-white/10 rounded-xl text-zinc-300 hover:text-white hover:border-white/20 transition-all w-full"
+              >
+                <span className="p-2 bg-white/5 border border-white/10 rounded-lg text-amber-400"><MailIcon fontSize="small" /></span>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase">DIRECT EMAIL</span>
+                  <span className="font-mono text-xs sm:text-sm font-medium">code.anubhavbaghel@gmail.com</span>
+                </div>
+              </a>
+            </div>
           </div>
 
           {/* Social Links */}
-          <div className="flex gap-4 border-t border-white/10 pt-8">
-            <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 border border-white/10 rounded-full text-gray-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-teal-500/10 transition-all duration-300 hover:-translate-y-1">
-              <LinkedInIcon />
+          <div className="flex items-center gap-3 pt-6 border-t border-white/10">
+            <span className="text-xs font-mono text-zinc-500 mr-2">CHANNELS:</span>
+            <a
+              href="https://www.linkedin.com/in/anubhav-baghel/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 bg-white/[0.03] border border-white/10 rounded-lg text-xs font-mono text-zinc-300 hover:text-white hover:border-white/30 transition-all flex items-center gap-1.5"
+            >
+              <LinkedInIcon fontSize="small" />
+              <span>LinkedIn</span>
             </a>
-            <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 border border-white/10 rounded-full text-gray-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-teal-500/10 transition-all duration-300 hover:-translate-y-1">
-              <GitHubIcon />
+            <a
+              href="https://github.com/anubhavbaghel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 bg-white/[0.03] border border-white/10 rounded-lg text-xs font-mono text-zinc-300 hover:text-white hover:border-white/30 transition-all flex items-center gap-1.5"
+            >
+              <GitHubIcon fontSize="small" />
+              <span>GitHub</span>
             </a>
           </div>
         </div>
 
         {/* Right Side: Form */}
-        <div className="lg:w-7/12 relative z-10">
-          <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
-            <div className="flex flex-col sm:flex-row gap-5">
+        <div className="lg:w-7/12 bg-[#18181c] border border-white/10 rounded-xl p-6 sm:p-8">
+          <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full">
+                <label className="block text-[11px] font-mono text-zinc-400 mb-1.5">SENDER NAME</label>
+                <input 
+                  type="text" 
+                  placeholder="e.g. John Doe" 
+                  className="w-full bg-[#121214] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-amber-400/60 transition-all"
+                />
+              </div>
+              <div className="w-full">
+                <label className="block text-[11px] font-mono text-zinc-400 mb-1.5">EMAIL ADDRESS</label>
+                <input 
+                  type="email" 
+                  placeholder="name@company.com" 
+                  className="w-full bg-[#121214] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-amber-400/60 transition-all"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-[11px] font-mono text-zinc-400 mb-1.5">PROJECT / INQUIRY TOPIC</label>
               <input 
                 type="text" 
-                placeholder="Your Name" 
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all"
-              />
-              <input 
-                type="email" 
-                placeholder="Your Email" 
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all"
+                placeholder="Brief summary of your message" 
+                className="w-full bg-[#121214] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-amber-400/60 transition-all"
               />
             </div>
-            <input 
-              type="text" 
-              placeholder="Subject" 
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all"
-            />
-            <textarea 
-              placeholder="Your Message" 
-              rows="5" 
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all resize-none"
-            ></textarea>
+            <div>
+              <label className="block text-[11px] font-mono text-zinc-400 mb-1.5">MESSAGE DETAILS</label>
+              <textarea 
+                placeholder="Describe your goals, requirements, or questions..." 
+                rows="4" 
+                className="w-full bg-[#121214] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-amber-400/60 transition-all resize-none"
+              ></textarea>
+            </div>
             
-            <button type="submit" className="mt-2 bg-teal-500 text-black font-bold text-sm md:text-base px-8 py-3.5 rounded-xl hover:bg-teal-400 hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] transition-all duration-300 w-full sm:w-auto self-start">
-              Send Message
+            <button
+              type="submit"
+              className="mt-2 bg-zinc-100 text-zinc-950 font-bold text-xs sm:text-sm px-6 py-3 rounded-lg hover:bg-white transition-all duration-200 shadow-md flex items-center justify-center gap-2 self-start cursor-pointer"
+            >
+              <span>DISPATCH MESSAGE</span>
+              <span>→</span>
             </button>
           </form>
         </div>
