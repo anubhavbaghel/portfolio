@@ -53,21 +53,21 @@ const DigitalConnections = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDistance) {
-            const alpha = (1 - dist / maxDistance) * 0.12;
+            const alpha = (1 - dist / maxDistance) * 0.16;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-            ctx.lineWidth = 0.65;
+            ctx.strokeStyle = `rgba(20, 184, 166, ${alpha})`;
+            ctx.lineWidth = 0.75;
             ctx.stroke();
 
-            // Occasional subtle pulse on lines
+            // Occasional digital pulse on lines
             if (dist < maxDistance * 0.6) {
               const midX = (nodes[i].x + nodes[j].x) / 2;
               const midY = (nodes[i].y + nodes[j].y) / 2;
-              const pulseAlpha = Math.sin(nodes[i].pulse) * 0.15;
+              const pulseAlpha = Math.sin(nodes[i].pulse) * 0.12;
               if (pulseAlpha > 0) {
-                ctx.fillStyle = `rgba(255, 255, 255, ${pulseAlpha})`;
+                ctx.fillStyle = `rgba(45, 212, 191, ${pulseAlpha})`;
                 ctx.beginPath();
                 ctx.arc(midX, midY, 1, 0, Math.PI * 2);
                 ctx.fill();
@@ -87,19 +87,19 @@ const DigitalConnections = () => {
         if (node.x < 0 || node.x > width) node.vx *= -1;
         if (node.y < 0 || node.y > height) node.vy *= -1;
 
-        const currentRadius = node.radius + Math.sin(node.pulse) * 0.4;
-        const alpha = 0.2 + Math.sin(node.pulse) * 0.15;
+        const currentRadius = node.radius + Math.sin(node.pulse) * 0.5;
+        const alpha = 0.25 + Math.sin(node.pulse) * 0.2;
 
         // Node center
         ctx.beginPath();
         ctx.arc(node.x, node.y, Math.max(0.5, currentRadius), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.fillStyle = `rgba(45, 212, 191, ${alpha})`;
         ctx.fill();
 
-        // Node subtle halo
+        // Node glow
         ctx.beginPath();
-        ctx.arc(node.x, node.y, currentRadius * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.1})`;
+        ctx.arc(node.x, node.y, currentRadius * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(20, 184, 166, ${alpha * 0.2})`;
         ctx.fill();
       }
 

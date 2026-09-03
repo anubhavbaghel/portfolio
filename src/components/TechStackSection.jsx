@@ -90,11 +90,11 @@ const TechStackSection = () => {
   return (
     <section id="tech-stack" className="py-20 px-6 max-w-7xl mx-auto z-10 relative">
       <div className="flex flex-col items-center mb-16">
-        <p className="text-gray-400 font-medium uppercase tracking-wider mb-2 text-sm">
+        <p className="text-teal-500 font-semibold uppercase tracking-wider mb-2">
           My Arsenal
         </p>
         <h2 className="text-5xl font-bold text-center text-white">
-          Tech <em className="text-gray-400 not-italic">Stack</em>
+          Tech <em className="text-teal-600 not-italic">Stack</em>
         </h2>
       </div>
 
@@ -102,11 +102,11 @@ const TechStackSection = () => {
         {techCategories.map((category, index) => (
           <div
             key={index}
-            className={`bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 hover:border-white/30 transition-all duration-300 group flex flex-col ${
+            className={`bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 hover:border-teal-500/30 transition-all duration-300 group flex flex-col ${
               category.span ? "md:col-span-2 lg:col-span-2 text-center items-center" : ""
             }`}
           >
-            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3 group-hover:text-white transition-colors">
+            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3 group-hover:text-teal-400/80 transition-colors">
               {category.title}
             </h3>
             {category.description && (
@@ -119,9 +119,9 @@ const TechStackSection = () => {
               {category.skills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="flex items-center gap-2 text-xs md:text-sm font-medium px-3.5 py-1.5 bg-white/5 hover:bg-white/10 hover:text-white text-gray-300 rounded-full transition-all duration-300 border border-white/10 hover:border-white/30 hover:-translate-y-0.5 cursor-default select-none"
+                  className="flex items-center gap-2 text-xs md:text-sm font-medium px-3.5 py-1.5 bg-white/5 hover:bg-teal-500/10 hover:text-teal-300 text-gray-300 rounded-full transition-all duration-300 border border-white/10 hover:border-teal-500/50 hover:shadow-[0_0_15px_rgba(20,184,166,0.15)] hover:-translate-y-0.5 cursor-default select-none"
                 >
-                  {skillIcons[skill] && <span className="text-base opacity-85 text-gray-400 group-hover:text-white">{skillIcons[skill]}</span>}
+                  {skillIcons[skill] && <span className="text-base opacity-85">{skillIcons[skill]}</span>}
                   {skill}
                 </span>
               ))}
