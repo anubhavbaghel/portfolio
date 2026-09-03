@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaWordpress, FaElementor, FaShopify } from "react-icons/fa";
-import { SiCpanel } from "react-icons/si";
+import { FaHtml5, FaCss3Alt, FaJs, FaWordpress, FaElementor, FaShopify, FaReact, FaGithub, FaAndroid } from "react-icons/fa";
+import { SiCpanel, SiNextdotjs, SiTypescript, SiMongodb, SiTailwindcss, SiExpo } from "react-icons/si";
 import wdcImg from "../assets/wdc_ss.png";
 import flydheeraImg from "../assets/flydheera_Ss.png";
 import puravaImg from "../assets/purava_ss.png";
@@ -205,6 +205,10 @@ const logoMap = {
   HTML: <FaHtml5 className="w-full h-full" />,
   CSS: <FaCss3Alt className="w-full h-full" />,
   JS: <FaJs className="w-full h-full" />,
+  React: <FaReact className="w-full h-full text-cyan-400" />,
+  "Next.js": <SiNextdotjs className="w-full h-full text-white" />,
+  TypeScript: <SiTypescript className="w-full h-full text-blue-400" />,
+  MongoDB: <SiMongodb className="w-full h-full text-emerald-400" />,
   WordPress: <FaWordpress className="w-full h-full" />,
   Elementor: <FaElementor className="w-full h-full" />,
   Divi: (
@@ -237,7 +241,7 @@ const Projects = () => {
             clip: "rect(0,0,0,0)",
           }}
         >
-          Projects section — 8 client projects
+          Projects section
         </h2>
         <p className="text-teal-500 font-semibold uppercase tracking-wider mb-2">
           Selected work
@@ -300,7 +304,7 @@ const Projects = () => {
                     {project.tech.map((techName) => (
                       <div key={techName} title={techName}>
                         <div className={`w-6 h-6 text-gray-500 ${theme.icon} transition-colors duration-300`}>
-                          {logoMap[techName]}
+                          {logoMap[techName] || <span className="text-xs font-bold text-gray-400">{techName}</span>}
                         </div>
                       </div>
                     ))}
@@ -319,16 +323,27 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Visit Project Button */}
-                <div className="mt-6">
+                {/* Action Buttons */}
+                <div className="mt-6 flex gap-3">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block w-full text-center px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:text-black ${theme.btn} transition-colors duration-300`}
+                    className={`flex-1 text-center px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:text-black ${theme.btn} font-medium transition-colors duration-300 text-sm`}
                   >
-                    Visit Project
+                    {project.github && !project.link.includes("vercel") ? "View Release" : "Live Demo"}
                   </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-lg hover:bg-white/10 hover:text-white transition-colors duration-300 flex items-center justify-center"
+                      title="GitHub Repository"
+                    >
+                      <FaGithub className="w-5 h-5" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
