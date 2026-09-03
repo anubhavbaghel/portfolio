@@ -1,10 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import profileImg from "../assets/profile.png";
+import DigitalConnections from "./DigitalConnections";
 
 const Hero = () => {
   return (
     <div className="flex flex-col items-center justify-center md:justify-end min-h-screen max-w-full gap-5 px-4 pt-24 pb-12 text-center relative z-10 overflow-hidden">
+      {/* Subtle Sci-Fi Digital Connection Network */}
+      <DigitalConnections />
+
       {/* Subtle Dynamic Moving Glow Background */}
       <motion.div
         animate={{
