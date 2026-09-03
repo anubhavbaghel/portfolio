@@ -4,14 +4,14 @@ const experienceData = [
   {
     id: 1,
     company: "Adaan Digital Solutions",
-    role: "SaaS Web Builder Intern",
+    role: "SaaS Web Builder & WordPress Developer Intern",
     duration: "June 2026 – Present",
     about:
-      "Contributing to 60+ client websites, executing end-to-end web building workflows across diverse industries. Specializing in UI implementation, responsive design, content workflows, accessibility, SEO, and quality assurance.",
+      "Contributing to 60+ client websites, executing end-to-end SaaS web building and WordPress workflows across diverse industries. Specializing in WordPress, CMS architectures, UI implementation, responsive design, accessibility, SEO, and quality assurance.",
     responsibilities: [
       "Contributed to 60+ client websites, implementing requirements across page layouts, content, images, and responsive behaviour.",
-      "Build and maintain websites using Wix, Wix CMS, and WordPress, handling UI implementation, content updates, responsive layouts, accessibility, SEO, and QA.",
-      "Translate project requirements and UI/UX references into production-ready website pages across desktop, tablet, and mobile devices.",
+      "Build, customize, and maintain production websites using WordPress, Wix, and Wix CMS, handling UI implementation, content updates, responsive layouts, accessibility, SEO, and QA.",
+      "Translate client project requirements and UI/UX references into production-ready website pages across desktop, tablet, and mobile devices.",
       "Troubleshoot layout and functional issues using browser developer tools and perform responsive and cross-browser testing.",
     ],
     techStack: [
