@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="fixed top-4 md:top-0 inset-x-4 md:inset-x-0 z-50 text-white transition-all duration-300">
       <div
-        className={`max-w-7xl mx-auto transition-all duration-300 flex flex-col md:flex-row justify-between items-center md:px-6 md:py-4 md:rounded-none md:border-x-0 md:border-t-0 ${
+        className={`max-w-7xl mx-auto transition-all duration-300 flex flex-col md:flex-row justify-between items-center bg-neutral-950/90 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none border border-white/10 md:border-none shadow-2xl md:shadow-none md:px-6 md:py-4 md:rounded-none md:border-x-0 md:border-t-0 ${
           isMobileMenuOpen ? "rounded-3xl" : "rounded-[2rem]"
         }`}
       >
