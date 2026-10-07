@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import About from "./components/About";
 import Projects from "./components/Projects";
+import About from "./components/About";
 import Experience from "./components/Experience";
 import TechStackSection from "./components/TechStackSection";
 import Certifications from "./components/Certifications";
@@ -15,8 +15,8 @@ function App() {
     <>
       <Header />
       <Hero />
+      <Projects />
       <About />
-      <Projects /> 
       <Experience />
       <TechStackSection />
       <Certifications />

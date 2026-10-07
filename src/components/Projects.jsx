@@ -280,7 +280,11 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [isPaused, setIsPaused] = useState(false);
   const [isManualPaused, setIsManualPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const scrollContainerRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
 
   const filteredProjects = useMemo(() => {
     return activeFilter === "all"
@@ -303,7 +307,6 @@ const Projects = () => {
   }, [filteredProjects]);
 
   const durationSeconds = useMemo(() => {
-    // Dynamic duration based on number of items (approx 4 seconds per project item)
     return Math.max(25, filteredProjects.length * 4.5);
   }, [filteredProjects.length]);
 
@@ -317,7 +320,31 @@ const Projects = () => {
     });
   };
 
-  const isAnimationPaused = isPaused || isManualPaused;
+  // Mouse & Touch Drag Handlers
+  const handleMouseDown = (e) => {
+    if (!scrollContainerRef.current) return;
+    isDraggingRef.current = true;
+    setIsDragging(true);
+    setIsPaused(true);
+    startXRef.current = e.pageX - scrollContainerRef.current.offsetLeft;
+    scrollLeftRef.current = scrollContainerRef.current.scrollLeft;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDraggingRef.current || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 1.5;
+    scrollContainerRef.current.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    isDraggingRef.current = false;
+    setIsDragging(false);
+    setIsPaused(false);
+  };
+
+  const isAnimationPaused = isPaused || isManualPaused || isDragging;
 
   return (
     <div id="projects" className="py-20 px-4 md:px-6 max-w-full mx-auto z-10 relative overflow-hidden">
@@ -360,7 +387,7 @@ const Projects = () => {
           Projects I've <em className="text-teal-600 not-italic">built</em>
         </h2>
         <p className="text-gray-400 text-sm sm:text-base mt-3 max-w-xl">
-          Explore a live rotating showcase of my web projects. Hover or touch to pause, or swipe freely horizontally.
+          Explore a live rotating showcase of my web projects. Drag with mouse, swipe on mobile, or hover to pause.
         </p>
       </div>
 
@@ -424,14 +451,22 @@ const Projects = () => {
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-r from-black via-black/60 to-transparent z-20" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-l from-black via-black/60 to-transparent z-20" />
 
-        {/* Scrollable Viewport with GPU Animated Track */}
+        {/* Scrollable Viewport with Draggable Track */}
         <div
           ref={scrollContainerRef}
           onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseLeave={() => {
+            setIsPaused(false);
+            handleMouseUpOrLeave();
+          }}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
-          className="overflow-x-auto no-scrollbar py-6 px-4 md:px-8"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          className={`overflow-x-auto no-scrollbar py-6 px-4 md:px-8 select-none ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
         >
           <div
             className="animate-projects-marquee gap-6"
@@ -507,6 +542,7 @@ const Projects = () => {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onMouseDown={(e) => e.stopPropagation()}
                           className={`flex-1 text-center px-4 py-2.5 bg-white/5 border border-white/10 text-gray-200 rounded-xl ${theme.btn} font-medium transition-all duration-300 text-xs sm:text-sm flex items-center justify-center gap-2`}
                         >
                           <span>{project.github && !project.link.includes("vercel") ? "View Release" : "Live Demo"}</span>
@@ -516,6 +552,7 @@ const Projects = () => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onMouseDown={(e) => e.stopPropagation()}
                             className="px-3.5 py-2.5 bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-white/10 hover:text-white transition-all duration-300 flex items-center justify-center"
                             title="GitHub Repository"
                           >
@@ -535,7 +572,7 @@ const Projects = () => {
       {/* Footer Info */}
       <div className="mt-8 flex flex-col items-center gap-2 text-center">
         <span className="text-gray-500 text-xs sm:text-sm font-medium">
-          Showing {filteredProjects.length} projects &bull; Ultra-Smooth 60fps Carousel &bull; Hover / Touch to pause
+          Showing {filteredProjects.length} projects &bull; Drag to scroll &bull; Hover / Touch to pause
         </span>
       </div>
     </div>
