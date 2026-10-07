@@ -35,16 +35,6 @@ const Hero = () => {
         >
           Let's Connect
         </a>
-        <a
-          href="/assets/Anubhav_Wordpress_Dev_Resume.pdf"
-          download="Anubhav_Baghel_Resume.pdf"
-          className="bg-white/10 border border-white/10 hover:border-teal-500/50 hover:bg-teal-500/20 text-white rounded-full px-6 py-2.5 font-medium transition-all duration-300 flex items-center gap-2"
-        >
-          <span>Download CV</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-        </a>
         <div className="text-sm sm:text-base text-gray-400">
           <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 transition-colors">
             code.anubhavbaghel@gmail.com
