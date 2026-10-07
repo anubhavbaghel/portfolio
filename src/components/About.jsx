@@ -2,7 +2,6 @@ import React from "react";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CodeIcon from '@mui/icons-material/Code';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import SchoolIcon from '@mui/icons-material/School';
 
 const About = () => {
   return (
@@ -27,17 +26,6 @@ const About = () => {
           <p className="text-gray-400 text-base leading-relaxed mb-6">
             Currently contributing to <strong className="text-white font-semibold">60+ client websites</strong> at Adaan Digital Solutions, ensuring design-to-code accuracy, cross-browser compatibility, and seamless user experiences across desktop, tablet, and mobile.
           </p>
-
-          {/* Education Card */}
-          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-2xl p-5 mt-2 flex items-start gap-4">
-            <div className="w-10 h-10 bg-teal-500/10 rounded-lg flex items-center justify-center text-teal-400 flex-shrink-0 mt-1">
-              <SchoolIcon />
-            </div>
-            <div>
-              <h4 className="text-white font-semibold text-base">Bachelor of Computer Applications (BCA)</h4>
-              <p className="text-gray-400 text-sm">Indira Gandhi National Open University (IGNOU), Delhi &bull; <span className="text-teal-400">2026 – 2029</span></p>
-            </div>
-          </div>
         </div>
 
         {/* Right Side: Cards / Values */}
