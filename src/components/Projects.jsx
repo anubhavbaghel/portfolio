@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -280,10 +280,7 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [isPaused, setIsPaused] = useState(false);
   const [isManualPaused, setIsManualPaused] = useState(false);
-  const carouselRef = useRef(null);
-  const isDraggingRef = useRef(false);
-  const startXRef = useRef(0);
-  const scrollLeftRef = useRef(0);
+  const scrollContainerRef = useRef(null);
 
   const filteredProjects = useMemo(() => {
     return activeFilter === "all"
@@ -291,19 +288,12 @@ const Projects = () => {
       : projectsData.filter((p) => p.categories.includes(activeFilter));
   }, [activeFilter]);
 
-  // Multiply items for seamless continuous looping
+  // Multiply items for 100% seamless GPU marquee loop
   const carouselItems = useMemo(() => {
     if (filteredProjects.length === 0) return [];
-    if (filteredProjects.length === 1) {
+    if (filteredProjects.length < 3) {
       return [
         ...filteredProjects,
-        ...filteredProjects,
-        ...filteredProjects,
-        ...filteredProjects,
-      ];
-    }
-    if (filteredProjects.length === 2) {
-      return [
         ...filteredProjects,
         ...filteredProjects,
         ...filteredProjects,
@@ -312,81 +302,43 @@ const Projects = () => {
     return [...filteredProjects, ...filteredProjects];
   }, [filteredProjects]);
 
-  // Reset scroll on filter change
-  useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollLeft = 0;
-    }
-  }, [activeFilter]);
+  const durationSeconds = useMemo(() => {
+    // Dynamic duration based on number of items (approx 4 seconds per project item)
+    return Math.max(25, filteredProjects.length * 4.5);
+  }, [filteredProjects.length]);
 
-  // 60fps Smooth Automatic Horizontal Running Carousel
-  useEffect(() => {
-    const container = carouselRef.current;
-    if (!container || carouselItems.length === 0) return;
-
-    let animationFrameId;
-    let lastTime = null;
-    const scrollSpeed = 0.85; // Pixels per frame at ~60fps
-
-    const animate = (time) => {
-      if (!lastTime) lastTime = time;
-      const deltaTime = time - lastTime;
-      lastTime = time;
-
-      const effectivePause = isPaused || isManualPaused || isDraggingRef.current;
-
-      if (!effectivePause && container) {
-        // Adjust scroll increment relative to 60fps standard
-        const increment = scrollSpeed * (deltaTime / 16.67);
-        container.scrollLeft += increment;
-
-        // Loop seamlessly back once reaching half of the duplicated scroll area
-        const halfScroll = container.scrollWidth / 2;
-        if (container.scrollLeft >= halfScroll) {
-          container.scrollLeft -= halfScroll;
-        }
-      }
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused, isManualPaused, carouselItems]);
-
-  // Manual scroll controls
-  const handleScroll = (direction) => {
-    if (!carouselRef.current) return;
-    const cardWidth = window.innerWidth < 640 ? 320 : 420;
-    const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
-
-    carouselRef.current.scrollBy({
+  // Manual arrow navigation handler
+  const handleManualScroll = (direction) => {
+    if (!scrollContainerRef.current) return;
+    const scrollAmount = direction === "left" ? -400 : 400;
+    scrollContainerRef.current.scrollBy({
       left: scrollAmount,
       behavior: "smooth",
     });
   };
 
-  // Mouse Drag to Scroll Handlers (for Desktop & Touch)
-  const handleMouseDown = (e) => {
-    isDraggingRef.current = true;
-    startXRef.current = e.pageX - (carouselRef.current?.offsetLeft || 0);
-    scrollLeftRef.current = carouselRef.current?.scrollLeft || 0;
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDraggingRef.current || !carouselRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - (carouselRef.current.offsetLeft || 0);
-    const walk = (x - startXRef.current) * 1.5;
-    carouselRef.current.scrollLeft = scrollLeftRef.current - walk;
-  };
-
-  const handleMouseUpOrLeave = () => {
-    isDraggingRef.current = false;
-  };
+  const isAnimationPaused = isPaused || isManualPaused;
 
   return (
     <div id="projects" className="py-20 px-4 md:px-6 max-w-full mx-auto z-10 relative overflow-hidden">
+      {/* GPU Marquee Animation Styles */}
+      <style>{`
+        @keyframes projects-marquee {
+          0% {
+            transform: translate3d(0, 0, 0);
+          }
+          100% {
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+        .animate-projects-marquee {
+          display: flex;
+          width: max-content;
+          animation: projects-marquee ${durationSeconds}s linear infinite;
+          will-change: transform;
+        }
+      `}</style>
+
       {/* Header Section */}
       <div className="flex flex-col items-center mb-8 max-w-7xl mx-auto text-center">
         <h2
@@ -434,7 +386,7 @@ const Projects = () => {
         {/* Carousel Action Buttons */}
         <div className="flex items-center gap-2">
           <button
-            onClick={() => handleScroll("left")}
+            onClick={() => handleManualScroll("left")}
             className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-teal-500/20 hover:border-teal-500/50 hover:text-teal-400 text-gray-300 flex items-center justify-center transition-all duration-300 backdrop-blur-md active:scale-95"
             title="Previous project"
             aria-label="Previous project"
@@ -456,7 +408,7 @@ const Projects = () => {
           </button>
 
           <button
-            onClick={() => handleScroll("right")}
+            onClick={() => handleManualScroll("right")}
             className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-teal-500/20 hover:border-teal-500/50 hover:text-teal-400 text-gray-300 flex items-center justify-center transition-all duration-300 backdrop-blur-md active:scale-95"
             title="Next project"
             aria-label="Next project"
@@ -466,125 +418,124 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Horizontal Carousel Track Container */}
-      <div className="relative w-full">
+      {/* Horizontal Carousel Viewport Container */}
+      <div className="relative w-full overflow-hidden">
         {/* Soft edge gradient fades */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-r from-black via-black/60 to-transparent z-20" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-l from-black via-black/60 to-transparent z-20" />
 
-        {/* Scrolling Viewport */}
+        {/* Scrollable Viewport with GPU Animated Track */}
         <div
-          ref={carouselRef}
+          ref={scrollContainerRef}
           onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => {
-            setIsPaused(false);
-            handleMouseUpOrLeave();
-          }}
+          onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUpOrLeave}
-          className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth py-6 px-4 md:px-8 cursor-grab active:cursor-grabbing select-none"
+          className="overflow-x-auto no-scrollbar py-6 px-4 md:px-8"
         >
-          {carouselItems.map((project, index) => {
-            const theme = colorThemes[project.color] || colorThemes.teal;
-            return (
-              <div
-                key={`${project.id}-${index}`}
-                className={`group relative bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden ${theme.border} ${theme.glow} transition-all duration-500 flex flex-col w-[85vw] sm:w-[380px] md:w-[420px] flex-shrink-0 hover:-translate-y-1.5`}
-              >
-                {/* Image Section */}
-                <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-neutral-900">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent z-10" />
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    draggable={false}
-                    className="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                  />
-                  <span className={`text-6xl sm:text-7xl font-black text-white/[0.04] absolute right-4 top-2 select-none ${theme.id} transition-colors duration-300 z-10 pointer-events-none`}>
-                    {project.id}
-                  </span>
-                </div>
+          <div
+            className="animate-projects-marquee gap-6"
+            style={{
+              animationPlayState: isAnimationPaused ? "paused" : "running",
+            }}
+          >
+            {carouselItems.map((project, index) => {
+              const theme = colorThemes[project.color] || colorThemes.teal;
+              return (
+                <div
+                  key={`${project.id}-${index}`}
+                  className={`group relative bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden ${theme.border} ${theme.glow} transition-all duration-500 flex flex-col w-[85vw] sm:w-[380px] md:w-[420px] flex-shrink-0 hover:-translate-y-1.5`}
+                >
+                  {/* Image Section */}
+                  <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-neutral-900">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent z-10" />
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      draggable={false}
+                      className="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    />
+                    <span className={`text-6xl sm:text-7xl font-black text-white/[0.04] absolute right-4 top-2 select-none ${theme.id} transition-colors duration-300 z-10 pointer-events-none`}>
+                      {project.id}
+                    </span>
+                  </div>
 
-                {/* Content Section */}
-                <div className="p-5 sm:p-6 flex flex-col flex-grow relative z-20 -mt-4 bg-[#0a0a0a]">
-                  <h3 className={`text-xl sm:text-2xl font-bold text-white mb-1 ${theme.title} transition-colors duration-300`}>
-                    {project.title}
-                  </h3>
-                  <p className={`text-xs sm:text-sm ${theme.role} mb-3.5 tracking-wide font-medium`}>
-                    {project.role}
-                  </p>
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
-                    {project.desc}
-                  </p>
+                  {/* Content Section */}
+                  <div className="p-5 sm:p-6 flex flex-col flex-grow relative z-20 -mt-4 bg-[#0a0a0a]">
+                    <h3 className={`text-xl sm:text-2xl font-bold text-white mb-1 ${theme.title} transition-colors duration-300`}>
+                      {project.title}
+                    </h3>
+                    <p className={`text-xs sm:text-sm ${theme.role} mb-3.5 tracking-wide font-medium`}>
+                      {project.role}
+                    </p>
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                      {project.desc}
+                    </p>
 
-                  {/* Bottom section of the card */}
-                  <div className="mt-auto pt-4 border-t border-white/5">
-                    {/* Tech Stack Logos */}
-                    <div className="mb-4">
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                        {project.tech.map((techName) => (
-                          <div key={techName} title={techName} className="flex items-center">
-                            <div className={`w-5 h-5 sm:w-6 sm:h-6 text-gray-500 ${theme.icon} transition-colors duration-300`}>
-                              {logoMap[techName] || (
-                                <span className="text-xs font-bold text-gray-400">{techName}</span>
-                              )}
+                    {/* Bottom section of the card */}
+                    <div className="mt-auto pt-4 border-t border-white/5">
+                      {/* Tech Stack Logos */}
+                      <div className="mb-4">
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                          {project.tech.map((techName) => (
+                            <div key={techName} title={techName} className="flex items-center">
+                              <div className={`w-5 h-5 sm:w-6 sm:h-6 text-gray-500 ${theme.icon} transition-colors duration-300`}>
+                                {logoMap[techName] || (
+                                  <span className="text-xs font-bold text-gray-400">{techName}</span>
+                                )}
+                              </div>
                             </div>
-                          </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Pills */}
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5">
+                        {project.pills.map((pill) => (
+                          <span
+                            key={pill}
+                            className="text-[11px] sm:text-xs font-medium px-2.5 py-1 bg-white/5 hover:bg-white/10 text-gray-300 rounded-lg transition-colors border border-white/5"
+                          >
+                            {pill}
+                          </span>
                         ))}
                       </div>
-                    </div>
 
-                    {/* Pills */}
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5">
-                      {project.pills.map((pill) => (
-                        <span
-                          key={pill}
-                          className="text-[11px] sm:text-xs font-medium px-2.5 py-1 bg-white/5 hover:bg-white/10 text-gray-300 rounded-lg transition-colors border border-white/5"
-                        >
-                          {pill}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onMouseDown={(e) => e.stopPropagation()}
-                        className={`flex-1 text-center px-4 py-2.5 bg-white/5 border border-white/10 text-gray-200 rounded-xl ${theme.btn} font-medium transition-all duration-300 text-xs sm:text-sm flex items-center justify-center gap-2`}
-                      >
-                        <span>{project.github && !project.link.includes("vercel") ? "View Release" : "Live Demo"}</span>
-                      </a>
-                      {project.github && (
+                      {/* Action Buttons */}
+                      <div className="flex gap-3">
                         <a
-                          href={project.github}
+                          href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onMouseDown={(e) => e.stopPropagation()}
-                          className="px-3.5 py-2.5 bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-white/10 hover:text-white transition-all duration-300 flex items-center justify-center"
-                          title="GitHub Repository"
+                          className={`flex-1 text-center px-4 py-2.5 bg-white/5 border border-white/10 text-gray-200 rounded-xl ${theme.btn} font-medium transition-all duration-300 text-xs sm:text-sm flex items-center justify-center gap-2`}
                         >
-                          <FaGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span>{project.github && !project.link.includes("vercel") ? "View Release" : "Live Demo"}</span>
                         </a>
-                      )}
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3.5 py-2.5 bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-white/10 hover:text-white transition-all duration-300 flex items-center justify-center"
+                            title="GitHub Repository"
+                          >
+                            <FaGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {/* Footer Info */}
       <div className="mt-8 flex flex-col items-center gap-2 text-center">
         <span className="text-gray-500 text-xs sm:text-sm font-medium">
-          Showing {filteredProjects.length} projects &bull; Continuous Auto-Run &bull; Swipe / Hover to interact
+          Showing {filteredProjects.length} projects &bull; Ultra-Smooth 60fps Carousel &bull; Hover / Touch to pause
         </span>
       </div>
     </div>
