@@ -219,6 +219,20 @@ const projectsData = [
     link: "https://flydheera.com/",
     color: "sky",
   },
+  {
+    id: "09",
+    title: "Thaddeus Creates",
+    role: "Full-Stack Design & SSR Build",
+    desc: "Handmade keepsakes studio built with React 19, TanStack Start SSR, Tailwind CSS, and Supabase. Features WhatsApp ordering, an admin dashboard, bot protection, and Schema.org rich snippet SEO.",
+    categories: ["html"],
+    tags: ["React 19 / SSR", "Supabase"],
+    pills: ["Full-Stack SSR", "SEO & Rich Snippets", "Supabase DB", "Admin Suite"],
+    tech: ["React", "TypeScript", "JS", "HTML"],
+    image: puravaImg,
+    link: "https://thaddeuscreates.shop/",
+    github: "https://github.com/anubhavbaghel/thaddeus-creates",
+    color: "amber",
+  },
 ];
 
 const filters = [
