@@ -29,6 +29,7 @@ import drAnilImg from "../assets/dranilkumarsharma.png";
 import womancartImg from "../assets/womancart.png";
 import sewaexpoImg from "../assets/sewaexpo.png";
 import syandanImg from "../assets/syandan.png";
+import thaddeusImg from "../assets/thaddeus_ss.png";
 
 const colorThemes = {
   blue: {
@@ -228,7 +229,7 @@ const projectsData = [
     tags: ["React 19 / SSR", "Supabase"],
     pills: ["Full-Stack SSR", "SEO & Rich Snippets", "Supabase DB", "Admin Suite"],
     tech: ["React", "TypeScript", "JS", "HTML"],
-    image: puravaImg,
+    image: thaddeusImg,
     link: "https://thaddeuscreates.shop/",
     github: "https://github.com/anubhavbaghel/thaddeus-creates",
     color: "amber",
