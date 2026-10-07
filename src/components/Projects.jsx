@@ -233,6 +233,19 @@ const projectsData = [
     github: "https://github.com/anubhavbaghel/thaddeus-creates",
     color: "amber",
   },
+  {
+    id: "10",
+    title: "Siddharya Wellness",
+    role: "Website Design & Development",
+    desc: "Designed and built a serene, high-converting website for a premium yoga & meditation retreat in Rishikesh — featuring retreat package displays, booking flows, and technical SEO.",
+    categories: ["wp", "elementor"],
+    tags: ["WP Astra / Elementor"],
+    pills: ["Yoga & Wellness UI", "SEO Optimized", "Booking Workflows", "Responsive Dev"],
+    tech: ["WordPress", "Elementor", "HTML", "CSS"],
+    image: drAnilImg,
+    link: "https://siddharyawellness.com/",
+    color: "emerald",
+  },
 ];
 
 const filters = [
