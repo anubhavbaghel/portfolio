@@ -37,7 +37,7 @@ const Navigation = () => {
           onClick={() => setMobileMenuOpen(false)}
           className="group flex items-baseline gap-2 text-ink-900"
         >
-          <span className="font-semibold tracking-tight text-lg group-hover:text-terracotta transition-colors">
+          <span className="font-bold tracking-tight text-xl font-display group-hover:text-terracotta transition-colors">
             {personalInfo.name}
           </span>
           <span className="text-xs text-ink-500 font-mono hidden sm:inline">

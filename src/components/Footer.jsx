@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 space-y-12">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pb-8 border-b border-paper-200">
           <div>
-            <Link to="/" className="text-xl font-bold text-ink-900 tracking-tight hover:text-terracotta transition-colors">
+            <Link to="/" className="text-xl font-bold text-ink-900 tracking-tight font-display hover:text-terracotta transition-colors">
               {personalInfo.name}
             </Link>
             <p className="text-xs text-ink-500 font-mono mt-1">

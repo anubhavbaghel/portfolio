@@ -7,10 +7,10 @@ export default function NotFoundPage() {
       <span className="font-mono text-xs text-terracotta uppercase tracking-wider font-semibold block">
         Error 404
       </span>
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-ink-900">
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-ink-900 font-display">
         Page Not Found
       </h1>
-      <p className="text-base text-ink-600 leading-relaxed font-normal">
+      <p className="text-base text-ink-600 leading-relaxed font-sans">
         The requested URL or case study does not exist or has been relocated.
       </p>
       <div className="pt-4">

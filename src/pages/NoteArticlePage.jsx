@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { technicalNotes } from "../data/portfolioData";
-import { ArrowLeft, Clock, ArrowRight } from "lucide-react";
+import { ArrowLeft, Clock, ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
 export default function NoteArticlePage() {
   const { noteId } = useParams();
@@ -37,10 +37,12 @@ export default function NoteArticlePage() {
             {note.readTime}
           </span>
           <span>&bull;</span>
-          <span className="text-terracotta font-medium">{note.category}</span>
+          <span className="text-terracotta font-medium bg-terracotta/10 px-2 py-0.5 rounded">
+            {note.category}
+          </span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 leading-[1.12]">
+        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 leading-[1.12] font-display">
           {note.title}
         </h1>
 
@@ -48,14 +50,25 @@ export default function NoteArticlePage() {
           {note.summary}
         </p>
 
+        {/* Executive Summary Takeaways for Fast Reading */}
+        <div className="p-4 bg-paper-100/90 rounded-lg border border-paper-300 space-y-2 mt-4">
+          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-ink-900 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-terracotta" />
+            <span>Key Takeaway for Technical Leaders</span>
+          </span>
+          <p className="text-xs sm:text-sm text-ink-700 leading-relaxed font-sans">
+            AI code generation is only as good as the automated validation layers protecting the repository. The highest ROI comes from strict typing, property-based tests, and schema validators that reject hallucinated properties early in the pipeline.
+          </p>
+        </div>
+
         <div className="pt-4 border-t border-paper-200 flex items-center justify-between text-xs font-mono text-ink-500">
           <span>By Anubhav Baghel</span>
-          <span>Software Developer</span>
+          <span>Software &amp; Product Developer</span>
         </div>
       </header>
 
       {/* Article Body */}
-      <div className="max-w-3xl mx-auto px-6 py-12 space-y-6 text-base sm:text-lg text-ink-800 leading-relaxed font-normal">
+      <div className="max-w-3xl mx-auto px-6 py-12 space-y-6 text-base sm:text-lg text-ink-800 leading-relaxed font-sans font-normal">
         {note.content.map((paragraph, idx) => (
           <p key={idx} className="leading-relaxed">
             {paragraph}
@@ -65,12 +78,13 @@ export default function NoteArticlePage() {
 
       {/* Colophon & Bottom Navigation */}
       <footer className="max-w-3xl mx-auto px-6 pt-12 border-t border-paper-300 space-y-10">
-        <div className="p-6 bg-paper-100 rounded border border-paper-300 text-xs text-ink-600 font-mono space-y-2">
-          <span className="text-ink-800 font-bold block uppercase tracking-wider">
-            Author Colophon
+        <div className="p-6 bg-paper-100 rounded-xl border border-paper-300 text-xs text-ink-600 font-mono space-y-2 shadow-subtle">
+          <span className="text-ink-800 font-bold block uppercase tracking-wider flex items-center gap-2">
+            <BookOpen className="w-3.5 h-3.5 text-terracotta" />
+            <span>Author Colophon</span>
           </span>
           <p className="font-sans text-sm text-ink-700 leading-relaxed">
-            Written by <strong>Anubhav Baghel</strong>, a software developer building web applications and tools at the intersection of engineering fundamentals and AI-assisted workflows.
+            Written by <strong>Anubhav Baghel</strong>, a software developer building web applications and tools at the intersection of engineering fundamentals, robust validation, and AI-assisted workflows.
           </p>
         </div>
 
@@ -89,7 +103,7 @@ export default function NoteArticlePage() {
 
           <Link
             to="/notes"
-            className="px-3.5 py-1.5 bg-paper-200 hover:bg-paper-300 rounded text-ink-800 border border-paper-300"
+            className="px-4 py-2 bg-paper-200 hover:bg-paper-300 rounded text-ink-800 border border-paper-300 transition-colors"
           >
             All Notes
           </Link>

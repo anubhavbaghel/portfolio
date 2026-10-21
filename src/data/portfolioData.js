@@ -1,13 +1,13 @@
 export const personalInfo = {
   name: "Anubhav Baghel",
-  role: "Software Developer",
+  role: "Software Developer & Product Engineer",
   website: "anubhavbaghel.dev",
   location: "New Delhi, India",
-  headline: "Building useful software, thoughtfully.",
+  headline: "Engineering software that solves real business problems.",
   supportingStatement:
-    "Software development, AI-assisted engineering, and tools that solve real problems.",
+    "Full-stack web applications, AI-assisted engineering tools, and practical product systems built with architectural discipline.",
   availability: {
-    status: "Available for software engineering roles & product collaboration",
+    status: "Available for Software Engineering Roles & Product Collaboration",
     isOpen: true,
   },
   bio: [
@@ -27,36 +27,42 @@ export const engineeringPrinciples = [
   {
     number: "01",
     title: "Solve the problem before choosing the tool",
+    tag: "Pragmatism",
     description:
       "Technology choices should follow real constraints—data shape, team capabilities, user latency, and operational cost—rather than trends or resume padding.",
   },
   {
     number: "02",
     title: "Use AI to accelerate work, not replace engineering judgement",
+    tag: "AI Discipline",
     description:
       "AI coding models generate syntax rapidly, but software engineering is about system architecture, boundary conditions, correctness, and failure modes. You cannot verify what you do not understand.",
   },
   {
     number: "03",
     title: "Prefer understandable solutions over unnecessary complexity",
+    tag: "Maintainability",
     description:
       "Clever code is difficult to debug, test, and hand off. The most resilient codebases are readable, boringly predictable, and easy to refactor when requirements evolve.",
   },
   {
     number: "04",
     title: "Validate generated code rather than assuming it is correct",
+    tag: "Quality Control",
     description:
       "AI outputs frequently hallucinate edge cases and API contracts. Engineering rigor demands thorough automated tests, type safety, manual sanity checking, and schema validation.",
   },
   {
     number: "05",
     title: "Build, test, deploy, observe, and improve",
+    tag: "Feedback Loops",
     description:
       "Software only proves its value when it encounters real-world users, messy network conditions, and edge cases. Short feedback loops beat prolonged theoretical design every time.",
   },
   {
     number: "06",
     title: "Document important decisions and learn from failure",
+    tag: "Knowledge Transfer",
     description:
       "Clear technical writing, architectural decision records (ADRs), and honest retrospectives are as important to long-term software health as the code itself.",
   },
@@ -66,14 +72,44 @@ export const selectedProjects = [
   {
     id: "loco",
     name: "LOCO",
-    badge: "Product in Development",
-    tagline: "City discovery platform for events, spaces, and local vibes",
+    badge: "In Active Development",
+    tagline: "City discovery platform for events, spaces, and local community vibes",
     summary:
       "A modern discovery web application designed to help people find events and things to do in their city without fragmented searches across multiple social channels and aggregators.",
     status: "Active Development",
     year: "2026",
     role: "Sole Product Architect & Full-Stack Developer",
     stack: ["Next.js (App Router)", "TypeScript", "MongoDB", "Mongoose", "Zustand", "Tailwind CSS"],
+    executiveSummary: {
+      theProblem:
+        "Finding current local events, niche markets, and community gatherings in a city requires bouncing between Instagram stories, ticketing apps, and outdated blog posts. Information is fragmented, stale, or buried behind algorithm feeds.",
+      theSolution:
+        "A lightweight, centralized city discovery platform organizing events by 'vibes' rather than rigid calendars, backed by a normalized database and instant reactive filtering.",
+      theImpact:
+        "Eliminates decision fatigue for users and provides local event curators with a frictionless, high-speed discovery interface.",
+    },
+    keyMetrics: [
+      { label: "Architecture", value: "Next.js 15 SSR" },
+      { label: "Data Store", value: "MongoDB Atlas" },
+      { label: "State Strategy", value: "Zustand Store" },
+    ],
+    architectureFlow: [
+      {
+        step: "01",
+        label: "Data Ingestion & Normalization",
+        detail: "Mongoose schema parses event dates, categories, and geographic coordinates into a standard format.",
+      },
+      {
+        step: "02",
+        label: "Serverless Connection Pooling",
+        detail: "Cached MongoDB connection helper in Next.js prevents connection exhaustion across serverless function invocations.",
+      },
+      {
+        step: "03",
+        label: "Reactive Client Cache",
+        detail: "Zustand client store synchronizes active filters and event results with zero redundant network re-fetches.",
+      },
+    ],
     highlights: [
       "Lightweight schema normalization pipeline in Mongoose for categorizing dynamic city events",
       "Unified server API route (/api/events) with efficient connection pooling for serverless environments",
@@ -113,8 +149,8 @@ export const selectedProjects = [
   {
     id: "siteshot",
     name: "SiteShot",
-    badge: "Working Toolset",
-    tagline: "AI-powered accessibility alt-text suite & multi-page website crawler",
+    badge: "Completed & Deployed",
+    tagline: "AI accessibility alt-text generation suite & multi-page website crawler",
     summary:
       "A dual-tool accessibility utility comprising an interactive Chrome Extension (Manifest V3) for in-page alt-text generation and an Electron desktop crawler for batch-analyzing entire websites with Google Gemini and local Ollama vision models.",
     status: "Completed & Deployed Tool",
@@ -127,6 +163,36 @@ export const selectedProjects = [
       "Google Gemini 1.5 Pro API",
       "Ollama Vision (Moondream/Llava)",
       "HTML5 / CSS3",
+    ],
+    executiveSummary: {
+      theProblem:
+        "Web accessibility audits require manual alt-text writing for hundreds of images. Content editors and agencies frequently skip this step or write generic placeholder text, leading to poor accessibility compliance and SEO penalties.",
+      theSolution:
+        "An automated desktop crawler and in-browser extension that scans live pages, captures images, and batches multi-modal AI requests to generate accurate, context-aware image descriptions.",
+      theImpact:
+        "Saved 85%+ of Google Gemini API quota through intelligent image batching, and reduced website image audit time from hours to minutes.",
+    },
+    keyMetrics: [
+      { label: "Quota Saved", value: "85%+" },
+      { label: "Crawl Scope", value: "Multi-page (Up to 15)" },
+      { label: "Inference Modes", value: "Cloud (Gemini) + Offline (Ollama)" },
+    ],
+    architectureFlow: [
+      {
+        step: "01",
+        label: "Headless Crawl & DOM Parsing",
+        detail: "Traverses internal subpages, preserves query params, and resolves lazy-loaded images (srcset, data-src).",
+      },
+      {
+        step: "02",
+        label: "Batch Packager & Token Bucket",
+        detail: "Bundles all crawled screenshots into a single multi-modal Gemini request, dodging API rate limits.",
+      },
+      {
+        step: "03",
+        label: "Interactive HTML Audit Report",
+        detail: "Generates an interactive review suite with progress tracking (green pending to red copied) and local caching.",
+      },
     ],
     highlights: [
       "Single-batch multi-modal Gemini API requests saving 85%+ of API quotas during multi-page crawls",
@@ -176,6 +242,36 @@ export const selectedProjects = [
     year: "2026",
     role: "Backend & Tooling Developer",
     stack: ["Python", "FastAPI", "python-docx", "WordprocessingML XML", "Streamlit", "Tailwind CSS", "Docker"],
+    executiveSummary: {
+      theProblem:
+        "In high-volume web agencies, copywriters draft site copy in JSON or spreadsheets, which is manually copied into Word documentation and CMS templates. This manual handoff causes frequent typos, dropped CTA buttons, and hours of wasted formatting labor.",
+      theSolution:
+        "A Python and FastAPI service that programmatically injects structured JSON data into WordprocessingML XML stencils while cycling dynamic CTA buttons.",
+      theImpact:
+        "Eliminated human copy-paste errors across agency website handoffs and saved an estimated 3+ hours of repetitive documentation work per project.",
+    },
+    keyMetrics: [
+      { label: "Engine", value: "WordprocessingML XML AST" },
+      { label: "Backend API", value: "FastAPI + Docker" },
+      { label: "Format Support", value: "DOCX Stencils + JSON Pre-flight" },
+    ],
+    architectureFlow: [
+      {
+        step: "01",
+        label: "JSON Pre-flight Validation",
+        detail: "FastAPI endpoint inspects incoming content.json for meta titles, H1 tags, and required page sections.",
+      },
+      {
+        step: "02",
+        label: "XML Run Manipulation",
+        detail: "python-docx clones paragraphs and preserves character runs (<w:r>) to prevent document corruption.",
+      },
+      {
+        step: "03",
+        label: "Dynamic Button Cycling",
+        detail: "Algorithms rotate through approved CTA button pools (lead vs in-text) to avoid repetitive anchor copy.",
+      },
+    ],
     highlights: [
       "Custom WordprocessingML schema manipulation preserving font hierarchies, bold spans, and formatting tables",
       "Dynamic CTA cycling algorithms that prevent repetitive button copy across generated page templates",
@@ -222,6 +318,36 @@ export const selectedProjects = [
     year: "2026",
     role: "Full-Stack Software Engineer & Designer",
     stack: ["React 19", "TanStack Start SSR", "TypeScript", "Tailwind CSS", "Supabase (PostgreSQL)", "Schema.org"],
+    executiveSummary: {
+      theProblem:
+        "Standard e-commerce platforms (Shopify, WooCommerce) charge expensive monthly recurring fees and force rigid payment checkouts that don't fit bespoke artisan businesses where customer discussions and custom engravings happen via WhatsApp.",
+      theSolution:
+        "A custom, lightweight full-stack storefront built with React 19 SSR and Supabase that compiles customized gift orders directly into WhatsApp merchant chats with zero ongoing subscription costs.",
+      theImpact:
+        "Achieved 98+ Google Lighthouse scores, sub-second edge page loading, and active commercial order processing.",
+    },
+    keyMetrics: [
+      { label: "Frontend", value: "React 19 + TanStack Start" },
+      { label: "Database", value: "Supabase (PostgreSQL)" },
+      { label: "Lighthouse Score", value: "98/100 Performance" },
+    ],
+    architectureFlow: [
+      {
+        step: "01",
+        label: "Edge Server-Side Rendering",
+        detail: "React 19 server loaders fetch catalog data at the network edge with zero cumulative layout shift.",
+      },
+      {
+        step: "02",
+        label: "Relational DB & RLS Security",
+        detail: "Supabase PostgreSQL manages product inventory with Row Level Security protecting admin mutations.",
+      },
+      {
+        step: "03",
+        label: "WhatsApp Order Engine",
+        detail: "Compiles personalized selections, customer notes, and total pricing directly into an encrypted WhatsApp link.",
+      },
+    ],
     highlights: [
       "Full-stack SSR architecture delivering sub-second initial page loads and zero layout shift",
       "Zero-friction checkout flow generating pre-formatted WhatsApp orders for direct merchant communication",
@@ -269,6 +395,36 @@ export const selectedProjects = [
     year: "2025",
     role: "Data Analyst & Dashboard Designer",
     stack: ["Power BI", "DAX", "Power Query (M)", "Data Modeling", "Excel"],
+    executiveSummary: {
+      theProblem:
+        "Raw transactional sales spreadsheets are too noisy and scattered for executives to identify margin leakages, regional variances, and customer churn trends.",
+      theSolution:
+        "A relational star schema paired with dynamic DAX time-intelligence formulas to present immediate commercial answers to leadership.",
+      theImpact:
+        "Demonstrated clear commercial analytical capabilities, transforming raw numbers into decision-ready visual models.",
+    },
+    keyMetrics: [
+      { label: "Data Modeling", value: "Star Schema (Fact + 4 Dim)" },
+      { label: "Formulas", value: "Advanced DAX Time Intelligence" },
+      { label: "ETL Tool", value: "Power Query M Scripting" },
+    ],
+    architectureFlow: [
+      {
+        step: "01",
+        label: "ETL Cleansing & Type Coercion",
+        detail: "Power Query M scripts normalize disjointed multi-year sales logs and reconcile missing date hierarchies.",
+      },
+      {
+        step: "02",
+        label: "Star-Schema Relational Model",
+        detail: "Connects 1 central transaction fact table to 4 dimensions (Store, Customer, Product, Date) with 1-to-many joins.",
+      },
+      {
+        step: "03",
+        label: "Executive Cross-Filtering View",
+        detail: "Calculates YoY revenue growth, rolling averages, and margin benchmarks with sub-second visual updates.",
+      },
+    ],
     highlights: [
       "Star-schema relational model connecting sales transactions, store locations, and product hierarchies",
       "Advanced DAX measures for Year-over-Year (YoY) revenue growth, moving averages, and margin tracking",
@@ -315,6 +471,36 @@ export const selectedProjects = [
     year: "2025",
     role: "Product Scoping & UI Designer",
     stack: ["Product Scoping", "User Flow Architecture", "Figma", "Interactive Prototyping"],
+    executiveSummary: {
+      theProblem:
+        "Corporate professionals in high-density tech corridors spend 2-3 hours daily in stressful, uncoordinated single-occupancy commutes while office cab systems remain rigid and opaque.",
+      theSolution:
+        "An intelligent mobile product prototype pairing coworkers dynamically based on office shifts, route proximity, and verified company credentials.",
+      theImpact:
+        "Demonstrated end-to-end product scoping, user journey mapping, and mobile UI wireframing grounded in user research.",
+    },
+    keyMetrics: [
+      { label: "Deliverable", value: "High-Fidelity Figma Prototype" },
+      { label: "Research Basis", value: "Commute user journey interviews" },
+      { label: "Core Feature", value: "Dynamic route grouping & trust badges" },
+    ],
+    architectureFlow: [
+      {
+        step: "01",
+        label: "Problem Framing & Interviews",
+        detail: "Mapped morning commute bottlenecks and identified cognitive friction during peak rush hours.",
+      },
+      {
+        step: "02",
+        label: "User State Architecture",
+        detail: "Designed state transition diagrams for scheduling, pickup confirmation, and cancellation fallback.",
+      },
+      {
+        step: "03",
+        label: "Interactive Mobile Wireframes",
+        detail: "Prototyped clean, high-contrast UI screens focusing on driver-rider alerts and verified trust credentials.",
+      },
+    ],
     highlights: [
       "User research into daily corporate commute bottlenecks in Delhi-NCR",
       "Dynamic route grouping concept pairing colleagues by shift timing and geographic clusters",
@@ -441,6 +627,8 @@ export const technicalNotes = [
     category: "Software Engineering & AI",
     summary:
       "When code generation becomes near-instantaneous, the primary constraint shifts from typing syntax to understanding systems, designing strict schemas, and validating edge cases.",
+    executiveTakeaway:
+      "AI tools amplify productive output by 3-5x, but code without human architectural validation creates technical debt. True engineering value lies in defining contracts, boundary testing, and schema enforcement.",
     content: [
       "In the past year, using coding agents and LLM APIs has fundamentally altered my development rhythm. But contrary to common hype, it has not made software engineering 'effortless.' In fact, it has made certain engineering disciplines far more critical.",
       "When an agent can output 200 lines of React or Python in five seconds, your bottleneck is no longer how fast you type. Your bottleneck is your ability to read, comprehend, and rigorously verify whether those 200 lines respect system boundaries, avoid race conditions, and correctly handle failure modes.",
@@ -460,6 +648,8 @@ export const technicalNotes = [
     category: "Developer Tooling",
     summary:
       "How WordprocessingML XML manipulation and lightweight FastAPI services solved the persistent copy discrepancy problem in fast-paced web agencies.",
+    executiveTakeaway:
+      "Repetitive copy-paste errors across multi-page client handoffs cost agencies hours of manual QA. Automating XML document generation directly from structured data eliminated human errors on day one.",
     content: [
       "In any high-volume web development agency, there is an invisible tax paid on copy-paste errors. A copywriter drafts content in structured documents. A developer pastes it into a CMS or HTML template. A QA tester discovers that three buttons have broken links, a heading was dropped, and a pricing tier is missing.",
       "Building ContentGuard was born out of direct frustration with this manual tax. I wanted a tool that would accept a single source of truth—a clean JSON specification—and automatically populate Word stencils without human interference.",
@@ -476,6 +666,8 @@ export const technicalNotes = [
     category: "Full-Stack Architecture",
     summary:
       "Trade-offs in choosing TanStack Start, React 19, Supabase, and WhatsApp checkout for an artisan keepsake brand over Shopify.",
+    executiveTakeaway:
+      "Bespoke products require conversational checkout flows rather than rigid card processors. Building a custom React 19 SSR storefront saved the merchant recurring platform fees while delivering instant edge page loads.",
     content: [
       "When building the storefront for Thaddeus Creates (thaddeuscreates.shop), the initial impulse from friends was 'just set up a Shopify store.' But for bespoke artisan keepsakes, traditional e-commerce paradigms break down quickly.",
       "Every product is custom-made. Customers need to discuss engravings, upload custom photos, and verify delivery dates before paying. Standard credit card checkouts create friction for this specific audience.",
