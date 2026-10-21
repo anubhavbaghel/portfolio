@@ -1,39 +1,88 @@
-import React from "react";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import MailIcon from '@mui/icons-material/Mail'; 
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Link } from "react-router-dom";
+import { personalInfo } from "../data/portfolioData";
+import { ArrowUp, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./Icons";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 mt-20 z-10 relative">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        {/* Brand / Tagline */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h2 className="text-2xl font-bold tracking-wider text-white mb-2 cursor-pointer hover:text-teal-400 transition-colors">
-            Anubhav<span className="text-teal-500">.</span>
-          </h2>
-          <p className="text-gray-400 text-sm max-w-sm">
-            Turning ideas into modern, responsive, and user-friendly web experiences.
-          </p>
+    <footer className="py-16 bg-paper-100 text-ink-700 border-t border-paper-300">
+      <div className="max-w-6xl mx-auto px-6 space-y-12">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pb-8 border-b border-paper-200">
+          <div>
+            <Link to="/" className="text-xl font-bold text-ink-900 tracking-tight hover:text-terracotta transition-colors">
+              {personalInfo.name}
+            </Link>
+            <p className="text-xs text-ink-500 font-mono mt-1">
+              Building useful software, thoughtfully.
+            </p>
+          </div>
+
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-ink-600 hover:text-terracotta transition-colors cursor-pointer"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
-        
-        {/* Social Links */}
-        <div className="flex gap-6 text-gray-400">
-          <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="Email">
-            <MailIcon fontSize="medium" />
-          </a>
-          <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
-            <LinkedInIcon fontSize="medium" />
-          </a>
-          <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
-            <GitHubIcon fontSize="medium" />
-          </a>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-xs font-mono">
+          <div className="space-y-2">
+            <span className="text-ink-400 block uppercase tracking-wider">Navigation</span>
+            <ul className="space-y-1.5 text-ink-700">
+              <li><Link to="/work" className="hover:text-terracotta">Selected Work</Link></li>
+              <li><Link to="/about" className="hover:text-terracotta">About &amp; Trajectory</Link></li>
+              <li><Link to="/notes" className="hover:text-terracotta">Engineering Notes</Link></li>
+              <li><Link to="/resume" className="hover:text-terracotta">Résumé</Link></li>
+              <li><Link to="/contact" className="hover:text-terracotta">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div className="space-y-2">
+            <span className="text-ink-400 block uppercase tracking-wider">Online</span>
+            <ul className="space-y-1.5 text-ink-700">
+              <li>
+                <a href={personalInfo.contacts.github} target="_blank" rel="noopener noreferrer" className="hover:text-terracotta flex items-center gap-1.5">
+                  <GithubIcon className="w-3 h-3 text-ink-500" />
+                  <span>github.com/anubhavbaghel</span>
+                </a>
+              </li>
+              <li>
+                <a href={personalInfo.contacts.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-terracotta flex items-center gap-1.5">
+                  <LinkedinIcon className="w-3 h-3 text-ink-500" />
+                  <span>linkedin.com/in/anubhav-baghel</span>
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${personalInfo.contacts.email}`} className="hover:text-terracotta flex items-center gap-1.5">
+                  <Mail className="w-3 h-3 text-ink-500" />
+                  <span>{personalInfo.contacts.email}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-2">
+            <span className="text-ink-400 block uppercase tracking-wider">Colophon</span>
+            <p className="text-ink-600 leading-relaxed font-sans text-xs">
+              Designed with an editorial typography-led aesthetic. Built with React 19, Tailwind CSS, Lucide icons, and React Router.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <span className="text-ink-400 block uppercase tracking-wider">Copyright</span>
+            <p className="text-ink-600 font-sans text-xs">
+              &copy; {new Date().getFullYear()} Anubhav Baghel. All rights reserved.
+            </p>
+            <p className="text-ink-500 text-[11px] font-mono">
+              New Delhi, India &bull; IST (UTC+5:30)
+            </p>
+          </div>
         </div>
-      </div>
-      
-      {/* Copyright */}
-      <div className="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-white/5 flex flex-col items-center text-sm text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Anubhav. All rights reserved.</p>
       </div>
     </footer>
   );
