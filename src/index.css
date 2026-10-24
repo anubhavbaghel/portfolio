@@ -96,7 +96,7 @@ h1, h2, h3, h4, .font-display {
 }
 
 code, pre, kbd, .font-mono {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Subtle architectural drafting background grid */
