@@ -40,7 +40,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ["'Space Grotesk'", "sans-serif"],
+        display: ["'Raleway'", "sans-serif"],
         sans: ["'Plus Jakarta Sans'", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },
