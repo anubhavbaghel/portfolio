@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className="space-y-0">
       {/* Editorial & Clear Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-paper-300 bg-white dark:bg-black">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-paper-300 bg-transparent">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           {/* Status & Telemetry */}
           <div className="flex flex-wrap items-center gap-3 mb-6">

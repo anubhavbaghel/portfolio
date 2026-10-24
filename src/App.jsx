@@ -3,6 +3,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import CircuitBackground from "./components/CircuitBackground";
 
 import HomePage from "./pages/HomePage";
 import WorkPage from "./pages/WorkPage";
@@ -19,12 +20,15 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col bg-white dark:bg-black text-ink-900 selection:bg-zinc-200 dark:selection:bg-zinc-800 selection:text-ink-900 dark:selection:text-white antialiased transition-colors duration-200">
+        <div className="relative min-h-screen flex flex-col bg-white dark:bg-black text-ink-900 selection:bg-zinc-200 dark:selection:bg-zinc-800 selection:text-ink-900 dark:selection:text-white antialiased transition-colors duration-200">
+          {/* Iron Man JARVIS Futuristic Copper Circuit & Network Canvas */}
+          <CircuitBackground />
+
           {/* Persistent Editorial Header */}
           <Navigation />
 
           {/* Dedicated Route Views */}
-          <main className="flex-1">
+          <main className="flex-1 relative z-10">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/work" element={<WorkPage />} />
