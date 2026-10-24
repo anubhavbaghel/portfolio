@@ -12,7 +12,7 @@ export const personalInfo = {
   },
   bio: [
     "I am a software developer working at the intersection of engineering fundamentals, AI-assisted workflows, and practical product thinking. I build web applications, internal developer tools, and systems that solve real problems.",
-    "My background combines hands-on web development across 60+ production client websites with a disciplined focus on software engineering: data structures, relational and document databases, modern full-stack architectures (React 19, Next.js, TypeScript), and AI model APIs.",
+    "My background combines hands-on engineering across full-stack applications, desktop utilities, and automated tooling with a disciplined grounding in computer science fundamentals: data structures, relational and document databases, modern full-stack SSR architectures (React 19, Next.js, TypeScript), and AI model APIs.",
     "I view modern AI not as a magic substitute for engineering, but as a high-leverage amplifier. My focus remains on system correctness, validation, boundary testing, clean code, and shipping software that users can genuinely rely on.",
   ],
   contacts: {
@@ -545,31 +545,31 @@ export const webEngineeringTrack = {
   workplaceExperience: [
     {
       company: "Adaan Digital Solutions",
-      role: "SaaS Web Builder & WordPress Developer Intern",
+      role: "Frontend Developer & Web Engineering Intern",
       period: "June 2026 – Present",
       location: "New Delhi, India",
       summary:
-        "Active contributor to 60+ client websites, executing end-to-end SaaS web building and WordPress workflows across diverse client industries.",
+        "Engineered responsive client interfaces, reusable frontend components, and internal document automation tooling.",
       responsibilities: [
-        "Translate client UI/UX designs into pixel-perfect, accessible pages across desktop, tablet, and mobile viewports.",
-        "Maintain production websites on WordPress and Wix CMS, resolving layout defects and functional issues using browser developer tools.",
-        "Perform cross-browser QA testing, technical SEO audit remediation, and page speed optimization.",
+        "Architect and implement accessible, responsive web application interfaces and frontend components using modern JavaScript, HTML5, and CSS3.",
+        "Built internal tooling and automated content transformation scripts to eliminate manual formatting bottlenecks.",
+        "Perform cross-browser performance profiling, accessibility (a11y) audits, and Core Web Vitals optimization.",
       ],
-      skills: ["WordPress", "Wix CMS", "Responsive Web Design", "HTML5", "CSS3", "JavaScript", "SEO", "QA Testing"],
+      skills: ["JavaScript (ES6+)", "Frontend Engineering", "Responsive UI", "HTML5/CSS3", "Git", "QA & Accessibility", "Performance Optimization"],
     },
     {
       company: "DI Infotech Leaders Pvt. Ltd.",
-      role: "WordPress Intern",
+      role: "Frontend Development Intern",
       period: "Jan 2026 – May 2026",
       location: "New Delhi, India",
       summary:
-        "Built and delivered 10+ client websites converting designer wireframes into fast, responsive web interfaces.",
+        "Developed frontend interfaces, configured server deployment environments, and integrated API components.",
       responsibilities: [
-        "Built and customized WordPress websites using Elementor and Divi, writing custom HTML/CSS/JS components when builders fell short.",
-        "Configured SMTP email delivery, contact form workflows, and Core Web Vitals optimizations.",
-        "Managed cPanel server environments, database backups, domain DNS configurations, and live deployments.",
+        "Built responsive web interfaces and wrote custom JavaScript/CSS components for specialized client requirements.",
+        "Configured SMTP email delivery pipelines, form validation endpoints, and hosting server setups.",
+        "Managed database backups, domain DNS configurations, and continuous delivery workflows.",
       ],
-      skills: ["WordPress", "Elementor", "Divi", "Shopify", "cPanel", "DNS & Hosting", "Core Web Vitals", "Git"],
+      skills: ["JavaScript", "Frontend Development", "DNS & Hosting", "API Integration", "Core Web Vitals", "Git"],
     },
   ],
   selectedClientBuilds: [

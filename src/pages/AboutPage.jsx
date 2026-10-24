@@ -6,9 +6,9 @@ export default function AboutPage() {
   const trajectory = [
     {
       period: "2023 — 2024",
-      milestone: "High-Velocity Production Web Delivery",
+      milestone: "Frontend Architecture & Internal Tooling",
       takeaway:
-        "Built and maintained 60+ production client websites across agency roles at Adaan Digital and DI Infotech. Mastered tight deadlines, client communication, cross-browser layout reliability, and web performance.",
+        "Engineered production client-facing interfaces, custom component libraries, and internal automation tools. Mastered cross-browser layout reliability, client communication, and performance optimization.",
     },
     {
       period: "2024 — Present",
@@ -106,7 +106,7 @@ export default function AboutPage() {
           {/* Narrative Story (Concise & Directional) */}
           <div className="lg:col-span-8 space-y-5 text-base sm:text-lg text-ink-800 leading-relaxed font-sans">
             <p>
-              My journey started in production website development. Across agency roles at Adaan Digital Solutions and DI Infotech, I took direct responsibility for <strong>60+ client websites</strong> across WordPress, Wix, Shopify, and custom stacks. This fast-paced environment taught me client empathy, speed, and real-world cross-browser debugging under tight deadlines.
+              I am a software developer working at the intersection of computer science fundamentals, modern full-stack SSR architectures, and AI-accelerated workflows. I specialize in building web applications, internal developer tools, and data systems that solve genuine operational problems.
             </p>
 
             <p>

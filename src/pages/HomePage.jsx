@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { personalInfo, selectedProjects, technicalNotes } from "../data/portfolioData";
-import { ArrowRight, ArrowUpRight, BookOpen, Globe } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Layers } from "lucide-react";
 import projectImages from "../assets/projectImages";
 import { LocoPreview, SiteShotPreview, ContentGuardPreview, ProjectScreenshotPreview } from "../components/ProjectPreviews";
 
@@ -45,11 +45,11 @@ export default function HomePage() {
               </a>
 
               <Link
-                to="/work#web-track"
+                to="/work"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded bg-paper-50 hover:bg-paper-200 border border-paper-300 text-ink-800 transition-colors text-sm font-medium shadow-subtle"
               >
-                <Globe className="w-4 h-4 text-ink-600" />
-                <span>60+ Deployed Sites Track</span>
+                <Layers className="w-4 h-4 text-ink-600" />
+                <span>All Software Systems</span>
               </Link>
 
               <Link
@@ -65,13 +65,13 @@ export default function HomePage() {
           <div className="mt-16 pt-8 border-t border-paper-300 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             <div className="border-l-2 border-ink-900 dark:border-white pl-4 space-y-1">
               <span className="font-mono text-[11px] text-ink-500 uppercase tracking-wider block font-bold">
-                01 / Proven Execution
+                01 / Systems &amp; Tooling
               </span>
               <span className="font-bold text-ink-900 text-lg font-display block">
-                60+ Delivered Websites
+                Production Software
               </span>
               <p className="text-xs text-ink-600 leading-relaxed font-sans">
-                Turnkey client platforms shipped across fast-paced agency environments with high reliability.
+                Full-stack web applications, desktop crawlers, and automated XML document engines.
               </p>
             </div>
 
@@ -248,73 +248,6 @@ export default function HomePage() {
                 </article>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Visual Client Work Gallery (60+ Sites Track Record) */}
-      <section className="py-24 border-b border-paper-300">
-        <div className="max-w-6xl mx-auto px-6 space-y-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-paper-300 pb-6 gap-4">
-            <div>
-              <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
-                Production Track Record
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 font-display">
-                60+ Deployed Client Websites
-              </h2>
-            </div>
-            <p className="text-sm text-ink-600 max-w-md font-sans">
-              Delivered across agency roles at Adaan Digital Solutions and DI Infotech. High-speed turnkey delivery, bespoke frontend craft, and dependable hosting.
-            </p>
-          </div>
-
-          {/* Screenshot Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ProjectScreenshotPreview
-              imageSrc={projectImages.wdc}
-              altText="WDC Global — International Freight Platform"
-              link="https://wdc-design-2.vercel.app/"
-            />
-            <ProjectScreenshotPreview
-              imageSrc={projectImages.flydheera}
-              altText="Flydheera Aviation & Travel Platform"
-              link="https://flydheera.com/"
-            />
-            <ProjectScreenshotPreview
-              imageSrc={projectImages.purava}
-              altText="Purava Luxury Bath & Interiors"
-              link="https://puravabath.com/"
-            />
-            <ProjectScreenshotPreview
-              imageSrc={projectImages.divyajewellers}
-              altText="Divya Jewellers E-Commerce Storefront"
-              link="https://divyajewellers.co.in/"
-            />
-            <ProjectScreenshotPreview
-              imageSrc={projectImages.dranilkumarsharma}
-              altText="Dr. Anil Kumar Sharma Healthcare Portal"
-              link="https://dranilkumarsharma.com/"
-            />
-            <ProjectScreenshotPreview
-              imageSrc={projectImages.sewaexpo}
-              altText="SewaExpo Global Conference Infrastructure"
-              link="https://www.sewaexpo.com/"
-            />
-          </div>
-
-          <div className="p-6 bg-paper-50 rounded-xl border border-paper-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <h4 className="font-bold text-ink-900 font-display text-base">Explore the Complete Production Track</h4>
-              <p className="text-xs text-ink-600 font-sans">Includes agency responsibilities, CMS stacks (WordPress, Shopify, Wix), and custom implementations.</p>
-            </div>
-            <Link
-              to="/work#web-track"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-ink-800 text-paper-50 rounded text-xs font-mono transition-colors shrink-0"
-            >
-              <span>View Full Web Track</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
         </div>
       </section>

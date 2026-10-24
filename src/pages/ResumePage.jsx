@@ -74,7 +74,7 @@ export default function ResumePage() {
               Professional Summary
             </h3>
             <p className="text-sm text-ink-700 leading-relaxed font-sans">
-              Software and product developer experienced in building production web applications, internal developer tools, and client platforms. Proven delivery track record across <strong>60+ client websites</strong> with a disciplined progression into computer science fundamentals (BCA), full-stack SSR architectures (React 19, Next.js, TypeScript), and AI-assisted engineering with schema-validated outputs.
+              Software and product developer experienced in building production full-stack web applications, internal developer tools, and desktop utilities. Strong grounding in computer science fundamentals (BCA), full-stack SSR architectures (React 19, Next.js, TypeScript), relational &amp; document databases, and AI-assisted engineering with schema-validated outputs.
             </p>
           </div>
 
