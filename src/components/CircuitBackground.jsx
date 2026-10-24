@@ -1,20 +1,22 @@
 import { useEffect, useRef } from "react";
 import { useTheme } from "../context/ThemeContext";
+import galaxyBg from "../assets/galaxy.jpg";
 
 /**
- * Iron Man J.A.R.V.I.S. Cinematic HUD with Blurred Orbital Space View
+ * Iron Man J.A.R.V.I.S. Cinematic HUD with Blurred Space Galaxy & Stars
  *
  * Layered Experience:
- * 1. Deep Space View: Deep cosmic void with blurred copper and sapphire nebulae clouds,
- *    curved planetary limb scatter, and soft bokeh stellar constellations.
- * 2. 10-Coil Arc Reactor Core: Mark-VI chest Arc Reactor with 10 copper electromagnets
+ * 1. Deep Space Galaxy: Authentic NASA deep-space spiral galaxy with cosmic dust clouds
+ *    and nebula core, softly blurred with CSS GPU compositor and paired with cosmic vignette.
+ * 2. Twinkling Stellar Field: Twinkling distant stars and warm copper stellar beacons.
+ * 3. 10-Coil Arc Reactor Core: Mark-VI chest Arc Reactor with 10 copper electromagnets
  *    breathing at 70 BPM with counter-rotating telemetry arcs.
- * 3. Moving High-Speed Copper Bus Highways: Coordinated parallel traces with 45° chamfers
+ * 4. Moving High-Speed Copper Bus Highways: Coordinated parallel traces with 45° chamfers
  *    and serial data packet bursts (`• • •`) with glowing comet trails.
- * 4. Interactive Holographic Target Reticle: Mouse spring-lagged crosshair with live
+ * 5. Interactive Holographic Target Reticle: Mouse spring-lagged crosshair with live
  *    telemetry coordinates and click shockwave energy ripples.
- * 5. High Performance: Complex static blueprints and space horizon pre-cached on an
- *    offscreen buffer; cosmic nebulae rendered via GPU-accelerated CSS compositor.
+ * 6. High Performance: Complex static blueprints and space horizon pre-cached on an
+ *    offscreen buffer; cosmic galaxy rendered via GPU-accelerated CSS compositor.
  */
 export default function CircuitBackground() {
   const canvasRef = useRef(null);
@@ -140,16 +142,17 @@ export default function CircuitBackground() {
         : "rgba(180, 83, 9, 0.35)";
 
       // --- A. Distant Blurred Cosmic Stars & Stellar Field ---
-      const starCount = isDark ? 65 : 25;
+      const starCount = isDark ? 95 : 25;
       for (let s = 0; s < starCount; s++) {
         distantStars.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          radius: Math.random() * 1.6 + 0.6,
-          baseAlpha: Math.random() * 0.5 + 0.25,
-          twinkleSpeed: Math.random() * 1.2 + 0.5,
+          radius: Math.random() * 1.8 + 0.5,
+          baseAlpha: Math.random() * 0.55 + 0.25,
+          twinkleSpeed: Math.random() * 1.4 + 0.6,
           twinklePhase: Math.random() * Math.PI * 2,
-          isCopperStar: Math.random() > 0.55,
+          isCopperStar: Math.random() > 0.45,
+          isBrightCluster: Math.random() > 0.88,
         });
       }
 
@@ -511,7 +514,7 @@ export default function CircuitBackground() {
       const coilColor = isDark ? "rgba(217, 119, 6, 0.55)" : "rgba(180, 83, 9, 0.4)";
       const coilGlow = isDark ? "rgba(251, 191, 36, 0.75)" : "rgba(194, 65, 12, 0.55)";
 
-      // 2. Animate Soft Twinkling Bokeh Stars (Distant Space Depth)
+      // 2. Animate Soft Twinkling Bokeh Stars (Distant Space Galaxy Depth)
       if (!prefersReducedMotion && isDark) {
         for (let s = 0; s < distantStars.length; s++) {
           const star = distantStars[s];
@@ -520,10 +523,20 @@ export default function CircuitBackground() {
 
           ctx.fillStyle = star.isCopperStar
             ? `rgba(251, 191, 36, ${currentAlpha})`
+            : star.isBrightCluster
+            ? `rgba(186, 230, 253, ${currentAlpha * 0.95})`
             : `rgba(224, 231, 255, ${currentAlpha * 0.85})`;
           ctx.beginPath();
           ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
           ctx.fill();
+
+          // Subtle corona glow for brighter stars
+          if (star.isBrightCluster) {
+            ctx.fillStyle = `rgba(251, 191, 36, ${currentAlpha * 0.25})`;
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius * 2.8, 0, Math.PI * 2);
+            ctx.fill();
+          }
         }
       }
 
@@ -773,46 +786,55 @@ export default function CircuitBackground() {
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
       aria-hidden="true"
     >
-      {/* Layer 1: Blurred Orbital Space View & Cosmic Nebulae (Zero-overhead GPU compositor) */}
+      {/* Layer 1: Authentic Blurred Space Galaxy & Cosmic Nebulae (Zero-overhead GPU compositor) */}
       <div className="absolute inset-0 transition-opacity duration-700 pointer-events-none">
         {/* Deep space void base */}
         <div className="absolute inset-0 bg-[#ffffff] dark:bg-[#020206] transition-colors duration-500" />
 
-        {/* Dark Mode Cosmos: Blurred Space Nebulae */}
+        {/* Dark Mode: Authentic Blurred NASA Galaxy Photography & Cosmic Dust */}
         <div className="hidden dark:block absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Warm Copper & Amber Stellar Nebula (Top Right near Arc Reactor) */}
+          {/* Blurred Space Galaxy with GPU compositor transform */}
+          <img
+            src={galaxyBg}
+            alt=""
+            loading="eager"
+            aria-hidden="true"
+            className="w-full h-full object-cover opacity-35 filter blur-[26px] scale-105 pointer-events-none select-none transition-opacity duration-1000"
+          />
+
+          {/* Deep Space Vignette: Fades galaxy edges smoothly into the deep obsidian void */}
           <div
-            className="absolute -top-36 -right-36 w-[680px] h-[680px] rounded-full opacity-40 filter blur-[95px] pointer-events-none"
+            className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(217,119,6,0.38) 0%, rgba(180,83,9,0.18) 40%, rgba(120,53,15,0.06) 70%, transparent 100%)",
+                "radial-gradient(circle at 50% 45%, rgba(2, 2, 6, 0.15) 0%, rgba(2, 2, 6, 0.55) 60%, rgba(2, 2, 6, 0.92) 100%)",
+            }}
+          />
+
+          {/* Warm Copper & Amber Stellar Nebula (Top Right near Arc Reactor) */}
+          <div
+            className="absolute -top-36 -right-36 w-[680px] h-[680px] rounded-full opacity-35 filter blur-[95px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(217,119,6,0.35) 0%, rgba(180,83,9,0.16) 40%, rgba(120,53,15,0.04) 70%, transparent 100%)",
             }}
           />
 
           {/* Deep Cosmic Void & Celestial Indigo Starlight (Bottom Left) */}
           <div
-            className="absolute -bottom-48 -left-48 w-[780px] h-[780px] rounded-full opacity-35 filter blur-[115px] pointer-events-none"
+            className="absolute -bottom-48 -left-48 w-[780px] h-[780px] rounded-full opacity-30 filter blur-[115px] pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(30,27,75,0.48) 0%, rgba(15,23,42,0.28) 45%, rgba(2,6,23,0.1) 70%, transparent 100%)",
+                "radial-gradient(circle, rgba(30,27,75,0.42) 0%, rgba(15,23,42,0.22) 45%, rgba(2,6,23,0.08) 70%, transparent 100%)",
             }}
           />
 
           {/* Center Orbital Atmospheric Scatter (Horizon Core) */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] rounded-full opacity-25 filter blur-[105px] pointer-events-none"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] rounded-full opacity-20 filter blur-[105px] pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(146,64,14,0.22) 0%, rgba(15,23,42,0.12) 50%, transparent 80%)",
-            }}
-          />
-
-          {/* Faint distant stellar dust band across top-left */}
-          <div
-            className="absolute top-12 left-1/4 w-[500px] h-[250px] rotate-[-25deg] opacity-20 filter blur-[80px] pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(245,158,11,0.2) 0%, rgba(180,83,9,0.08) 50%, transparent 80%)",
+                "radial-gradient(ellipse at center, rgba(146,64,14,0.18) 0%, rgba(15,23,42,0.08) 50%, transparent 80%)",
             }}
           />
         </div>
