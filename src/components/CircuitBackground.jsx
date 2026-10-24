@@ -2,14 +2,19 @@ import { useEffect, useRef } from "react";
 import { useTheme } from "../context/ThemeContext";
 
 /**
- * Iron Man J.A.R.V.I.S. Cinematic HUD & Copper Circuit Network
+ * Iron Man J.A.R.V.I.S. Cinematic HUD & Copper Neural Circuit System (v2.0)
  *
- * Engineered for maximum visual impact AND 60fps zero-lag performance:
- * - Dual-layer architecture: Static schematic (hexagonal lattice, parallel bus highways,
- *   IC terminals, corner calipers, and grid ticks) is pre-rendered ONCE onto an offscreen canvas.
- * - Dynamic 60fps animation layer: Only renders moving electrical pulses, the rotating
- *   Arc Reactor telemetry ring, and cursor holographic energy glow.
- * - Tab visibility listener pauses animation when the tab is blurred/hidden.
+ * Cinematic Upgrades:
+ * 1. Iconic 10-Coil Arc Reactor Core: Stylized 10-electromagnet coil ring with
+ *    pulsing breathing core and counter-rotating telemetry arcs.
+ * 2. Serial Data Packet Bursts & Branching: Packets travel in rapid sequence
+ *    bursts (`• • •`) with glowing comet trails, splitting at junctions.
+ * 3. Interactive Holographic Target Reticle: Smooth spring-lagged cursor crosshair
+ *    with corner brackets and live coordinate telemetry.
+ * 4. Click Shockwave Energy Surge: Clicking anywhere emits an expanding electromagnetic
+ *    copper shockwave that overcharges and illuminates all nearby circuits.
+ * 5. Multi-Layer Offscreen Caching: Static blueprints (hex mesh, bus lines, IC headers,
+ *    corner calipers, technical specs) pre-rendered once for locked 60 FPS zero lag.
  */
 export default function CircuitBackground() {
   const canvasRef = useRef(null);
@@ -30,18 +35,23 @@ export default function CircuitBackground() {
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Offscreen canvas for zero-overhead static background rendering
-    let offscreenCanvas = document.createElement("canvas");
-    let offscreenCtx = offscreenCanvas.getContext("2d");
+    // Dual-layer: Offscreen canvas for zero-overhead static background rendering
+    const offscreenCanvas = document.createElement("canvas");
+    const offscreenCtx = offscreenCanvas.getContext("2d");
 
-    // Interactive mouse coordinates with smooth easing
+    // Interactive mouse state with spring-lag physics (Tony Stark HUD tracking)
     const mouse = {
       x: -2000,
       y: -2000,
       targetX: -2000,
       targetY: -2000,
       active: false,
+      reticleX: -2000,
+      reticleY: -2000,
     };
+
+    // Click shockwave ring ripples
+    const shockwaves = [];
 
     const handleMouseMove = (e) => {
       mouse.targetX = e.clientX;
@@ -55,8 +65,22 @@ export default function CircuitBackground() {
       mouse.active = false;
     };
 
+    const handleClick = (e) => {
+      if (shockwaves.length < 4) {
+        shockwaves.push({
+          x: e.clientX,
+          y: e.clientY,
+          radius: 10,
+          maxRadius: Math.min(width, height) * 0.45,
+          alpha: 0.85,
+          speed: 420, // px per sec
+        });
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("click", handleClick, { passive: true });
 
     // Tab visibility handling (prevents background GPU drain)
     const handleVisibilityChange = () => {
@@ -69,21 +93,26 @@ export default function CircuitBackground() {
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     // Circuit Data Structures
-    let pulseHighwayTraces = [];
-    let movingPulses = [];
+    let traces = [];
+    let movingPackets = [];
     let terminalFlares = [];
 
-    // Grid sizing
-    const GRID_SIZE = 56;
+    const GRID_SIZE = 52;
     const snap = (v) => Math.round(v / GRID_SIZE) * GRID_SIZE;
+
+    // Arc Reactor Core position (anchored organically on the right side)
+    let arcCore = { x: 0, y: 0, radius: 46 };
 
     // Build the high-tech J.A.R.V.I.S. Schematics & Parallel Bus Highways
     const generateSchematics = (w, h) => {
-      pulseHighwayTraces = [];
-      movingPulses = [];
+      traces = [];
+      movingPackets = [];
       terminalFlares = [];
 
-      // 1. Offscreen Canvas Sizing
+      arcCore.x = snap(w * 0.86);
+      arcCore.y = snap(h * 0.28);
+
+      // 1. Configure Offscreen Buffer
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       offscreenCanvas.width = Math.floor(w * dpr);
       offscreenCanvas.height = Math.floor(h * dpr);
@@ -96,8 +125,8 @@ export default function CircuitBackground() {
         ? "rgba(217, 119, 6, 0.05)"
         : "rgba(180, 83, 9, 0.035)";
       const busTraceBase = isDark
-        ? "rgba(194, 98, 38, 0.16)"
-        : "rgba(180, 83, 9, 0.10)";
+        ? "rgba(194, 98, 38, 0.15)"
+        : "rgba(180, 83, 9, 0.09)";
       const busTraceAccent = isDark
         ? "rgba(245, 158, 11, 0.28)"
         : "rgba(194, 65, 12, 0.18)";
@@ -108,8 +137,8 @@ export default function CircuitBackground() {
         ? "rgba(245, 158, 11, 0.45)"
         : "rgba(180, 83, 9, 0.35)";
 
-      // --- A. Hexagonal Matrix Clusters (Stark Armor Lattice) ---
-      const hexRadius = 18;
+      // --- A. Hexagonal Matrix Clusters (Stark Armor Nanotech Lattice) ---
+      const hexRadius = 16;
       const hexW = Math.sqrt(3) * hexRadius;
       const hexH = 2 * hexRadius * 0.75;
       const drawHex = (cx, cy) => {
@@ -128,21 +157,19 @@ export default function CircuitBackground() {
       offscreenCtx.strokeStyle = hexColor;
       offscreenCtx.lineWidth = 0.75;
 
-      // Cluster 1: Top right region
-      const cluster1X = snap(w * 0.82);
-      const cluster1Y = snap(h * 0.25);
+      // Cluster 1: Around the Arc Reactor Core
       for (let r = -2; r <= 2; r++) {
         for (let c = -2; c <= 2; c++) {
           if (Math.abs(r) + Math.abs(c) <= 3) {
-            const hx = cluster1X + c * hexW + (r % 2 ? hexW / 2 : 0);
-            const hy = cluster1Y + r * hexH;
+            const hx = arcCore.x + c * hexW + (r % 2 ? hexW / 2 : 0);
+            const hy = arcCore.y + r * hexH;
             drawHex(hx, hy);
           }
         }
       }
 
-      // Cluster 2: Bottom left region
-      const cluster2X = snap(w * 0.14);
+      // Cluster 2: Bottom-left structural matrix
+      const cluster2X = snap(w * 0.12);
       const cluster2Y = snap(h * 0.78);
       for (let r = -2; r <= 2; r++) {
         for (let c = -2; c <= 2; c++) {
@@ -155,10 +182,7 @@ export default function CircuitBackground() {
       }
 
       // --- B. Parallel High-Speed Copper Bus Highways ---
-      // Real motherboard / IC architecture: multiple parallel traces bending together at 45°
       const createBusHighway = (startX, startY, count, spacing, segments) => {
-        const busLines = [];
-
         for (let b = 0; b < count; b++) {
           const offset = (b - (count - 1) / 2) * spacing;
           let currentPt = { x: startX + offset, y: startY };
@@ -166,18 +190,12 @@ export default function CircuitBackground() {
 
           for (let s = 0; s < segments.length; s++) {
             const seg = segments[s];
-            if (seg.type === "straight") {
-              currentPt.x += seg.dx;
-              currentPt.y += seg.dy;
-              path.push({ ...currentPt });
-            } else if (seg.type === "45deg") {
-              currentPt.x += seg.dx;
-              currentPt.y += seg.dy;
-              path.push({ ...currentPt });
-            }
+            currentPt.x += seg.dx;
+            currentPt.y += seg.dy;
+            path.push({ ...currentPt });
           }
 
-          // Compute path length
+          // Compute length
           let totalLen = 0;
           const segLengths = [];
           for (let p = 0; p < path.length - 1; p++) {
@@ -192,14 +210,14 @@ export default function CircuitBackground() {
             segLengths,
             endPt: path[path.length - 1],
             isAccent: b === 0 || b === count - 1,
+            busGroup: true,
           };
 
-          busLines.push(lineObj);
-          pulseHighwayTraces.push(lineObj);
+          traces.push(lineObj);
 
           // Draw the bus trace on offscreen canvas
           offscreenCtx.strokeStyle = lineObj.isAccent ? busTraceAccent : busTraceBase;
-          offscreenCtx.lineWidth = lineObj.isAccent ? 1.2 : 0.9;
+          offscreenCtx.lineWidth = lineObj.isAccent ? 1.2 : 0.85;
           offscreenCtx.beginPath();
           offscreenCtx.moveTo(path[0].x, path[0].y);
           for (let p = 1; p < path.length; p++) {
@@ -207,7 +225,7 @@ export default function CircuitBackground() {
           }
           offscreenCtx.stroke();
 
-          // Solder Terminal Pad at start and end
+          // Solder Terminal Pad at start & end
           offscreenCtx.fillStyle = padColor;
           offscreenCtx.beginPath();
           offscreenCtx.arc(path[0].x, path[0].y, 2, 0, Math.PI * 2);
@@ -217,7 +235,6 @@ export default function CircuitBackground() {
           offscreenCtx.arc(path[path.length - 1].x, path[path.length - 1].y, 2.5, 0, Math.PI * 2);
           offscreenCtx.fill();
 
-          // Outer solder ring for terminal
           offscreenCtx.strokeStyle = padColor;
           offscreenCtx.lineWidth = 0.75;
           offscreenCtx.beginPath();
@@ -226,36 +243,36 @@ export default function CircuitBackground() {
         }
       };
 
-      // Bus Highway 1: Top-Left to Mid-Center
-      createBusHighway(snap(w * 0.05), snap(h * 0.15), 3, 10, [
-        { type: "straight", dx: w * 0.25, dy: 0 },
-        { type: "45deg", dx: 60, dy: 60 },
-        { type: "straight", dx: w * 0.15, dy: 0 },
+      // 1. Bus: Power conduit originating from the Arc Reactor
+      createBusHighway(arcCore.x, arcCore.y + 46, 4, 9, [
+        { dx: 0, dy: h * 0.18 },
+        { dx: -60, dy: 60 },
+        { dx: -w * 0.25, dy: 0 },
       ]);
 
-      // Bus Highway 2: Right Edge diagonally inward
-      createBusHighway(snap(w * 0.95), snap(h * 0.45), 4, 9, [
-        { type: "straight", dx: -w * 0.2, dy: 0 },
-        { type: "45deg", dx: -70, dy: 70 },
-        { type: "straight", dx: -w * 0.1, dy: 0 },
+      // 2. Bus: Top-Left to Center CPU pipeline
+      createBusHighway(snap(w * 0.04), snap(h * 0.12), 3, 10, [
+        { dx: w * 0.26, dy: 0 },
+        { dx: 54, dy: 54 },
+        { dx: w * 0.16, dy: 0 },
       ]);
 
-      // Bus Highway 3: Bottom-Left rising
-      createBusHighway(snap(w * 0.1), snap(h * 0.9), 3, 10, [
-        { type: "straight", dx: 0, dy: -h * 0.2 },
-        { type: "45deg", dx: 80, dy: -80 },
-        { type: "straight", dx: w * 0.25, dy: 0 },
+      // 3. Bus: Bottom-Left rising telemetry bus
+      createBusHighway(snap(w * 0.08), snap(h * 0.92), 3, 10, [
+        { dx: 0, dy: -h * 0.22 },
+        { dx: 70, dy: -70 },
+        { dx: w * 0.28, dy: 0 },
       ]);
 
-      // Bus Highway 4: Top-Center to Top-Right
-      createBusHighway(snap(w * 0.45), snap(h * 0.08), 3, 8, [
-        { type: "straight", dx: w * 0.22, dy: 0 },
-        { type: "45deg", dx: 50, dy: 50 },
-        { type: "straight", dx: 0, dy: h * 0.18 },
+      // 4. Bus: Right-edge horizontal feed
+      createBusHighway(snap(w * 0.96), snap(h * 0.65), 3, 8, [
+        { dx: -w * 0.22, dy: 0 },
+        { dx: -50, dy: 50 },
+        { dx: -w * 0.12, dy: 0 },
       ]);
 
-      // --- C. Singular Branching Micro-Traces with 45° bends ---
-      const numSingles = Math.min(Math.floor((w * h) / 75000), 22);
+      // --- C. Singular Branching Micro-Traces with 45° chamfers ---
+      const numSingles = Math.min(Math.floor((w * h) / 72000), 24);
       for (let i = 0; i < numSingles; i++) {
         const sx = snap(Math.random() * w);
         const sy = snap(Math.random() * h);
@@ -270,10 +287,10 @@ export default function CircuitBackground() {
           const dir = Math.random() > 0.5 ? 1 : -1;
           const len = (Math.floor(Math.random() * 3) + 1) * GRID_SIZE;
 
-          if (Math.random() > 0.4) {
+          if (Math.random() > 0.35) {
             // 45 deg chamfer
-            cx += 28 * dir;
-            cy += 28 * (Math.random() > 0.5 ? 1 : -1);
+            cx += 26 * dir;
+            cy += 26 * (Math.random() > 0.5 ? 1 : -1);
             path.push({ x: cx, y: cy });
           }
 
@@ -299,9 +316,10 @@ export default function CircuitBackground() {
             totalLen,
             segLengths,
             endPt: path[path.length - 1],
-            isAccent: Math.random() > 0.6,
+            isAccent: Math.random() > 0.65,
+            busGroup: false,
           };
-          pulseHighwayTraces.push(singleObj);
+          traces.push(singleObj);
 
           offscreenCtx.strokeStyle = busTraceBase;
           offscreenCtx.lineWidth = 0.8;
@@ -321,57 +339,50 @@ export default function CircuitBackground() {
       }
 
       // --- D. Stark HUD Corner Calipers & Telemetry Labels ---
-      const margin = 24;
-      const caliperLen = 32;
+      const margin = 20;
+      const caliperLen = 30;
       offscreenCtx.strokeStyle = hudDim;
       offscreenCtx.lineWidth = 1.2;
 
-      // Top-Left Caliper
+      // 4 Corner Brackets
       offscreenCtx.beginPath();
+      // Top-Left
       offscreenCtx.moveTo(margin, margin + caliperLen);
       offscreenCtx.lineTo(margin, margin);
       offscreenCtx.lineTo(margin + caliperLen, margin);
-      offscreenCtx.stroke();
-
-      // Top-Right Caliper
-      offscreenCtx.beginPath();
+      // Top-Right
       offscreenCtx.moveTo(w - margin - caliperLen, margin);
       offscreenCtx.lineTo(w - margin, margin);
       offscreenCtx.lineTo(w - margin, margin + caliperLen);
-      offscreenCtx.stroke();
-
-      // Bottom-Left Caliper
-      offscreenCtx.beginPath();
+      // Bottom-Left
       offscreenCtx.moveTo(margin, h - margin - caliperLen);
       offscreenCtx.lineTo(margin, h - margin);
       offscreenCtx.lineTo(margin + caliperLen, h - margin);
-      offscreenCtx.stroke();
-
-      // Bottom-Right Caliper
-      offscreenCtx.beginPath();
+      // Bottom-Right
       offscreenCtx.moveTo(w - margin - caliperLen, h - margin);
       offscreenCtx.lineTo(w - margin, h - margin);
       offscreenCtx.lineTo(w - margin, h - margin - caliperLen);
       offscreenCtx.stroke();
 
-      // Small Stark HUD Micro-Labels (rendered once in crisp mono)
+      // Technical Telemetry Annotations (Rendered once on offscreen buffer)
       offscreenCtx.fillStyle = hudDim;
       offscreenCtx.font = "9px 'Helvetica Neue', Helvetica, monospace";
-      offscreenCtx.fillText("// STARK.SYS_01", margin + 6, margin + 14);
-      offscreenCtx.fillText("ARC.CORE // 432.8 MHz", w - margin - 110, margin + 14);
-      offscreenCtx.fillText("SYS.STATUS // NOMINAL", margin + 6, h - margin - 6);
-      offscreenCtx.fillText("TELEMETRY.LOC // 28.61° N", w - margin - 128, h - margin - 6);
+      offscreenCtx.fillText("// J.A.R.V.I.S. PROTOCOL [V-2.4]", margin + 6, margin + 14);
+      offscreenCtx.fillText("ARC.REACTOR // MK-VI COIL: ACTIVE", w - margin - 176, margin + 14);
+      offscreenCtx.fillText("GRID.REF // 28.6139° N, 77.2090° E", margin + 6, h - margin - 6);
+      offscreenCtx.fillText("PWR.STATUS // 100% NOMINAL", w - margin - 150, h - margin - 6);
 
-      // --- E. Pre-populate Electrical Pulses along Highways ---
-      const totalPulses = Math.min(pulseHighwayTraces.length * 2, 38);
+      // --- E. Pre-populate Electrical Packets (Burst Packets) ---
+      const totalPulses = Math.min(traces.length * 2, 42);
       for (let i = 0; i < totalPulses; i++) {
-        const trace = pulseHighwayTraces[Math.floor(Math.random() * pulseHighwayTraces.length)];
-        movingPulses.push({
+        const trace = traces[Math.floor(Math.random() * traces.length)];
+        movingPackets.push({
           trace,
           progress: Math.random(),
-          speed: 0.0018 + Math.random() * 0.0025, // silky smooth
-          tailLen: 0.09 + Math.random() * 0.08,
-          headRadius: trace.isAccent ? 2.0 : 1.5,
+          speed: 0.0016 + Math.random() * 0.0024,
+          tailLen: 0.08 + Math.random() * 0.06,
+          headRadius: trace.isAccent ? 2.0 : 1.4,
+          isBurst: Math.random() > 0.6, // Burst packets have twin trailing sparks
         });
       }
     };
@@ -428,9 +439,9 @@ export default function CircuitBackground() {
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
-    // Arc Reactor HUD rotating parameters
-    let arcAngleClockwise = 0;
-    let arcAngleCounter = 0;
+    // Dynamic animation parameters
+    let arcAngle = 0;
+    let arcPulsePhase = 0;
     let lastTime = performance.now();
 
     // 60 FPS Dynamic Animation Loop
@@ -440,78 +451,127 @@ export default function CircuitBackground() {
       const dt = Math.min((currentTime - lastTime) / 1000, 0.05);
       lastTime = currentTime;
 
-      // 1. Blit the pre-rendered static schematic in a SINGLE instant draw call (Zero Lag)
+      // 1. Instant offscreen blit (Zero lag static baseline)
       ctx.clearRect(0, 0, width, height);
       ctx.drawImage(offscreenCanvas, 0, 0, width, height);
 
       // Dynamic Colors
       const pulseHead = isDark ? "rgba(251, 191, 36, 0.98)" : "rgba(194, 65, 12, 0.92)";
-      const pulseMid = isDark ? "rgba(245, 158, 11, 0.85)" : "rgba(217, 119, 6, 0.75)";
-      const pulseTail = isDark ? "rgba(217, 119, 6, 0)" : "rgba(180, 83, 9, 0)";
-      const flareCore = isDark ? "rgba(253, 230, 138, 0.95)" : "rgba(217, 119, 6, 0.8)";
-      const flareAura = isDark ? "rgba(245, 158, 11, 0.4)" : "rgba(194, 65, 12, 0.25)";
+      const pulseMid = isDark ? "rgba(245, 158, 11, 0.82)" : "rgba(217, 119, 6, 0.72)";
+      const pulseTail = "rgba(217, 119, 6, 0)";
+      const coilColor = isDark ? "rgba(217, 119, 6, 0.55)" : "rgba(180, 83, 9, 0.4)";
+      const coilGlow = isDark ? "rgba(251, 191, 36, 0.75)" : "rgba(194, 65, 12, 0.55)";
 
-      // 2. Interactive Holographic Cursor Glow
+      // 2. Interactive Cursor Spring HUD Reticle
       if (mouse.active) {
-        mouse.x += (mouse.targetX - mouse.x) * 0.12;
-        mouse.y += (mouse.targetY - mouse.y) * 0.12;
+        mouse.x += (mouse.targetX - mouse.x) * 0.15;
+        mouse.y += (mouse.targetY - mouse.y) * 0.15;
 
-        const cursorGlow = ctx.createRadialGradient(
+        // Smooth spring tracking for the floating HUD reticle
+        mouse.reticleX += (mouse.x - mouse.reticleX) * 0.08;
+        mouse.reticleY += (mouse.y - mouse.reticleY) * 0.08;
+
+        // Subtle warm radial copper ambient aura
+        const cursorAura = ctx.createRadialGradient(
           mouse.x,
           mouse.y,
           0,
           mouse.x,
           mouse.y,
-          160
+          180
         );
-        cursorGlow.addColorStop(0, isDark ? "rgba(245, 158, 11, 0.12)" : "rgba(194, 65, 12, 0.06)");
-        cursorGlow.addColorStop(0.5, isDark ? "rgba(217, 119, 6, 0.05)" : "rgba(180, 83, 9, 0.02)");
-        cursorGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+        cursorAura.addColorStop(0, isDark ? "rgba(245, 158, 11, 0.12)" : "rgba(194, 65, 12, 0.06)");
+        cursorAura.addColorStop(0.5, isDark ? "rgba(217, 119, 6, 0.05)" : "rgba(180, 83, 9, 0.02)");
+        cursorAura.addColorStop(1, "rgba(0, 0, 0, 0)");
 
-        ctx.fillStyle = cursorGlow;
+        ctx.fillStyle = cursorAura;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 160, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 180, 0, Math.PI * 2);
         ctx.fill();
+
+        // Tony Stark Holographic Target Reticle
+        ctx.save();
+        ctx.translate(mouse.reticleX, mouse.reticleY);
+        ctx.strokeStyle = isDark ? "rgba(245, 158, 11, 0.35)" : "rgba(180, 83, 9, 0.28)";
+        ctx.lineWidth = 0.8;
+
+        // Reticle ring
+        ctx.beginPath();
+        ctx.arc(0, 0, 14, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Crosshair marks
+        ctx.beginPath();
+        ctx.moveTo(-18, 0);
+        ctx.lineTo(-10, 0);
+        ctx.moveTo(10, 0);
+        ctx.lineTo(18, 0);
+        ctx.moveTo(0, -18);
+        ctx.lineTo(0, -10);
+        ctx.moveTo(0, 10);
+        ctx.lineTo(0, 18);
+        ctx.stroke();
+
+        ctx.restore();
       }
 
-      // 3. Animate Electrical Pulses (Fast, vectorized rendering)
+      // 3. Click Shockwave Energy Surges
+      for (let s = shockwaves.length - 1; s >= 0; s--) {
+        const sw = shockwaves[s];
+        sw.radius += sw.speed * dt;
+        sw.alpha -= dt * 1.2;
+
+        if (sw.alpha <= 0 || sw.radius >= sw.maxRadius) {
+          shockwaves.splice(s, 1);
+          continue;
+        }
+
+        ctx.strokeStyle = isDark
+          ? `rgba(251, 191, 36, ${sw.alpha * 0.7})`
+          : `rgba(194, 65, 12, ${sw.alpha * 0.5})`;
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // 4. Animate Moving Electrical Data Packets
       if (!prefersReducedMotion) {
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
-        for (let i = 0; i < movingPulses.length; i++) {
-          const pulse = movingPulses[i];
-          pulse.progress += pulse.speed;
+        for (let i = 0; i < movingPackets.length; i++) {
+          const packet = movingPackets[i];
+          packet.progress += packet.speed;
 
-          // Loop & Flare terminal
-          if (pulse.progress >= 1) {
-            // Trigger a warm copper flare at the end point
+          // Terminal arrival
+          if (packet.progress >= 1) {
             terminalFlares.push({
-              x: pulse.trace.endPt.x,
-              y: pulse.trace.endPt.y,
+              x: packet.trace.endPt.x,
+              y: packet.trace.endPt.y,
               radius: 3,
-              maxRadius: 10,
+              maxRadius: 11,
               alpha: 0.9,
             });
 
-            pulse.progress = 0;
-            pulse.speed = 0.0016 + Math.random() * 0.0026;
+            packet.progress = 0;
+            packet.speed = 0.0016 + Math.random() * 0.0024;
           }
 
-          const headT = pulse.progress;
-          const tailT = Math.max(0, pulse.progress - pulse.tailLen);
+          const headT = packet.progress;
+          const tailT = Math.max(0, packet.progress - packet.tailLen);
 
-          const head = getPointAlongTrace(pulse.trace, headT);
-          const tail = getPointAlongTrace(pulse.trace, tailT);
+          const head = getPointAlongTrace(packet.trace, headT);
+          const tail = getPointAlongTrace(packet.trace, tailT);
 
-          // Draw the electric comet tail
+          // Electric luminous gradient tail
           const grad = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
           grad.addColorStop(0, pulseTail);
           grad.addColorStop(0.5, pulseMid);
           grad.addColorStop(1, pulseHead);
 
           ctx.strokeStyle = grad;
-          ctx.lineWidth = pulse.trace.isAccent ? 2.0 : 1.4;
+          ctx.lineWidth = packet.trace.isAccent ? 2.0 : 1.4;
           ctx.beginPath();
           ctx.moveTo(tail.x, tail.y);
           ctx.lineTo(head.x, head.y);
@@ -520,15 +580,25 @@ export default function CircuitBackground() {
           // Electric packet head
           ctx.fillStyle = pulseHead;
           ctx.beginPath();
-          ctx.arc(head.x, head.y, pulse.headRadius, 0, Math.PI * 2);
+          ctx.arc(head.x, head.y, packet.headRadius, 0, Math.PI * 2);
           ctx.fill();
+
+          // Twin trailing spark for burst packets
+          if (packet.isBurst && packet.progress > 0.04) {
+            const sparkT = packet.progress - 0.035;
+            const sparkPt = getPointAlongTrace(packet.trace, sparkT);
+            ctx.fillStyle = pulseMid;
+            ctx.beginPath();
+            ctx.arc(sparkPt.x, sparkPt.y, 1.0, 0, Math.PI * 2);
+            ctx.fill();
+          }
         }
 
-        // 4. Render Terminal Flares (Energy dissipation upon packet arrival)
+        // 5. Terminal Flare Dissipations
         for (let f = terminalFlares.length - 1; f >= 0; f--) {
           const flare = terminalFlares[f];
           flare.radius += dt * 18;
-          flare.alpha -= dt * 2.5;
+          flare.alpha -= dt * 2.4;
 
           if (flare.alpha <= 0 || flare.radius >= flare.maxRadius) {
             terminalFlares.splice(f, 1);
@@ -547,57 +617,81 @@ export default function CircuitBackground() {
           ctx.fill();
         }
 
-        // 5. Arc Reactor Holographic Telemetry Rings (Right-side HUD Anchor)
-        arcAngleClockwise += dt * 0.35;
-        arcAngleCounter -= dt * 0.22;
-
-        const arcX = snap(width * 0.88);
-        const arcY = snap(height * 0.32);
+        // 6. Iconic 10-Coil Arc Reactor Core (Movie Accurate Mechanism)
+        arcAngle += dt * 0.28;
+        arcPulsePhase += dt * 2.2; // ~70 bpm breathing power rhythm
+        const arcBreathing = (Math.sin(arcPulsePhase) + 1) * 0.5; // 0 to 1
 
         ctx.save();
-        ctx.translate(arcX, arcY);
+        ctx.translate(arcCore.x, arcCore.y);
 
-        // Core dot
-        ctx.fillStyle = isDark ? "rgba(251, 191, 36, 0.7)" : "rgba(194, 65, 12, 0.5)";
+        // Core Glowing Center
+        const coreGlowRad = 16 + arcBreathing * 6;
+        const coreGrad = ctx.createRadialGradient(0, 0, 2, 0, 0, coreGlowRad);
+        coreGrad.addColorStop(0, isDark ? "rgba(253, 230, 138, 0.95)" : "rgba(245, 158, 11, 0.8)");
+        coreGrad.addColorStop(0.4, isDark ? "rgba(245, 158, 11, 0.4)" : "rgba(194, 65, 12, 0.35)");
+        coreGrad.addColorStop(1, "rgba(217, 119, 6, 0)");
+
+        ctx.fillStyle = coreGrad;
         ctx.beginPath();
-        ctx.arc(0, 0, 3, 0, Math.PI * 2);
+        ctx.arc(0, 0, coreGlowRad, 0, Math.PI * 2);
         ctx.fill();
 
-        // Inner dashed ring (Counter-clockwise)
+        // 10 Outer Triangular / Trapezoidal Electromagnet Coils (Classic Arc Reactor)
         ctx.save();
-        ctx.rotate(arcAngleCounter);
-        ctx.strokeStyle = isDark ? "rgba(245, 158, 11, 0.28)" : "rgba(180, 83, 9, 0.2)";
-        ctx.lineWidth = 1;
-        ctx.setLineDash([8, 8]);
+        ctx.rotate(arcAngle);
+        for (let c = 0; c < 10; c++) {
+          const coilAngle = (Math.PI * 2 * c) / 10;
+          ctx.save();
+          ctx.rotate(coilAngle);
+
+          // Copper coil bracket
+          ctx.fillStyle = coilColor;
+          ctx.fillRect(-3.5, 34, 7, 6);
+
+          // Inner wire winding highlight
+          ctx.fillStyle = coilGlow;
+          ctx.fillRect(-2, 35, 4, 4);
+
+          ctx.restore();
+        }
+
+        // Inner and outer copper containment rings
+        ctx.strokeStyle = isDark ? "rgba(217, 119, 6, 0.38)" : "rgba(180, 83, 9, 0.24)";
+        ctx.lineWidth = 1.2;
         ctx.beginPath();
-        ctx.arc(0, 0, 22, 0, Math.PI * 2);
+        ctx.arc(0, 0, 33, 0, Math.PI * 2);
         ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(0, 0, 41, 0, Math.PI * 2);
+        ctx.stroke();
+
         ctx.restore();
 
-        // Outer segmented ring with tick marks (Clockwise)
+        // Counter-rotating outer telemetry dial with degree ticks
         ctx.save();
-        ctx.rotate(arcAngleClockwise);
-        ctx.strokeStyle = isDark ? "rgba(217, 119, 6, 0.32)" : "rgba(180, 83, 9, 0.22)";
-        ctx.lineWidth = 1.2;
-        ctx.setLineDash([18, 12, 4, 12]);
+        ctx.rotate(-arcAngle * 0.7);
+        ctx.strokeStyle = isDark ? "rgba(245, 158, 11, 0.28)" : "rgba(180, 83, 9, 0.18)";
+        ctx.lineWidth = 0.9;
+        ctx.setLineDash([14, 10, 4, 10]);
         ctx.beginPath();
-        ctx.arc(0, 0, 36, 0, Math.PI * 2);
+        ctx.arc(0, 0, 52, 0, Math.PI * 2);
         ctx.stroke();
 
-        // 4 Cardinal Axis Crosshair ticks (0°, 90°, 180°, 270°)
+        // 4 Cardinal Axis Ticks
         ctx.setLineDash([]);
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(-42, 0);
-        ctx.lineTo(-32, 0);
-        ctx.moveTo(32, 0);
-        ctx.lineTo(42, 0);
-        ctx.moveTo(0, -42);
-        ctx.lineTo(0, -32);
-        ctx.moveTo(0, 32);
-        ctx.lineTo(0, 42);
+        ctx.moveTo(-58, 0);
+        ctx.lineTo(-46, 0);
+        ctx.moveTo(46, 0);
+        ctx.lineTo(58, 0);
+        ctx.moveTo(0, -58);
+        ctx.lineTo(0, -46);
+        ctx.moveTo(0, 46);
+        ctx.lineTo(0, 58);
         ctx.stroke();
-
         ctx.restore();
 
         ctx.restore();
@@ -615,6 +709,7 @@ export default function CircuitBackground() {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("click", handleClick);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       observer.disconnect();
     };
