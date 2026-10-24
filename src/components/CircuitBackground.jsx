@@ -791,15 +791,15 @@ export default function CircuitBackground() {
         {/* Deep space void base */}
         <div className="absolute inset-0 bg-[#ffffff] dark:bg-[#020206] transition-colors duration-500" />
 
-        {/* Dark Mode: Authentic Blurred NASA Galaxy Photography & Cosmic Dust */}
+        {/* Dark Mode: Authentic Subtle Blurred NASA Galaxy Photography & Cosmic Dust */}
         <div className="hidden dark:block absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Blurred Space Galaxy with GPU compositor transform */}
+          {/* Subtle Blurred Space Galaxy with GPU compositor transform */}
           <img
             src={galaxyBg}
             alt=""
             loading="eager"
             aria-hidden="true"
-            className="w-full h-full object-cover opacity-35 filter blur-[26px] scale-105 pointer-events-none select-none transition-opacity duration-1000"
+            className="w-full h-full object-cover opacity-35 filter blur-[10px] scale-105 pointer-events-none select-none transition-opacity duration-1000"
           />
 
           {/* Deep Space Vignette: Fades galaxy edges smoothly into the deep obsidian void */}
@@ -807,34 +807,34 @@ export default function CircuitBackground() {
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle at 50% 45%, rgba(2, 2, 6, 0.15) 0%, rgba(2, 2, 6, 0.55) 60%, rgba(2, 2, 6, 0.92) 100%)",
+                "radial-gradient(circle at 50% 45%, rgba(2, 2, 6, 0.25) 0%, rgba(2, 2, 6, 0.6) 60%, rgba(2, 2, 6, 0.94) 100%)",
             }}
           />
 
           {/* Warm Copper & Amber Stellar Nebula (Top Right near Arc Reactor) */}
           <div
-            className="absolute -top-36 -right-36 w-[680px] h-[680px] rounded-full opacity-35 filter blur-[95px] pointer-events-none"
+            className="absolute -top-36 -right-36 w-[680px] h-[680px] rounded-full opacity-25 filter blur-[80px] pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(217,119,6,0.35) 0%, rgba(180,83,9,0.16) 40%, rgba(120,53,15,0.04) 70%, transparent 100%)",
+                "radial-gradient(circle, rgba(217,119,6,0.3) 0%, rgba(180,83,9,0.14) 40%, rgba(120,53,15,0.03) 70%, transparent 100%)",
             }}
           />
 
           {/* Deep Cosmic Void & Celestial Indigo Starlight (Bottom Left) */}
           <div
-            className="absolute -bottom-48 -left-48 w-[780px] h-[780px] rounded-full opacity-30 filter blur-[115px] pointer-events-none"
+            className="absolute -bottom-48 -left-48 w-[780px] h-[780px] rounded-full opacity-25 filter blur-[90px] pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(30,27,75,0.42) 0%, rgba(15,23,42,0.22) 45%, rgba(2,6,23,0.08) 70%, transparent 100%)",
+                "radial-gradient(circle, rgba(30,27,75,0.35) 0%, rgba(15,23,42,0.18) 45%, rgba(2,6,23,0.06) 70%, transparent 100%)",
             }}
           />
 
           {/* Center Orbital Atmospheric Scatter (Horizon Core) */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] rounded-full opacity-20 filter blur-[105px] pointer-events-none"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] rounded-full opacity-15 filter blur-[90px] pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(146,64,14,0.18) 0%, rgba(15,23,42,0.08) 50%, transparent 80%)",
+                "radial-gradient(ellipse at center, rgba(146,64,14,0.14) 0%, rgba(15,23,42,0.06) 50%, transparent 80%)",
             }}
           />
         </div>
