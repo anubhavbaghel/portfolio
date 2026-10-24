@@ -16,7 +16,7 @@ export default function NotFoundPage() {
       <div className="pt-4">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta text-paper-50 rounded text-xs font-mono transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Return to Homepage</span>

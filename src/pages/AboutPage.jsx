@@ -95,8 +95,8 @@ export default function AboutPage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-ink-500">Availability:</span>
-                <span className="text-emerald-700 font-semibold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse"></span>
                   Open to Roles
                 </span>
               </div>

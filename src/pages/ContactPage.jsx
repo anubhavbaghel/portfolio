@@ -113,7 +113,7 @@ export default function ContactPage() {
           <div className="lg:col-span-7 bg-paper-50 border border-paper-300 rounded-xl p-6 sm:p-10 shadow-card">
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
-                <div className="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <h3 className="text-2xl font-bold text-ink-900 font-display">Message Prepared</h3>
@@ -213,7 +213,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ink-900 hover:bg-terracotta text-paper-50 rounded text-xs font-mono font-medium transition-colors cursor-pointer shadow-subtle hover:shadow-card"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono font-medium transition-colors cursor-pointer shadow-subtle hover:shadow-card"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Direct Inquiry</span>

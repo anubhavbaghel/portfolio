@@ -41,7 +41,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#featured-work"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded bg-ink-900 text-paper-50 hover:bg-terracotta transition-all text-sm font-medium shadow-subtle hover:shadow-card"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded bg-ink-900 text-paper-50 hover:bg-terracotta hover:text-white transition-all text-sm font-medium shadow-subtle hover:shadow-card"
               >
                 <span>Explore Selected Products</span>
                 <ArrowRight className="w-4 h-4" />
@@ -216,7 +216,7 @@ export default function HomePage() {
                       <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-paper-200">
                         <Link
                           to={`/work/${project.id}`}
-                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-ink-900 hover:bg-terracotta text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
                         >
                           <BookOpen className="w-3.5 h-3.5" />
                           <span>Read Case Study</span>
@@ -313,7 +313,7 @@ export default function HomePage() {
             </div>
             <Link
               to="/work#web-track"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta text-paper-50 rounded text-xs font-mono transition-colors shrink-0"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shrink-0"
             >
               <span>View Full Web Track</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -352,7 +352,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-paper-50 border border-paper-300 rounded-xl p-6 sm:p-8 space-y-3 shadow-subtle">
-              <span className="font-mono text-xs font-bold text-emerald-700 block">[03]</span>
+              <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400 block">[03]</span>
               <h3 className="text-lg font-bold text-ink-900 font-display">Production Ownership</h3>
               <p className="text-xs sm:text-sm text-ink-600 leading-relaxed font-sans">
                 Software only proves its value when it encounters real-world users, messy network conditions, and edge cases. Fast feedback loops beat prolonged theoretical design.
@@ -428,7 +428,7 @@ export default function HomePage() {
           <div className="pt-4 flex flex-wrap justify-center items-center gap-4">
             <Link
               to="/contact"
-              className="px-6 py-3 rounded bg-ink-900 hover:bg-terracotta text-paper-50 text-sm font-medium transition-colors shadow-subtle"
+              className="px-6 py-3 rounded bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 text-sm font-medium transition-colors shadow-subtle"
             >
               Get in Touch
             </Link>

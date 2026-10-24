@@ -140,7 +140,7 @@ export default function WorkPage() {
                     <div className="pt-3 flex flex-wrap items-center gap-3 border-t border-paper-200">
                       <Link
                         to={`/work/${project.id}`}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-ink-900 hover:bg-terracotta text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
                         <span>Read Case Study</span>

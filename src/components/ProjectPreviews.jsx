@@ -27,7 +27,7 @@ export function LocoPreview() {
             <h5 className="font-bold text-ink-900 font-display text-sm">Sunday Vinyl &amp; Ceramic Studio</h5>
             <p className="text-ink-500 text-[11px]">Hauz Khas Village &bull; 5:00 PM</p>
           </div>
-          <span className="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 font-mono text-[10px] rounded border border-emerald-200">
+          <span className="px-1.5 py-0.5 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 font-mono text-[10px] rounded border border-emerald-200 dark:border-emerald-800/60">
             92 Attending
           </span>
         </div>
@@ -90,7 +90,7 @@ export function ContentGuardPreview() {
         <div className="bg-paper-50 p-2 rounded border border-paper-200">
           <span className="font-mono text-ink-500 block text-[9px] uppercase font-bold">Input Spec</span>
           <p className="text-ink-800 font-mono text-[10px] mt-1">content.json (24 keys)</p>
-          <span className="text-emerald-700 text-[9px] font-mono mt-1 block">&bull; Schema 100% Valid</span>
+          <span className="text-emerald-700 dark:text-emerald-400 text-[9px] font-mono mt-1 block">&bull; Schema 100% Valid</span>
         </div>
 
         <div className="bg-paper-50 p-2 rounded border border-paper-200">

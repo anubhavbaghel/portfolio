@@ -92,7 +92,7 @@ export default function CaseStudyPage() {
               <p className="text-ink-700 leading-relaxed">{project.executiveSummary.theSolution}</p>
             </div>
             <div className="space-y-1">
-              <span className="font-mono text-[10px] uppercase font-bold text-emerald-800 block">The Impact</span>
+              <span className="font-mono text-[10px] uppercase font-bold text-emerald-800 dark:text-emerald-400 block">The Impact</span>
               <p className="text-ink-800 leading-relaxed">{project.executiveSummary.theImpact}</p>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function CaseStudyPage() {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-ink-900 hover:bg-terracotta text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
               >
                 <span>GitHub Source</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -228,8 +228,8 @@ export default function CaseStudyPage() {
           <span className="font-mono text-xs uppercase tracking-wider text-ink-500 font-semibold block">
             04 / Testing &amp; Quality Control
           </span>
-          <div className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-700 bg-emerald-50/50 p-4 rounded-lg border border-emerald-200 shadow-xs font-sans">
-            <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-700 bg-emerald-50/50 dark:bg-emerald-950/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800/50 shadow-xs font-sans">
+            <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
             <span className="leading-relaxed">{caseStudy.testingValidation}</span>
           </div>
         </section>

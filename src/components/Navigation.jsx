@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { personalInfo } from "../data/portfolioData";
 import { Menu, X, ArrowUpRight, FileText } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +27,7 @@ const Navigation = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
         isScrolled
-          ? "bg-[#faf9f5]/90 backdrop-blur-md border-b border-[#e9e6dc] py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.03)]"
+          ? "bg-paper-100/90 backdrop-blur-md border-b border-paper-300 py-3.5 shadow-subtle"
           : "bg-transparent border-b border-transparent py-5"
       }`}
     >
@@ -46,7 +47,7 @@ const Navigation = () => {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-ink-600" aria-label="Main Navigation">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-ink-600" aria-label="Main Navigation">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -74,6 +75,9 @@ const Navigation = () => {
             <ArrowUpRight className="w-3 h-3 text-ink-400" />
           </a>
 
+          {/* Theme Toggle Button */}
+          <ThemeToggle />
+
           <NavLink
             to="/contact"
             className={({ isActive }) =>
@@ -88,15 +92,19 @@ const Navigation = () => {
           </NavLink>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-ink-800 hover:text-ink-900 rounded focus:outline-none focus:ring-1 focus:ring-terracotta cursor-pointer"
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        {/* Mobile Actions: Theme Toggle + Menu Button */}
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-ink-800 hover:text-ink-900 rounded focus:outline-none focus:ring-1 focus:ring-terracotta cursor-pointer"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
@@ -138,7 +146,7 @@ const Navigation = () => {
               <Link
                 to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-center py-2.5 px-4 bg-ink-900 text-paper-50 text-sm font-medium rounded hover:bg-terracotta transition-colors"
+                className="text-center py-2.5 px-4 bg-ink-900 text-paper-50 text-sm font-medium rounded hover:bg-terracotta hover:text-white transition-colors"
               >
                 Get In Touch
               </Link>

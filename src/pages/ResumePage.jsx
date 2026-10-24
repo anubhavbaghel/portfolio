@@ -20,7 +20,7 @@ export default function ResumePage() {
             href={personalInfo.contacts.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta text-paper-50 rounded text-xs font-mono transition-colors shadow-subtle hover:shadow-card cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-subtle hover:shadow-card cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Download Official PDF</span>
