@@ -27,10 +27,7 @@ export default function HomePage() {
           {/* Main Headline & Supporting Statement */}
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-ink-900 leading-[1.08] mb-6 font-display">
-              Building useful software,{" "}
-              <span className="relative inline-block italic font-light">
-                thoughtfully.
-              </span>
+              Building useful software, thoughtfully.
             </h1>
 
             <p className="text-xl sm:text-2xl font-normal text-ink-700 leading-snug mb-8 max-w-3xl font-sans">

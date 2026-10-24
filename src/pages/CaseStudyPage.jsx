@@ -239,7 +239,7 @@ export default function CaseStudyPage() {
           <span className="font-mono text-xs uppercase tracking-wider text-ink-500 font-semibold block">
             05 / Trade-offs &amp; Honest Limitations
           </span>
-          <div className="bg-paper-100 p-4 rounded-lg border border-paper-300 italic font-serif leading-relaxed text-sm text-ink-800">
+          <div className="bg-paper-100 p-4 rounded-lg border border-paper-300 font-sans leading-relaxed text-sm text-ink-800">
             "{caseStudy.tradeoffs}"
           </div>
         </section>

@@ -46,7 +46,7 @@ export default function NoteArticlePage() {
           {note.title}
         </h1>
 
-        <p className="text-lg text-ink-600 leading-relaxed italic font-serif pt-2">
+        <p className="text-lg text-ink-600 leading-relaxed font-sans pt-2">
           {note.summary}
         </p>
 
