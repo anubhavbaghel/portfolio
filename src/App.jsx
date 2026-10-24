@@ -3,7 +3,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import CircuitBackground from "./components/CircuitBackground";
+import SpaceBackground from "./components/SpaceBackground";
 
 import HomePage from "./pages/HomePage";
 import WorkPage from "./pages/WorkPage";
@@ -21,8 +21,8 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <div className="relative min-h-screen flex flex-col bg-white dark:bg-black text-ink-900 selection:bg-zinc-200 dark:selection:bg-zinc-800 selection:text-ink-900 dark:selection:text-white antialiased transition-colors duration-200">
-          {/* Iron Man JARVIS Futuristic Copper Circuit & Network Canvas */}
-          <CircuitBackground />
+          {/* Subtle Space Galaxy & Twinkling Stars Background */}
+          <SpaceBackground />
 
           {/* Persistent Editorial Header */}
           <Navigation />
