@@ -2,19 +2,19 @@ import { useEffect, useRef } from "react";
 import { useTheme } from "../context/ThemeContext";
 
 /**
- * Iron Man J.A.R.V.I.S. Cinematic HUD & Copper Neural Circuit System (v2.0)
+ * Iron Man J.A.R.V.I.S. Cinematic HUD with Blurred Orbital Space View
  *
- * Cinematic Upgrades:
- * 1. Iconic 10-Coil Arc Reactor Core: Stylized 10-electromagnet coil ring with
- *    pulsing breathing core and counter-rotating telemetry arcs.
- * 2. Serial Data Packet Bursts & Branching: Packets travel in rapid sequence
- *    bursts (`• • •`) with glowing comet trails, splitting at junctions.
- * 3. Interactive Holographic Target Reticle: Smooth spring-lagged cursor crosshair
- *    with corner brackets and live coordinate telemetry.
- * 4. Click Shockwave Energy Surge: Clicking anywhere emits an expanding electromagnetic
- *    copper shockwave that overcharges and illuminates all nearby circuits.
- * 5. Multi-Layer Offscreen Caching: Static blueprints (hex mesh, bus lines, IC headers,
- *    corner calipers, technical specs) pre-rendered once for locked 60 FPS zero lag.
+ * Layered Experience:
+ * 1. Deep Space View: Deep cosmic void with blurred copper and sapphire nebulae clouds,
+ *    curved planetary limb scatter, and soft bokeh stellar constellations.
+ * 2. 10-Coil Arc Reactor Core: Mark-VI chest Arc Reactor with 10 copper electromagnets
+ *    breathing at 70 BPM with counter-rotating telemetry arcs.
+ * 3. Moving High-Speed Copper Bus Highways: Coordinated parallel traces with 45° chamfers
+ *    and serial data packet bursts (`• • •`) with glowing comet trails.
+ * 4. Interactive Holographic Target Reticle: Mouse spring-lagged crosshair with live
+ *    telemetry coordinates and click shockwave energy ripples.
+ * 5. High Performance: Complex static blueprints and space horizon pre-cached on an
+ *    offscreen buffer; cosmic nebulae rendered via GPU-accelerated CSS compositor.
  */
 export default function CircuitBackground() {
   const canvasRef = useRef(null);
@@ -70,10 +70,10 @@ export default function CircuitBackground() {
         shockwaves.push({
           x: e.clientX,
           y: e.clientY,
-          radius: 10,
+          radius: 12,
           maxRadius: Math.min(width, height) * 0.45,
           alpha: 0.85,
-          speed: 420, // px per sec
+          speed: 420,
         });
       }
     };
@@ -82,7 +82,7 @@ export default function CircuitBackground() {
     document.addEventListener("mouseleave", handleMouseLeave);
     window.addEventListener("click", handleClick, { passive: true });
 
-    // Tab visibility handling (prevents background GPU drain)
+    // Tab visibility handling
     const handleVisibilityChange = () => {
       isTabVisible = !document.hidden;
       if (isTabVisible && !prefersReducedMotion) {
@@ -92,22 +92,24 @@ export default function CircuitBackground() {
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Circuit Data Structures
+    // Circuit & Space Data Structures
     let traces = [];
     let movingPackets = [];
     let terminalFlares = [];
+    let distantStars = [];
 
     const GRID_SIZE = 52;
     const snap = (v) => Math.round(v / GRID_SIZE) * GRID_SIZE;
 
-    // Arc Reactor Core position (anchored organically on the right side)
+    // Arc Reactor Core position
     let arcCore = { x: 0, y: 0, radius: 46 };
 
-    // Build the high-tech J.A.R.V.I.S. Schematics & Parallel Bus Highways
+    // Build the high-tech J.A.R.V.I.S. Schematics, Orbital Horizon & Space View
     const generateSchematics = (w, h) => {
       traces = [];
       movingPackets = [];
       terminalFlares = [];
+      distantStars = [];
 
       arcCore.x = snap(w * 0.86);
       arcCore.y = snap(h * 0.28);
@@ -125,10 +127,10 @@ export default function CircuitBackground() {
         ? "rgba(217, 119, 6, 0.05)"
         : "rgba(180, 83, 9, 0.035)";
       const busTraceBase = isDark
-        ? "rgba(194, 98, 38, 0.15)"
+        ? "rgba(194, 98, 38, 0.16)"
         : "rgba(180, 83, 9, 0.09)";
       const busTraceAccent = isDark
-        ? "rgba(245, 158, 11, 0.28)"
+        ? "rgba(245, 158, 11, 0.30)"
         : "rgba(194, 65, 12, 0.18)";
       const hudDim = isDark
         ? "rgba(217, 119, 6, 0.24)"
@@ -137,7 +139,56 @@ export default function CircuitBackground() {
         ? "rgba(245, 158, 11, 0.45)"
         : "rgba(180, 83, 9, 0.35)";
 
-      // --- A. Hexagonal Matrix Clusters (Stark Armor Nanotech Lattice) ---
+      // --- A. Distant Blurred Cosmic Stars & Stellar Field ---
+      const starCount = isDark ? 65 : 25;
+      for (let s = 0; s < starCount; s++) {
+        distantStars.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          radius: Math.random() * 1.6 + 0.6,
+          baseAlpha: Math.random() * 0.5 + 0.25,
+          twinkleSpeed: Math.random() * 1.2 + 0.5,
+          twinklePhase: Math.random() * Math.PI * 2,
+          isCopperStar: Math.random() > 0.55,
+        });
+      }
+
+      // --- B. Distant Curved Orbital Horizon (Earth Atmospheric Limb) ---
+      if (isDark) {
+        offscreenCtx.save();
+        const horizonCenterX = w * 0.4;
+        const horizonCenterY = h * 1.85;
+        const horizonRadius = h * 1.05;
+
+        // Faint atmospheric limb glow
+        const horizonGlow = offscreenCtx.createRadialGradient(
+          horizonCenterX,
+          horizonCenterY,
+          horizonRadius - 30,
+          horizonCenterX,
+          horizonCenterY,
+          horizonRadius + 50
+        );
+        horizonGlow.addColorStop(0, "rgba(217, 119, 6, 0)");
+        horizonGlow.addColorStop(0.65, "rgba(217, 119, 6, 0.06)");
+        horizonGlow.addColorStop(0.85, "rgba(245, 158, 11, 0.12)");
+        horizonGlow.addColorStop(1, "rgba(217, 119, 6, 0)");
+
+        offscreenCtx.fillStyle = horizonGlow;
+        offscreenCtx.beginPath();
+        offscreenCtx.arc(horizonCenterX, horizonCenterY, horizonRadius + 50, 0, Math.PI * 2);
+        offscreenCtx.fill();
+
+        // Delicate horizon line
+        offscreenCtx.strokeStyle = "rgba(245, 158, 11, 0.16)";
+        offscreenCtx.lineWidth = 1;
+        offscreenCtx.beginPath();
+        offscreenCtx.arc(horizonCenterX, horizonCenterY, horizonRadius, Math.PI * 1.15, Math.PI * 1.85);
+        offscreenCtx.stroke();
+        offscreenCtx.restore();
+      }
+
+      // --- C. Hexagonal Nanotech Matrix Clusters ---
       const hexRadius = 16;
       const hexW = Math.sqrt(3) * hexRadius;
       const hexH = 2 * hexRadius * 0.75;
@@ -181,7 +232,7 @@ export default function CircuitBackground() {
         }
       }
 
-      // --- B. Parallel High-Speed Copper Bus Highways ---
+      // --- D. Parallel High-Speed Copper Bus Highways ---
       const createBusHighway = (startX, startY, count, spacing, segments) => {
         for (let b = 0; b < count; b++) {
           const offset = (b - (count - 1) / 2) * spacing;
@@ -195,7 +246,6 @@ export default function CircuitBackground() {
             path.push({ ...currentPt });
           }
 
-          // Compute length
           let totalLen = 0;
           const segLengths = [];
           for (let p = 0; p < path.length - 1; p++) {
@@ -243,7 +293,7 @@ export default function CircuitBackground() {
         }
       };
 
-      // 1. Bus: Power conduit originating from the Arc Reactor
+      // 1. Bus: Power conduit from Arc Reactor
       createBusHighway(arcCore.x, arcCore.y + 46, 4, 9, [
         { dx: 0, dy: h * 0.18 },
         { dx: -60, dy: 60 },
@@ -271,7 +321,7 @@ export default function CircuitBackground() {
         { dx: -w * 0.12, dy: 0 },
       ]);
 
-      // --- C. Singular Branching Micro-Traces with 45° chamfers ---
+      // --- E. Singular Branching Micro-Traces with 45° chamfers ---
       const numSingles = Math.min(Math.floor((w * h) / 72000), 24);
       for (let i = 0; i < numSingles; i++) {
         const sx = snap(Math.random() * w);
@@ -288,7 +338,6 @@ export default function CircuitBackground() {
           const len = (Math.floor(Math.random() * 3) + 1) * GRID_SIZE;
 
           if (Math.random() > 0.35) {
-            // 45 deg chamfer
             cx += 26 * dir;
             cy += 26 * (Math.random() > 0.5 ? 1 : -1);
             path.push({ x: cx, y: cy });
@@ -338,7 +387,7 @@ export default function CircuitBackground() {
         }
       }
 
-      // --- D. Stark HUD Corner Calipers & Telemetry Labels ---
+      // --- F. Stark HUD Corner Calipers & Telemetry Labels ---
       const margin = 20;
       const caliperLen = 30;
       offscreenCtx.strokeStyle = hudDim;
@@ -364,15 +413,15 @@ export default function CircuitBackground() {
       offscreenCtx.lineTo(w - margin, h - margin - caliperLen);
       offscreenCtx.stroke();
 
-      // Technical Telemetry Annotations (Rendered once on offscreen buffer)
+      // Technical Telemetry Annotations
       offscreenCtx.fillStyle = hudDim;
       offscreenCtx.font = "9px 'Helvetica Neue', Helvetica, monospace";
-      offscreenCtx.fillText("// J.A.R.V.I.S. PROTOCOL [V-2.4]", margin + 6, margin + 14);
+      offscreenCtx.fillText("// J.A.R.V.I.S. ORBITAL HUD [V-2.6]", margin + 6, margin + 14);
       offscreenCtx.fillText("ARC.REACTOR // MK-VI COIL: ACTIVE", w - margin - 176, margin + 14);
-      offscreenCtx.fillText("GRID.REF // 28.6139° N, 77.2090° E", margin + 6, h - margin - 6);
+      offscreenCtx.fillText("SPACE.VIEW // ORBITAL INCLINATION 51.6°", margin + 6, h - margin - 6);
       offscreenCtx.fillText("PWR.STATUS // 100% NOMINAL", w - margin - 150, h - margin - 6);
 
-      // --- E. Pre-populate Electrical Packets (Burst Packets) ---
+      // --- G. Pre-populate Electrical Packets ---
       const totalPulses = Math.min(traces.length * 2, 42);
       for (let i = 0; i < totalPulses; i++) {
         const trace = traces[Math.floor(Math.random() * traces.length)];
@@ -382,12 +431,12 @@ export default function CircuitBackground() {
           speed: 0.0016 + Math.random() * 0.0024,
           tailLen: 0.08 + Math.random() * 0.06,
           headRadius: trace.isAccent ? 2.0 : 1.4,
-          isBurst: Math.random() > 0.6, // Burst packets have twin trailing sparks
+          isBurst: Math.random() > 0.6,
         });
       }
     };
 
-    // Interpolate coordinate along pre-computed trace
+    // Interpolate coordinate along trace
     const getPointAlongTrace = (trace, progress) => {
       const targetDist = Math.max(0, Math.min(1, progress)) * trace.totalLen;
       let accumulated = 0;
@@ -462,12 +511,27 @@ export default function CircuitBackground() {
       const coilColor = isDark ? "rgba(217, 119, 6, 0.55)" : "rgba(180, 83, 9, 0.4)";
       const coilGlow = isDark ? "rgba(251, 191, 36, 0.75)" : "rgba(194, 65, 12, 0.55)";
 
-      // 2. Interactive Cursor Spring HUD Reticle
+      // 2. Animate Soft Twinkling Bokeh Stars (Distant Space Depth)
+      if (!prefersReducedMotion && isDark) {
+        for (let s = 0; s < distantStars.length; s++) {
+          const star = distantStars[s];
+          star.twinklePhase += dt * star.twinkleSpeed;
+          const currentAlpha = star.baseAlpha * (0.65 + 0.35 * Math.sin(star.twinklePhase));
+
+          ctx.fillStyle = star.isCopperStar
+            ? `rgba(251, 191, 36, ${currentAlpha})`
+            : `rgba(224, 231, 255, ${currentAlpha * 0.85})`;
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 3. Interactive Cursor Spring HUD Reticle
       if (mouse.active) {
         mouse.x += (mouse.targetX - mouse.x) * 0.15;
         mouse.y += (mouse.targetY - mouse.y) * 0.15;
 
-        // Smooth spring tracking for the floating HUD reticle
         mouse.reticleX += (mouse.x - mouse.reticleX) * 0.08;
         mouse.reticleY += (mouse.y - mouse.reticleY) * 0.08;
 
@@ -495,12 +559,10 @@ export default function CircuitBackground() {
         ctx.strokeStyle = isDark ? "rgba(245, 158, 11, 0.35)" : "rgba(180, 83, 9, 0.28)";
         ctx.lineWidth = 0.8;
 
-        // Reticle ring
         ctx.beginPath();
         ctx.arc(0, 0, 14, 0, Math.PI * 2);
         ctx.stroke();
 
-        // Crosshair marks
         ctx.beginPath();
         ctx.moveTo(-18, 0);
         ctx.lineTo(-10, 0);
@@ -515,7 +577,7 @@ export default function CircuitBackground() {
         ctx.restore();
       }
 
-      // 3. Click Shockwave Energy Surges
+      // 4. Click Shockwave Energy Surges
       for (let s = shockwaves.length - 1; s >= 0; s--) {
         const sw = shockwaves[s];
         sw.radius += sw.speed * dt;
@@ -535,7 +597,7 @@ export default function CircuitBackground() {
         ctx.stroke();
       }
 
-      // 4. Animate Moving Electrical Data Packets
+      // 5. Animate Moving Electrical Data Packets
       if (!prefersReducedMotion) {
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
@@ -544,7 +606,6 @@ export default function CircuitBackground() {
           const packet = movingPackets[i];
           packet.progress += packet.speed;
 
-          // Terminal arrival
           if (packet.progress >= 1) {
             terminalFlares.push({
               x: packet.trace.endPt.x,
@@ -564,7 +625,6 @@ export default function CircuitBackground() {
           const head = getPointAlongTrace(packet.trace, headT);
           const tail = getPointAlongTrace(packet.trace, tailT);
 
-          // Electric luminous gradient tail
           const grad = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
           grad.addColorStop(0, pulseTail);
           grad.addColorStop(0.5, pulseMid);
@@ -577,13 +637,11 @@ export default function CircuitBackground() {
           ctx.lineTo(head.x, head.y);
           ctx.stroke();
 
-          // Electric packet head
           ctx.fillStyle = pulseHead;
           ctx.beginPath();
           ctx.arc(head.x, head.y, packet.headRadius, 0, Math.PI * 2);
           ctx.fill();
 
-          // Twin trailing spark for burst packets
           if (packet.isBurst && packet.progress > 0.04) {
             const sparkT = packet.progress - 0.035;
             const sparkPt = getPointAlongTrace(packet.trace, sparkT);
@@ -594,7 +652,7 @@ export default function CircuitBackground() {
           }
         }
 
-        // 5. Terminal Flare Dissipations
+        // 6. Terminal Flare Dissipations
         for (let f = terminalFlares.length - 1; f >= 0; f--) {
           const flare = terminalFlares[f];
           flare.radius += dt * 18;
@@ -617,15 +675,14 @@ export default function CircuitBackground() {
           ctx.fill();
         }
 
-        // 6. Iconic 10-Coil Arc Reactor Core (Movie Accurate Mechanism)
+        // 7. Iconic 10-Coil Arc Reactor Core (Breathing Rhythm)
         arcAngle += dt * 0.28;
-        arcPulsePhase += dt * 2.2; // ~70 bpm breathing power rhythm
-        const arcBreathing = (Math.sin(arcPulsePhase) + 1) * 0.5; // 0 to 1
+        arcPulsePhase += dt * 2.2;
+        const arcBreathing = (Math.sin(arcPulsePhase) + 1) * 0.5;
 
         ctx.save();
         ctx.translate(arcCore.x, arcCore.y);
 
-        // Core Glowing Center
         const coreGlowRad = 16 + arcBreathing * 6;
         const coreGrad = ctx.createRadialGradient(0, 0, 2, 0, 0, coreGlowRad);
         coreGrad.addColorStop(0, isDark ? "rgba(253, 230, 138, 0.95)" : "rgba(245, 158, 11, 0.8)");
@@ -637,7 +694,7 @@ export default function CircuitBackground() {
         ctx.arc(0, 0, coreGlowRad, 0, Math.PI * 2);
         ctx.fill();
 
-        // 10 Outer Triangular / Trapezoidal Electromagnet Coils (Classic Arc Reactor)
+        // 10 Outer Triangular / Trapezoidal Electromagnet Coils
         ctx.save();
         ctx.rotate(arcAngle);
         for (let c = 0; c < 10; c++) {
@@ -645,18 +702,15 @@ export default function CircuitBackground() {
           ctx.save();
           ctx.rotate(coilAngle);
 
-          // Copper coil bracket
           ctx.fillStyle = coilColor;
           ctx.fillRect(-3.5, 34, 7, 6);
 
-          // Inner wire winding highlight
           ctx.fillStyle = coilGlow;
           ctx.fillRect(-2, 35, 4, 4);
 
           ctx.restore();
         }
 
-        // Inner and outer copper containment rings
         ctx.strokeStyle = isDark ? "rgba(217, 119, 6, 0.38)" : "rgba(180, 83, 9, 0.24)";
         ctx.lineWidth = 1.2;
         ctx.beginPath();
@@ -679,7 +733,6 @@ export default function CircuitBackground() {
         ctx.arc(0, 0, 52, 0, Math.PI * 2);
         ctx.stroke();
 
-        // 4 Cardinal Axis Ticks
         ctx.setLineDash([]);
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -720,9 +773,66 @@ export default function CircuitBackground() {
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
       aria-hidden="true"
     >
+      {/* Layer 1: Blurred Orbital Space View & Cosmic Nebulae (Zero-overhead GPU compositor) */}
+      <div className="absolute inset-0 transition-opacity duration-700 pointer-events-none">
+        {/* Deep space void base */}
+        <div className="absolute inset-0 bg-[#ffffff] dark:bg-[#020206] transition-colors duration-500" />
+
+        {/* Dark Mode Cosmos: Blurred Space Nebulae */}
+        <div className="hidden dark:block absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Warm Copper & Amber Stellar Nebula (Top Right near Arc Reactor) */}
+          <div
+            className="absolute -top-36 -right-36 w-[680px] h-[680px] rounded-full opacity-40 filter blur-[95px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(217,119,6,0.38) 0%, rgba(180,83,9,0.18) 40%, rgba(120,53,15,0.06) 70%, transparent 100%)",
+            }}
+          />
+
+          {/* Deep Cosmic Void & Celestial Indigo Starlight (Bottom Left) */}
+          <div
+            className="absolute -bottom-48 -left-48 w-[780px] h-[780px] rounded-full opacity-35 filter blur-[115px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(30,27,75,0.48) 0%, rgba(15,23,42,0.28) 45%, rgba(2,6,23,0.1) 70%, transparent 100%)",
+            }}
+          />
+
+          {/* Center Orbital Atmospheric Scatter (Horizon Core) */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] rounded-full opacity-25 filter blur-[105px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(146,64,14,0.22) 0%, rgba(15,23,42,0.12) 50%, transparent 80%)",
+            }}
+          />
+
+          {/* Faint distant stellar dust band across top-left */}
+          <div
+            className="absolute top-12 left-1/4 w-[500px] h-[250px] rotate-[-25deg] opacity-20 filter blur-[80px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(245,158,11,0.2) 0%, rgba(180,83,9,0.08) 50%, transparent 80%)",
+            }}
+          />
+        </div>
+
+        {/* Light Mode: Subtle High-Altitude Stratosphere Atmospheric Glow */}
+        <div className="block dark:hidden absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            className="absolute -top-28 -right-28 w-[520px] h-[520px] rounded-full opacity-20 filter blur-[85px]"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(251,146,60,0.18) 0%, rgba(254,215,170,0.1) 50%, transparent 80%)",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Layer 2: Sharp J.A.R.V.I.S. Copper Circuits, Arc Reactor & HUD Telemetry */}
       <canvas
         ref={canvasRef}
-        className="w-full h-full block"
+        className="relative z-10 w-full h-full block"
       />
     </div>
   );
