@@ -40,7 +40,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ["'Urbanist'", "sans-serif"],
+        display: ["'Stack Sans Notch'", "sans-serif"],
         sans: ["'Google Sans'", "'Product Sans'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },
