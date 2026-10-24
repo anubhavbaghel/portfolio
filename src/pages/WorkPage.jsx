@@ -179,7 +179,7 @@ export default function WorkPage() {
       </section>
 
       {/* Production Web Track with Real Screenshots */}
-      <section id="web-track" className="pt-16 border-t border-paper-300 bg-paper-100/60 pb-20">
+      <section id="web-track" className="pt-16 border-t border-paper-300 pb-20">
         <div className="max-w-6xl mx-auto px-6 space-y-16">
           <div className="border-b border-paper-300 pb-6">
             <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">

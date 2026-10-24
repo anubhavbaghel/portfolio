@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className="space-y-0">
       {/* Editorial & Clear Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-paper-300 bg-blueprint-grid">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-paper-300 bg-white dark:bg-black">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           {/* Status & Telemetry */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -256,7 +256,7 @@ export default function HomePage() {
       </section>
 
       {/* Visual Client Work Gallery (60+ Sites Track Record) */}
-      <section className="py-24 bg-paper-100/60 border-b border-paper-300">
+      <section className="py-24 border-b border-paper-300">
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-paper-300 pb-6 gap-4">
             <div>
@@ -363,7 +363,7 @@ export default function HomePage() {
       </section>
 
       {/* Recent Notes */}
-      <section className="py-24 border-b border-paper-300 bg-paper-100/40">
+      <section className="py-24 border-b border-paper-300">
         <div className="max-w-6xl mx-auto px-6 space-y-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-paper-300 pb-6 gap-4">
             <div>
