@@ -41,7 +41,7 @@ export default {
       },
       fontFamily: {
         display: ["'Stack Sans Notch'", "sans-serif"],
-        sans: ["'Google Sans'", "'Product Sans'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "sans-serif"],
+        sans: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },
       boxShadow: {
