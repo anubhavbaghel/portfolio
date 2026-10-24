@@ -40,8 +40,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ["'Raleway'", "sans-serif"],
-        sans: ["'Plus Jakarta Sans'", "sans-serif"],
+        display: ["'Urbanist'", "sans-serif"],
+        sans: ["'Google Sans'", "'Product Sans'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },
       boxShadow: {
