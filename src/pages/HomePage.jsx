@@ -28,7 +28,7 @@ export default function HomePage() {
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-ink-900 leading-[1.08] mb-6 font-display">
               Building useful software,{" "}
-              <span className="text-terracotta relative inline-block">
+              <span className="relative inline-block italic font-light">
                 thoughtfully.
               </span>
             </h1>
@@ -41,7 +41,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#featured-work"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded bg-ink-900 text-paper-50 hover:bg-terracotta hover:text-white transition-all text-sm font-medium shadow-subtle hover:shadow-card"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded bg-ink-900 text-paper-50 hover:bg-ink-800 transition-all text-sm font-medium shadow-subtle hover:shadow-card"
               >
                 <span>Explore Selected Products</span>
                 <ArrowRight className="w-4 h-4" />
@@ -51,7 +51,7 @@ export default function HomePage() {
                 to="/work#web-track"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded bg-paper-50 hover:bg-paper-200 border border-paper-300 text-ink-800 transition-colors text-sm font-medium shadow-subtle"
               >
-                <Globe className="w-4 h-4 text-terracotta" />
+                <Globe className="w-4 h-4 text-ink-600" />
                 <span>60+ Deployed Sites Track</span>
               </Link>
 
@@ -66,7 +66,7 @@ export default function HomePage() {
 
           {/* Tangible Direction Strip: 3 Concrete Pillars */}
           <div className="mt-16 pt-8 border-t border-paper-300 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <div className="border-l-2 border-terracotta pl-4 space-y-1">
+            <div className="border-l-2 border-ink-900 dark:border-white pl-4 space-y-1">
               <span className="font-mono text-[11px] text-ink-500 uppercase tracking-wider block font-bold">
                 01 / Proven Execution
               </span>
@@ -78,7 +78,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="border-l-2 border-cobalt pl-4 space-y-1">
+            <div className="border-l-2 border-ink-900 dark:border-white pl-4 space-y-1">
               <span className="font-mono text-[11px] text-ink-500 uppercase tracking-wider block font-bold">
                 02 / Modern Full-Stack
               </span>
@@ -90,7 +90,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="border-l-2 border-emerald-600 pl-4 space-y-1">
+            <div className="border-l-2 border-ink-900 dark:border-white pl-4 space-y-1">
               <span className="font-mono text-[11px] text-ink-500 uppercase tracking-wider block font-bold">
                 03 / AI Discipline
               </span>
@@ -110,7 +110,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-paper-300 gap-4">
             <div>
-              <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">
+              <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
                 Tangible Software Work
               </span>
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 font-display">
@@ -119,7 +119,7 @@ export default function HomePage() {
             </div>
             <Link
               to="/work"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-terracotta hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-600 hover:text-ink-900 hover:underline"
             >
               <span>View all projects &amp; case studies</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -162,7 +162,7 @@ export default function HomePage() {
                     <div className="lg:col-span-7 order-1 lg:order-2 space-y-4">
                       {/* Meta Bar */}
                       <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-ink-500">
-                        <span className="font-bold text-terracotta">0{index + 1}</span>
+                        <span className="font-bold text-ink-900">0{index + 1}</span>
                         <span>&bull;</span>
                         <span className="uppercase">{project.role}</span>
                         <span>&bull;</span>
@@ -174,11 +174,11 @@ export default function HomePage() {
                       {/* Project Title & Tagline */}
                       <div>
                         <h3 className="text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight font-display mb-1">
-                          <Link to={`/work/${project.id}`} className="hover:text-terracotta transition-colors">
+                          <Link to={`/work/${project.id}`} className="hover:opacity-75 transition-opacity">
                             {project.name}
                           </Link>
                         </h3>
-                        <p className="text-sm font-medium text-terracotta font-sans">
+                        <p className="text-sm font-medium text-ink-600 font-sans">
                           {project.tagline}
                         </p>
                       </div>
@@ -195,7 +195,7 @@ export default function HomePage() {
                           <span className="text-ink-800 leading-tight block mt-0.5">{project.executiveSummary?.theProblem}</span>
                         </div>
                         <div className="p-3 bg-paper-100 rounded border border-paper-200">
-                          <span className="font-mono text-[10px] uppercase font-bold text-cobalt block">The Solution</span>
+                          <span className="font-mono text-[10px] uppercase font-bold text-ink-500 block">The Solution</span>
                           <span className="text-ink-800 leading-tight block mt-0.5">{project.executiveSummary?.theSolution}</span>
                         </div>
                       </div>
@@ -216,7 +216,7 @@ export default function HomePage() {
                       <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-paper-200">
                         <Link
                           to={`/work/${project.id}`}
-                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-ink-900 hover:bg-ink-800 text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
                         >
                           <BookOpen className="w-3.5 h-3.5" />
                           <span>Read Case Study</span>
@@ -260,7 +260,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-paper-300 pb-6 gap-4">
             <div>
-              <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">
+              <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
                 Production Track Record
               </span>
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 font-display">
@@ -313,7 +313,7 @@ export default function HomePage() {
             </div>
             <Link
               to="/work#web-track"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shrink-0"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-ink-800 text-paper-50 rounded text-xs font-mono transition-colors shrink-0"
             >
               <span>View Full Web Track</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -326,7 +326,7 @@ export default function HomePage() {
       <section className="py-24 border-b border-paper-300">
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           <div className="border-b border-paper-300 pb-6">
-            <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">
+            <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
               Engineering Mindset
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 font-display">
@@ -336,7 +336,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-paper-50 border border-paper-300 rounded-xl p-6 sm:p-8 space-y-3 shadow-subtle">
-              <span className="font-mono text-xs font-bold text-terracotta block">[01]</span>
+              <span className="font-mono text-xs font-bold text-ink-500 block">[01]</span>
               <h3 className="text-lg font-bold text-ink-900 font-display">Problem First, Tool Second</h3>
               <p className="text-xs sm:text-sm text-ink-600 leading-relaxed font-sans">
                 Technology choices should follow real constraints—data shape, user latency, and operational cost—rather than trends or resume padding.
@@ -344,7 +344,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-paper-50 border border-paper-300 rounded-xl p-6 sm:p-8 space-y-3 shadow-subtle">
-              <span className="font-mono text-xs font-bold text-cobalt block">[02]</span>
+              <span className="font-mono text-xs font-bold text-ink-500 block">[02]</span>
               <h3 className="text-lg font-bold text-ink-900 font-display">AI Leverage with Human Rigor</h3>
               <p className="text-xs sm:text-sm text-ink-600 leading-relaxed font-sans">
                 AI coding models generate syntax rapidly, but software engineering is about system architecture, boundary conditions, and failure modes. You cannot verify what you do not understand.
@@ -352,7 +352,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-paper-50 border border-paper-300 rounded-xl p-6 sm:p-8 space-y-3 shadow-subtle">
-              <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-400 block">[03]</span>
+              <span className="font-mono text-xs font-bold text-ink-500 block">[03]</span>
               <h3 className="text-lg font-bold text-ink-900 font-display">Production Ownership</h3>
               <p className="text-xs sm:text-sm text-ink-600 leading-relaxed font-sans">
                 Software only proves its value when it encounters real-world users, messy network conditions, and edge cases. Fast feedback loops beat prolonged theoretical design.
@@ -367,14 +367,14 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6 space-y-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-paper-300 pb-6 gap-4">
             <div>
-              <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-1">
+              <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-1">
                 Technical Retrospectives
               </span>
               <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-ink-900 font-display">
                 Engineering Notes
               </h2>
             </div>
-            <Link to="/notes" className="text-xs font-mono text-terracotta hover:underline">
+            <Link to="/notes" className="text-xs font-mono text-ink-600 hover:text-ink-900 hover:underline">
               View all essays &rarr;
             </Link>
           </div>
@@ -391,7 +391,7 @@ export default function HomePage() {
                   <span>{note.readTime}</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-ink-900 font-display">
-                  <Link to={`/notes/${note.id}`} className="hover:text-terracotta transition-colors">
+                  <Link to={`/notes/${note.id}`} className="hover:opacity-75 transition-opacity">
                     {note.title}
                   </Link>
                 </h3>
@@ -401,7 +401,7 @@ export default function HomePage() {
                 <div className="pt-2">
                   <Link
                     to={`/notes/${note.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-terracotta hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-600 hover:text-ink-900 hover:underline"
                   >
                     <span>Read Note</span>
                     <ArrowRight className="w-3 h-3" />
@@ -416,7 +416,7 @@ export default function HomePage() {
       {/* Call to Collaboration */}
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
-          <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block">
+          <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block">
             Let's Build Together
           </span>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 font-display">
@@ -428,7 +428,7 @@ export default function HomePage() {
           <div className="pt-4 flex flex-wrap justify-center items-center gap-4">
             <Link
               to="/contact"
-              className="px-6 py-3 rounded bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 text-sm font-medium transition-colors shadow-subtle"
+              className="px-6 py-3 rounded bg-ink-900 hover:bg-ink-800 text-paper-50 text-sm font-medium transition-colors shadow-subtle"
             >
               Get in Touch
             </Link>

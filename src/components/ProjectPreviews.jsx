@@ -6,7 +6,7 @@ export function LocoPreview() {
       {/* Mini App Header */}
       <div className="flex items-center justify-between pb-2 border-b border-paper-200">
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-terracotta"></span>
+          <span className="w-2 h-2 rounded-full bg-ink-900 dark:bg-white"></span>
           <span className="font-mono font-bold text-ink-900 tracking-wider">LOCO // DISCOVERY</span>
         </div>
         <span className="font-mono text-[10px] text-ink-500">NEW DELHI &bull; LIVE</span>
@@ -33,7 +33,7 @@ export function LocoPreview() {
         </div>
         <div className="flex items-center justify-between pt-1 border-t border-paper-100 font-mono text-[10px] text-ink-400">
           <span>Normalized from 3 feeds</span>
-          <span className="text-terracotta">Explore spot &rarr;</span>
+          <span className="text-ink-600 dark:text-ink-300">Explore spot &rarr;</span>
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@ export function SiteShotPreview() {
       {/* Mini Crawler Terminal Bar */}
       <div className="flex items-center justify-between pb-2 border-b border-ink-700/80">
         <div className="flex items-center gap-1.5 text-paper-300">
-          <Terminal className="w-3.5 h-3.5 text-terracotta" />
+          <Terminal className="w-3.5 h-3.5 text-ink-300" />
           <span className="text-[11px]">siteshot-crawler v1.2</span>
         </div>
         <span className="text-[10px] text-emerald-400 flex items-center gap-1">
@@ -80,7 +80,7 @@ export function ContentGuardPreview() {
     <div className="bg-paper-100 rounded-lg border border-paper-300 p-4 font-mono text-xs space-y-3 shadow-inner">
       <div className="flex items-center justify-between pb-2 border-b border-paper-200">
         <div className="flex items-center gap-1.5 text-ink-900">
-          <FileText className="w-3.5 h-3.5 text-cobalt" />
+          <FileText className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300" />
           <span className="font-bold text-[11px]">ContentGuard // XML Engine</span>
         </div>
         <span className="text-[10px] text-ink-500">FastAPI &bull; python-docx</span>
@@ -96,7 +96,7 @@ export function ContentGuardPreview() {
         <div className="bg-paper-50 p-2 rounded border border-paper-200">
           <span className="font-mono text-ink-500 block text-[9px] uppercase font-bold">Output Document</span>
           <p className="text-ink-800 font-mono text-[10px] mt-1">client_stencil.docx</p>
-          <span className="text-terracotta text-[9px] font-mono mt-1 block">&bull; Dynamic CTA Cycled</span>
+          <span className="text-ink-700 dark:text-ink-300 text-[9px] font-mono mt-1 block">&bull; Dynamic CTA Cycled</span>
         </div>
       </div>
 

@@ -42,7 +42,7 @@ export default function CaseStudyPage() {
       <div className="max-w-4xl mx-auto px-6 mb-8">
         <Link
           to="/work"
-          className="inline-flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-terracotta transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-ink-900 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to all engineering work</span>
@@ -64,7 +64,7 @@ export default function CaseStudyPage() {
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-ink-900 mb-3 leading-[1.1] font-display">
             {project.name}
           </h1>
-          <p className="text-lg sm:text-xl text-terracotta font-medium font-sans">
+          <p className="text-lg sm:text-xl text-ink-600 font-medium font-sans">
             {project.tagline}
           </p>
         </div>
@@ -84,15 +84,15 @@ export default function CaseStudyPage() {
         {project.executiveSummary && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5 bg-paper-100 rounded-xl border border-paper-300 text-xs font-sans">
             <div className="space-y-1">
-              <span className="font-mono text-[10px] uppercase font-bold text-terracotta block">The Problem</span>
+              <span className="font-mono text-[10px] uppercase font-bold text-ink-500 block">The Problem</span>
               <p className="text-ink-700 leading-relaxed">{project.executiveSummary.theProblem}</p>
             </div>
             <div className="space-y-1">
-              <span className="font-mono text-[10px] uppercase font-bold text-cobalt block">The Solution</span>
+              <span className="font-mono text-[10px] uppercase font-bold text-ink-500 block">The Solution</span>
               <p className="text-ink-700 leading-relaxed">{project.executiveSummary.theSolution}</p>
             </div>
             <div className="space-y-1">
-              <span className="font-mono text-[10px] uppercase font-bold text-emerald-800 dark:text-emerald-400 block">The Impact</span>
+              <span className="font-mono text-[10px] uppercase font-bold text-ink-500 block">The Impact</span>
               <p className="text-ink-800 leading-relaxed">{project.executiveSummary.theImpact}</p>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function CaseStudyPage() {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-ink-900 hover:bg-ink-800 text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
               >
                 <span>GitHub Source</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -144,7 +144,7 @@ export default function CaseStudyPage() {
           <div className="p-5 bg-paper-100 rounded-xl border border-paper-300 space-y-3">
             <div className="flex items-center justify-between border-b border-paper-200 pb-2">
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-ink-900 flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-cobalt" />
+                <Cpu className="w-4 h-4 text-ink-600 dark:text-ink-300" />
                 <span>Data &amp; Control Flow</span>
               </span>
               <span className="text-[11px] font-mono text-ink-500">Pipeline Stages</span>
@@ -157,7 +157,7 @@ export default function CaseStudyPage() {
                   className="bg-paper-50 border border-paper-300 rounded p-3 space-y-1 shadow-xs"
                 >
                   <div className="flex items-center justify-between font-mono text-[10px]">
-                    <span className="font-bold text-terracotta">0{stage.step}</span>
+                    <span className="font-bold text-ink-900 dark:text-ink-100">0{stage.step}</span>
                     <span className="bg-paper-200 px-1 py-0.5 rounded text-ink-600">{stage.tech}</span>
                   </div>
                   <h4 className="font-bold text-ink-900 text-xs font-mono">{stage.label}</h4>
@@ -173,7 +173,7 @@ export default function CaseStudyPage() {
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-12 text-ink-800">
         {/* Problem & Audience */}
         <section className="space-y-3">
-          <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold block">
+          <span className="font-mono text-xs uppercase tracking-wider text-ink-500 font-semibold block">
             01 / Problem &amp; Context
           </span>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-900 font-display">
@@ -195,7 +195,7 @@ export default function CaseStudyPage() {
 
           <div className="bg-paper-100 rounded-xl border border-paper-300 p-5 space-y-3 font-mono text-xs">
             <span className="font-bold text-ink-900 flex items-center gap-2 border-b border-paper-200 pb-2 text-xs">
-              <Layers className="w-3.5 h-3.5 text-cobalt" />
+              <Layers className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300" />
               <span>Architectural Specifications</span>
             </span>
 
@@ -216,7 +216,7 @@ export default function CaseStudyPage() {
           <div className="space-y-2.5 font-sans">
             {caseStudy.challenges.map((challenge, idx) => (
               <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-700 bg-paper-50 p-3.5 rounded-lg border border-paper-200 shadow-xs">
-                <AlertCircle className="w-4 h-4 text-terracotta shrink-0 mt-0.5" />
+                <AlertCircle className="w-4 h-4 text-ink-500 shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{challenge}</span>
               </div>
             ))}
@@ -250,7 +250,7 @@ export default function CaseStudyPage() {
             06 / Next Engineering Milestones
           </span>
           <div className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-800 bg-paper-50 p-4 rounded-lg border border-paper-200 font-sans font-medium">
-            <ArrowRight className="w-4 h-4 text-terracotta shrink-0 mt-0.5" />
+            <ArrowRight className="w-4 h-4 text-ink-600 dark:text-ink-300 shrink-0 mt-0.5" />
             <span className="leading-relaxed">{caseStudy.nextMilestones}</span>
           </div>
         </section>
@@ -261,7 +261,7 @@ export default function CaseStudyPage() {
         {prevProject ? (
           <Link
             to={`/work/${prevProject.id}`}
-            className="flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-terracotta"
+            className="flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-ink-900 dark:hover:text-ink-100 hover:underline"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Prev: {prevProject.name}</span>
@@ -280,7 +280,7 @@ export default function CaseStudyPage() {
         {nextProject ? (
           <Link
             to={`/work/${nextProject.id}`}
-            className="flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-terracotta"
+            className="flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-ink-900 dark:hover:text-ink-100 hover:underline"
           >
             <span>Next: {nextProject.name}</span>
             <ArrowRight className="w-3.5 h-3.5" />

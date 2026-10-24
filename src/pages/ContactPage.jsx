@@ -48,7 +48,7 @@ export default function ContactPage() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Page Header */}
         <section className="border-b border-paper-300 pb-12 mb-16">
-          <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">
+          <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
             Initiate Contact &amp; Inquiries
           </span>
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-ink-900 mb-6 font-display">
@@ -74,9 +74,9 @@ export default function ContactPage() {
             <div className="space-y-3 font-mono text-xs">
               <a
                 href={`mailto:${personalInfo.contacts.email}`}
-                className="flex items-center gap-3 p-4 bg-paper-50 border border-paper-300 rounded-lg hover:border-terracotta transition-all text-ink-800 shadow-subtle hover:shadow-card"
+                className="flex items-center gap-3 p-4 bg-paper-50 border border-paper-300 rounded-lg hover:border-ink-900 dark:hover:border-ink-100 transition-all text-ink-800 shadow-subtle hover:shadow-card"
               >
-                <Mail className="w-4 h-4 text-terracotta shrink-0" />
+                <Mail className="w-4 h-4 text-ink-600 dark:text-ink-300 shrink-0" />
                 <span className="truncate">{personalInfo.contacts.email}</span>
               </a>
 
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 href={personalInfo.contacts.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-paper-50 border border-paper-300 rounded-lg hover:border-terracotta transition-all text-ink-800 shadow-subtle hover:shadow-card"
+                className="flex items-center gap-3 p-4 bg-paper-50 border border-paper-300 rounded-lg hover:border-ink-900 dark:hover:border-ink-100 transition-all text-ink-800 shadow-subtle hover:shadow-card"
               >
                 <GithubIcon className="w-4 h-4 text-ink-600 shrink-0" />
                 <span>github.com/anubhavbaghel</span>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                 href={personalInfo.contacts.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-paper-50 border border-paper-300 rounded-lg hover:border-terracotta transition-all text-ink-800 shadow-subtle hover:shadow-card"
+                className="flex items-center gap-3 p-4 bg-paper-50 border border-paper-300 rounded-lg hover:border-ink-900 dark:hover:border-ink-100 transition-all text-ink-800 shadow-subtle hover:shadow-card"
               >
                 <LinkedinIcon className="w-4 h-4 text-ink-600 shrink-0" />
                 <span>linkedin.com/in/anubhav-baghel</span>
@@ -105,7 +105,7 @@ export default function ContactPage() {
               <span className="text-ink-700 block uppercase tracking-wider font-semibold">Location &amp; Availability:</span>
               <p>Based in New Delhi, India (IST UTC+5:30).</p>
               <p>Open to on-site, hybrid, and remote opportunities.</p>
-              <p className="text-terracotta pt-1 font-semibold">Typical response time: Within 24 hours.</p>
+              <p className="text-ink-900 dark:text-ink-100 pt-1 font-semibold">Typical response time: Within 24 hours.</p>
             </div>
           </div>
 
@@ -132,7 +132,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-1.5">
                     <label htmlFor="name" className="block text-xs font-mono uppercase text-ink-600">
-                      Your Name <span className="text-terracotta">*</span>
+                      Your Name <span className="text-ink-500">*</span>
                     </label>
                     <input
                       id="name"
@@ -140,7 +140,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Maya Patel"
-                      className={`w-full bg-paper-100 border px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-colors font-sans ${
+                      className={`w-full bg-paper-100 border px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-ink-900 dark:focus:border-white focus:ring-1 focus:ring-ink-900 dark:focus:ring-white transition-colors font-sans ${
                         errors.name ? "border-red-400 bg-red-50/20" : "border-paper-300"
                       }`}
                     />
@@ -154,7 +154,7 @@ export default function ContactPage() {
 
                   <div className="space-y-1.5">
                     <label htmlFor="email" className="block text-xs font-mono uppercase text-ink-600">
-                      Email Address <span className="text-terracotta">*</span>
+                      Email Address <span className="text-ink-500">*</span>
                     </label>
                     <input
                       id="email"
@@ -162,7 +162,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. maya@company.com"
-                      className={`w-full bg-paper-100 border px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-colors font-sans ${
+                      className={`w-full bg-paper-100 border px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-ink-900 dark:focus:border-white focus:ring-1 focus:ring-ink-900 dark:focus:ring-white transition-colors font-sans ${
                         errors.email ? "border-red-400 bg-red-50/20" : "border-paper-300"
                       }`}
                     />
@@ -185,13 +185,13 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder="e.g. Software Role at [Company] / Engineering Chat"
-                    className="w-full bg-paper-100 border border-paper-300 px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-colors font-sans"
+                    className="w-full bg-paper-100 border border-paper-300 px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-ink-900 dark:focus:border-white focus:ring-1 focus:ring-ink-900 dark:focus:ring-white transition-colors font-sans"
                   />
                 </div>
 
                 <div className="space-y-1.5">
                   <label htmlFor="message" className="block text-xs font-mono uppercase text-ink-600">
-                    Message <span className="text-terracotta">*</span>
+                    Message <span className="text-ink-500">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -199,7 +199,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Write your message here..."
-                    className={`w-full bg-paper-100 border px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-colors resize-y font-sans ${
+                    className={`w-full bg-paper-100 border px-3.5 py-3 rounded-lg text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-ink-900 dark:focus:border-white focus:ring-1 focus:ring-ink-900 dark:focus:ring-white transition-colors resize-y font-sans ${
                       errors.message ? "border-red-400 bg-red-50/20" : "border-paper-300"
                     }`}
                   ></textarea>
@@ -213,7 +213,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono font-medium transition-colors cursor-pointer shadow-subtle hover:shadow-card"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ink-900 hover:bg-ink-800 text-paper-50 rounded text-xs font-mono font-medium transition-colors cursor-pointer shadow-subtle hover:shadow-card"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Direct Inquiry</span>

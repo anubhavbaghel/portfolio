@@ -49,7 +49,7 @@ export default function WorkPage() {
       {/* Page Header */}
       <section className="max-w-6xl mx-auto px-6 border-b border-paper-300 pb-12">
         <div className="flex items-center gap-2 mb-2">
-          <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold">
+          <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold">
             Engineering Systems &amp; Case Studies
           </span>
           <span className="text-xs font-mono text-ink-400">&bull;</span>
@@ -85,7 +85,7 @@ export default function WorkPage() {
                     {/* Meta Bar */}
                     <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-paper-200">
                       <div className="flex items-center gap-2 text-xs font-mono text-ink-500">
-                        <span className="font-bold text-terracotta">SYS_0{index + 1}</span>
+                        <span className="font-bold text-ink-900">SYS_0{index + 1}</span>
                         <span>&bull;</span>
                         <span>{project.year}</span>
                         <span>&bull;</span>
@@ -99,11 +99,11 @@ export default function WorkPage() {
                     {/* Title & Tagline */}
                     <div>
                       <h2 className="text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight font-display mb-1">
-                        <Link to={`/work/${project.id}`} className="hover:text-terracotta transition-colors">
+                        <Link to={`/work/${project.id}`} className="hover:opacity-75 transition-opacity">
                           {project.name}
                         </Link>
                       </h2>
-                      <p className="text-sm font-medium text-terracotta font-sans">
+                      <p className="text-sm font-medium text-ink-600 font-sans">
                         {project.tagline}
                       </p>
                     </div>
@@ -119,7 +119,7 @@ export default function WorkPage() {
                         <p className="text-ink-700 leading-snug mt-0.5">{project.executiveSummary?.theProblem}</p>
                       </div>
                       <div className="p-3 bg-paper-100 rounded border border-paper-200">
-                        <span className="font-mono text-[10px] font-bold text-cobalt block uppercase">Solution:</span>
+                        <span className="font-mono text-[10px] font-bold text-ink-500 block uppercase">Solution:</span>
                         <p className="text-ink-700 leading-snug mt-0.5">{project.executiveSummary?.theSolution}</p>
                       </div>
                     </div>
@@ -140,7 +140,7 @@ export default function WorkPage() {
                     <div className="pt-3 flex flex-wrap items-center gap-3 border-t border-paper-200">
                       <Link
                         to={`/work/${project.id}`}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-ink-900 hover:bg-ink-800 text-paper-50 rounded text-xs font-mono transition-colors shadow-xs"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
                         <span>Read Case Study</span>
@@ -182,7 +182,7 @@ export default function WorkPage() {
       <section id="web-track" className="pt-16 border-t border-paper-300 pb-20">
         <div className="max-w-6xl mx-auto px-6 space-y-16">
           <div className="border-b border-paper-300 pb-6">
-            <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">
+            <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
               Production Web Track
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 mb-4 font-display">
@@ -203,7 +203,7 @@ export default function WorkPage() {
                 <div className="flex justify-between items-start gap-2 border-b border-paper-200 pb-4">
                   <div>
                     <h3 className="text-xl font-bold text-ink-900 font-display">{exp.company}</h3>
-                    <p className="text-sm font-medium text-terracotta font-sans">{exp.role}</p>
+                    <p className="text-sm font-medium text-ink-600 font-sans">{exp.role}</p>
                   </div>
                   <span className="font-mono text-xs text-ink-500 bg-paper-200 px-2.5 py-1 rounded border border-paper-300 shrink-0">
                     {exp.period}
@@ -220,7 +220,7 @@ export default function WorkPage() {
                   </span>
                   {exp.responsibilities.slice(0, 3).map((resp, rIdx) => (
                     <div key={rIdx} className="flex items-start gap-2 text-xs text-ink-700 font-sans">
-                      <span className="text-terracotta mt-0.5">&bull;</span>
+                      <span className="text-ink-400 mt-0.5">&bull;</span>
                       <span>{resp}</span>
                     </div>
                   ))}
@@ -244,7 +244,7 @@ export default function WorkPage() {
           <div>
             <div className="flex items-center justify-between mb-6 pb-2 border-b border-paper-300">
               <h3 className="text-xl font-bold text-ink-900 tracking-tight flex items-center gap-2 font-display">
-                <Globe className="w-5 h-5 text-terracotta" />
+                <Globe className="w-5 h-5 text-ink-600" />
                 <span>Selected Production Deployments</span>
               </h3>
               <span className="font-mono text-xs text-ink-500">Live verified client domains</span>

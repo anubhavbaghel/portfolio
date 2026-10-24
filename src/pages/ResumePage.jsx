@@ -8,7 +8,7 @@ export default function ResumePage() {
         {/* Page Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-paper-300 gap-4">
           <div>
-            <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">
+            <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
               Curriculum Vitae
             </span>
             <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-ink-900 font-display">
@@ -20,7 +20,7 @@ export default function ResumePage() {
             href={personalInfo.contacts.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-terracotta hover:text-white text-paper-50 rounded text-xs font-mono transition-colors shadow-subtle hover:shadow-card cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-ink-900 hover:bg-ink-800 text-paper-50 rounded text-xs font-mono transition-colors shadow-subtle hover:shadow-card cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Download Official PDF</span>
@@ -35,33 +35,33 @@ export default function ResumePage() {
               <h2 className="text-3xl sm:text-4xl font-bold text-ink-900 tracking-tight font-display">
                 {personalInfo.name}
               </h2>
-              <p className="text-base text-terracotta font-medium mt-1 font-sans">
+              <p className="text-base text-ink-600 dark:text-ink-300 font-medium mt-1 font-sans">
                 {personalInfo.role} &bull; Full-Stack &amp; Product Developer
               </p>
               <p className="text-xs text-ink-500 font-mono mt-2 flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-terracotta" />
+                <MapPin className="w-3.5 h-3.5 text-ink-500" />
                 <span>{personalInfo.location}</span>
               </p>
             </div>
 
             <div className="text-xs font-mono space-y-1.5 text-ink-600 sm:text-right">
               <div>
-                <a href={`mailto:${personalInfo.contacts.email}`} className="hover:text-terracotta transition-colors">
+                <a href={`mailto:${personalInfo.contacts.email}`} className="hover:text-ink-900 dark:hover:text-ink-100 hover:underline transition-colors">
                   {personalInfo.contacts.email}
                 </a>
               </div>
               <div>
-                <a href={personalInfo.contacts.github} target="_blank" rel="noopener noreferrer" className="hover:text-terracotta transition-colors">
+                <a href={personalInfo.contacts.github} target="_blank" rel="noopener noreferrer" className="hover:text-ink-900 dark:hover:text-ink-100 hover:underline transition-colors">
                   github.com/anubhavbaghel
                 </a>
               </div>
               <div>
-                <a href={personalInfo.contacts.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-terracotta transition-colors">
+                <a href={personalInfo.contacts.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-ink-900 dark:hover:text-ink-100 hover:underline transition-colors">
                   linkedin.com/in/anubhav-baghel
                 </a>
               </div>
               <div>
-                <a href="https://anubhavbaghel.dev" target="_blank" rel="noopener noreferrer" className="text-terracotta hover:underline">
+                <a href="https://anubhavbaghel.dev" target="_blank" rel="noopener noreferrer" className="text-ink-900 dark:text-ink-100 hover:underline">
                   anubhavbaghel.dev
                 </a>
               </div>
@@ -81,7 +81,7 @@ export default function ResumePage() {
           {/* Work Experience */}
           <div className="space-y-6">
             <h3 className="font-mono text-xs uppercase tracking-wider text-ink-500 font-semibold border-b border-paper-200 pb-2 flex items-center gap-2">
-              <Briefcase className="w-3.5 h-3.5 text-terracotta" />
+              <Briefcase className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300" />
               <span>Workplace Experience</span>
             </h3>
 
@@ -110,7 +110,7 @@ export default function ResumePage() {
           {/* Key Engineering Projects */}
           <div className="space-y-4">
             <h3 className="font-mono text-xs uppercase tracking-wider text-ink-500 font-semibold border-b border-paper-200 pb-2 flex items-center gap-2">
-              <Cpu className="w-3.5 h-3.5 text-cobalt" />
+              <Cpu className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300" />
               <span>Featured Software Projects &amp; Systems</span>
             </h3>
 
@@ -181,7 +181,7 @@ export default function ResumePage() {
           {/* Education & Credentials */}
           <div className="space-y-4">
             <h3 className="font-mono text-xs uppercase tracking-wider text-ink-500 font-semibold border-b border-paper-200 pb-2 flex items-center gap-2">
-              <GraduationCap className="w-3.5 h-3.5 text-terracotta" />
+              <GraduationCap className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300" />
               <span>Education &amp; Credentials</span>
             </h3>
             <div className="text-xs space-y-3">
@@ -190,7 +190,7 @@ export default function ResumePage() {
                 <span className="font-mono text-ink-500">{education.institution} ({education.status})</span>
               </div>
               <div className="flex items-center gap-2 text-ink-600 font-mono text-[11px]">
-                <Award className="w-3.5 h-3.5 text-terracotta shrink-0" />
+                <Award className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300 shrink-0" />
                 <span>Google Solution Challenge Finalist &bull; Hack2skill PromptWars Winner &bull; Meta Coursera Advanced React &bull; DataCamp GitHub Foundations</span>
               </div>
             </div>

@@ -20,7 +20,7 @@ export default function NoteArticlePage() {
       <div className="max-w-3xl mx-auto px-6 mb-10">
         <Link
           to="/notes"
-          className="inline-flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-terracotta transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono text-ink-600 hover:text-ink-900 dark:hover:text-ink-100 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Notes Index</span>
@@ -33,11 +33,11 @@ export default function NoteArticlePage() {
           <span>{note.date}</span>
           <span>&bull;</span>
           <span className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-terracotta" />
+            <Clock className="w-3.5 h-3.5 text-ink-500" />
             {note.readTime}
           </span>
           <span>&bull;</span>
-          <span className="text-terracotta font-medium bg-terracotta/10 px-2 py-0.5 rounded">
+          <span className="text-ink-700 bg-paper-200 px-2 py-0.5 rounded border border-paper-300">
             {note.category}
           </span>
         </div>
@@ -53,7 +53,7 @@ export default function NoteArticlePage() {
         {/* Executive Summary Takeaways for Fast Reading */}
         <div className="p-4 bg-paper-100/90 rounded-lg border border-paper-300 space-y-2 mt-4">
           <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-ink-900 flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-terracotta" />
+            <Sparkles className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300" />
             <span>Key Takeaway for Technical Leaders</span>
           </span>
           <p className="text-xs sm:text-sm text-ink-700 leading-relaxed font-sans">
@@ -80,7 +80,7 @@ export default function NoteArticlePage() {
       <footer className="max-w-3xl mx-auto px-6 pt-12 border-t border-paper-300 space-y-10">
         <div className="p-6 bg-paper-100 rounded-xl border border-paper-300 text-xs text-ink-600 font-mono space-y-2 shadow-subtle">
           <span className="text-ink-800 font-bold block uppercase tracking-wider flex items-center gap-2">
-            <BookOpen className="w-3.5 h-3.5 text-terracotta" />
+            <BookOpen className="w-3.5 h-3.5 text-ink-600 dark:text-ink-300" />
             <span>Author Colophon</span>
           </span>
           <p className="font-sans text-sm text-ink-700 leading-relaxed">
@@ -92,7 +92,7 @@ export default function NoteArticlePage() {
           {prevNote ? (
             <Link
               to={`/notes/${prevNote.id}`}
-              className="flex items-center gap-2 text-ink-600 hover:text-terracotta"
+              className="flex items-center gap-2 text-ink-600 hover:text-ink-900 dark:hover:text-ink-100 hover:underline"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span className="truncate max-w-xs">Prev: {prevNote.title}</span>
@@ -111,7 +111,7 @@ export default function NoteArticlePage() {
           {nextNote ? (
             <Link
               to={`/notes/${nextNote.id}`}
-              className="flex items-center gap-2 text-ink-600 hover:text-terracotta"
+              className="flex items-center gap-2 text-ink-600 hover:text-ink-900 dark:hover:text-ink-100 hover:underline"
             >
               <span className="truncate max-w-xs">Next: {nextNote.title}</span>
               <ArrowRight className="w-3.5 h-3.5" />

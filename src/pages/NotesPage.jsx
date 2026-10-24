@@ -7,7 +7,7 @@ export default function NotesPage() {
     <div className="pt-32 pb-24">
       {/* Page Header */}
       <section className="max-w-4xl mx-auto px-6 border-b border-paper-300 pb-12 mb-16">
-        <div className="flex items-center gap-2 mb-2 font-mono text-xs text-terracotta uppercase tracking-widest font-semibold">
+        <div className="flex items-center gap-2 mb-2 font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold">
           <BookOpen className="w-3.5 h-3.5" />
           <span>Technical Writing &amp; Reflections</span>
         </div>
@@ -27,7 +27,7 @@ export default function NotesPage() {
             className="bg-paper-50 border border-paper-300 rounded-xl p-8 sm:p-10 hover:border-paper-400 transition-all shadow-subtle space-y-4"
           >
             <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-ink-500 pb-3 border-b border-paper-200">
-              <span className="text-terracotta font-semibold">NOTE_0{index + 1}</span>
+              <span className="text-ink-900 dark:text-ink-100 font-semibold">NOTE_0{index + 1}</span>
               <span>&bull;</span>
               <span>{note.date}</span>
               <span>&bull;</span>
@@ -41,7 +41,7 @@ export default function NotesPage() {
 
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight leading-snug mb-2 font-display">
-                <Link to={`/notes/${note.id}`} className="hover:text-terracotta transition-colors">
+                <Link to={`/notes/${note.id}`} className="hover:text-ink-600 dark:hover:text-ink-300 transition-colors">
                   {note.title}
                 </Link>
               </h2>
@@ -53,7 +53,7 @@ export default function NotesPage() {
             <div className="pt-4 border-t border-paper-200 flex items-center justify-between">
               <Link
                 to={`/notes/${note.id}`}
-                className="inline-flex items-center gap-2 text-xs font-mono font-medium text-ink-900 hover:text-terracotta transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-mono font-medium text-ink-900 dark:text-ink-100 hover:underline transition-colors"
               >
                 <span>Read Full Essay</span>
                 <ArrowRight className="w-3.5 h-3.5" />

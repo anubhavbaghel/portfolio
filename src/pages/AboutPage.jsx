@@ -28,21 +28,21 @@ export default function AboutPage() {
     {
       title: "1. Engineering Fundamentals",
       icon: Terminal,
-      color: "text-ink-900",
+      color: "text-ink-900 dark:text-ink-100",
       description:
         "Data structures, algorithms, relational schema design, network protocols, type safety, and defensive testing. Knowing how systems work beneath the abstraction layer.",
     },
     {
       title: "2. AI-Native Acceleration",
       icon: Cpu,
-      color: "text-cobalt",
+      color: "text-ink-900 dark:text-ink-100",
       description:
         "Leveraging AI coding agents and model APIs (Gemini, Ollama) with strict JSON schemas and validation pipelines. High leverage with zero unverified code.",
     },
     {
       title: "3. Product Thinking",
       icon: Sparkles,
-      color: "text-terracotta",
+      color: "text-ink-900 dark:text-ink-100",
       description:
         "Understanding user pain points, building lean MVPs, optimizing time-to-value, communicating clearly with stakeholders, and shipping maintainable solutions.",
     },
@@ -52,7 +52,7 @@ export default function AboutPage() {
     <div className="pt-32 pb-24 space-y-20">
       {/* Header */}
       <section className="max-w-6xl mx-auto px-6 border-b border-paper-300 pb-12">
-        <span className="font-mono text-xs text-terracotta uppercase tracking-widest font-semibold block mb-2">
+        <span className="font-mono text-xs text-ink-500 uppercase tracking-widest font-semibold block mb-2">
           Background &amp; Direction
         </span>
         <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-ink-900 mb-6 font-display">
@@ -135,7 +135,7 @@ export default function AboutPage() {
         {/* 3 Pillars */}
         <div className="space-y-6 pt-10 border-t border-paper-300">
           <div className="border-b border-paper-200 pb-3">
-            <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-semibold block mb-1">
+            <span className="font-mono text-xs uppercase tracking-wider text-ink-500 font-semibold block mb-1">
               Guiding Strengths
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 font-display">
@@ -181,7 +181,7 @@ export default function AboutPage() {
                 key={idx}
                 className="bg-paper-50 border border-paper-300 rounded-xl p-5 flex flex-col md:flex-row md:items-baseline gap-4 shadow-subtle"
               >
-                <span className="md:w-44 shrink-0 font-mono text-xs font-semibold text-terracotta">
+                <span className="md:w-44 shrink-0 font-mono text-xs font-semibold text-ink-900 dark:text-ink-100">
                   [{t.period}]
                 </span>
                 <div className="space-y-1">
@@ -196,7 +196,7 @@ export default function AboutPage() {
         {/* Education & Verified Credentials */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-16 border-t border-paper-300">
           <div className="bg-paper-50 border border-paper-300 rounded-xl p-6 sm:p-8 space-y-4 shadow-subtle">
-            <div className="flex items-center gap-2 text-terracotta">
+            <div className="flex items-center gap-2 text-ink-900 dark:text-ink-100">
               <GraduationCap className="w-5 h-5" />
               <span className="font-mono text-xs uppercase tracking-wider font-semibold text-ink-500">
                 Formal Education
@@ -217,7 +217,7 @@ export default function AboutPage() {
           </div>
 
           <div className="bg-paper-50 border border-paper-300 rounded-xl p-6 sm:p-8 space-y-4 shadow-subtle">
-            <div className="flex items-center gap-2 text-terracotta">
+            <div className="flex items-center gap-2 text-ink-900 dark:text-ink-100">
               <Award className="w-5 h-5" />
               <span className="font-mono text-xs uppercase tracking-wider font-semibold text-ink-500">
                 Verified Credentials &amp; Challenges
@@ -238,7 +238,7 @@ export default function AboutPage() {
                     href={item.verificationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-mono text-[11px] text-terracotta hover:underline shrink-0"
+                    className="inline-flex items-center gap-1 font-mono text-[11px] text-ink-900 dark:text-ink-100 hover:underline shrink-0"
                   >
                     <span>Verify</span>
                     <ArrowUpRight className="w-3 h-3" />

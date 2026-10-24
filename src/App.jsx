@@ -19,7 +19,7 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col bg-white dark:bg-black text-ink-900 selection:bg-terracotta/20 selection:text-terracotta antialiased transition-colors duration-200">
+        <div className="min-h-screen flex flex-col bg-white dark:bg-black text-ink-900 selection:bg-zinc-200 dark:selection:bg-zinc-800 selection:text-ink-900 dark:selection:text-white antialiased transition-colors duration-200">
           {/* Persistent Editorial Header */}
           <Navigation />
 
